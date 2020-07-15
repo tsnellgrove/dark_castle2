@@ -29,6 +29,9 @@ Flask Testing
 			- Less clear is coding across platforms... it's beginning to look like there's no one simple solution to this
 			- I will need to roll my own
 			- Maybe start by functionalizing Dark Castle and make that version work at the command line
+	- 2.1.1 Took the plunge today - just decided that	I needed to get started - copied DC files into dark_castle2 - will use a separate repo
+	- NEXT: Updated docs and start functionalizing
+		
 
 
 To Dos:
