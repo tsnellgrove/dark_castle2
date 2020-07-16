@@ -500,4 +500,23 @@ Final Updates for Version 2.0
 	DONE: Create dark_castle description for entrance view_only
 		Dark_castle looms over you. Its facade of blackened turrets and cracked walls dour and singlularly univiting. It's hard to imagine but your great grandma Nana used to tell wonderous stories of the old days when the castle gleamed brightly on its hill and brought order and goodness to the land. Maybe it's because of the stories but you've always had a bit of an itch to venture inside - and now that a round of beer and your alehouse repuation as a fearless ruffian are on the line you certainly don't intend to back down now! 
 
+Updates for v 2.0.x
+	- DONE: Change version naming to x.y.z notation
+	- DONE: Read about Flask functions
+	- DONE: re-read number input / output example
+	- 2.0.1 Learn Flask basics: 
+		- https://realpython.com/introduction-to-flask-part-1-setting-up-a-static-site/
+	- 2.0.2 Basic test local site with input
+	- 2.0.3 Basic test local site with input box; prints a locally asigned variable
+	- 2.0.4 Created a very basic processing.py script to enable input / output testing
+	- 2.0.5 Good updates - have input and output linked to web site & sub function calling working
+	- 2.0.6 Sessions working (?) but still can't retain text_lst values
+	- 2.0.7 Finally got session variable to be persistent!!
+	- 2.0.8 Sorted out the KeyError issue and got session.pop() working (well, most of the time)
+	- 2.0.9 Wrote pseudo code for how flask wrapper would work if all stateful data was stored in session dictionaries 	
+	- 2.0.10 get flask test into git
+	- 2.0.11 got git branching working (I think)
+	- 2.0.12 working through a really frustrating working copy / pythonista remote file call bug :(
+	- 2.0.13 After much adventure got flask_test3.py running smoothly on pythonanywhere with git integration
+	
 

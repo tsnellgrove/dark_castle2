@@ -3,62 +3,30 @@
 
 *** Future Versions and Features ***
 
-2.x Website To Do
-
-Flask Testing
-	- DONE: Change version naming to x.y.z notation
-	- DONE: Read about Flask functions
-	- DONE: re-read number input / output example
-	- 2.0.1 Learn Flask basics: 
-		- https://realpython.com/introduction-to-flask-part-1-setting-up-a-static-site/
-	- 2.0.2 Basic test local site with input
-	- 2.0.3 Basic test local site with input box; prints a locally asigned variable
-	- 2.0.4 Created a very basic processing.py script to enable input / output testing
-	- 2.0.5 Good updates - have input and output linked to web site & sub function calling working
-	- 2.0.6 Sessions working (?) but still can't retain text_lst values
-	- 2.0.7 Finally got session variable to be persistent!!
-	- 2.0.8 Sorted out the KeyError issue and got session.pop() working (well, most of the time)
-	- 2.0.9 Wrote pseudo code for how flask wrapper would work if all stateful data was stored in session dictionaries 	
-	- 2.0.10 get flask test into git
-	- 2.0.11 got git branching working (I think)
-	- 2.0.12 working through a really frustrating working copy / pythonista remote file call bug :(
-	- 2.0.13 After much adventure got flask_test3.py running smoothly on pythonanywhere with git integration
-	- 2.1.0 NEXT TO DO - REALLY FIGURE OUT HOW TO USE GIT BRANCHING / FORKS
+2.1.x Website To Do
+		- 2.1.0 NEXT TO DO - REALLY FIGURE OUT HOW TO USE GIT BRANCHING / FORKS
 		- July 13: Reading up on Git branching - sounds like tags will be helpful - more research to do
 		- July 14: Read up on app versioning - I need to get more consistent about this
 			- Less clear is coding across platforms... it's beginning to look like there's no one simple solution to this
 			- I will need to roll my own
 			- Maybe start by functionalizing Dark Castle and make that version work at the command line
-	- 2.1.1 Took the plunge today - just decided that	I needed to get started - copied DC files into dark_castle2 - will use a separate repo
-	- NEXT: Updated docs and start functionalizing
-		
-
+	- 2.1.1 
+			- Took the plunge today - just decided that	I needed to get started - copied DC files into dark_castle2 - will use a separate repo
+			- Updated docs
+			
+NEXT: collect notes and start serious pseudo-coding		
 
 To Dos:
-- set a versioning scheme (x.y.z) and official version notes; also create a version command in Dark Castle 
+	- set a versioning scheme (x.y.z) and official version notes; also create a version command in Dark Castle 
 	- Link: https://medium.com/@GabEarnsh/versioning-mobile-app-releases-like-a-pro-25137766150a
-
-
-
-	struggling with very basic import issues... not sure what's going on
-	branch flask test
-	update test to match pseudo code
-	branch dark_castle.py for flask version
-		decide on how to store data... maybe first pass is client-side cookies, then server-side JSON then Redis
+	- decide on how to store data... maybe first pass is client-side cookies, then server-side JSON then Redis
 		Need to re-apply description updates on load.. or maybe just JSON?? Or maybe special dict just for those?
 		Create dynamic description dict and update descript_dict on load (for update in update_dict descript_dict[update] = update_dict[update])
-	Need to buckle down and take some flask courses independent of my project (just do it)
-
-Next
-	- Sort out Git Branching
 	- convert interpreter_text to function using print to buffer approach (redirect stdio)
 	- flaskify main routine
 	- get it working on local host website
 	- get working on python anywhere or Heroku
 	- figure out sessions
-	- Git integration
-	- Investigate AWS implemenations
-	- Future deployment options: Cloud web, instance, container, Lambda / serverless, mobile, text, echo
 	- Initial function thinking:
 		- dark_castle includes:
 			- fask code, dictionaries, imports, while != end_state (input, interpreter_text(), print buffer)
@@ -67,7 +35,14 @@ Next
 			- imports, check for quit, timer code, std code (all prints to buffer)
 			- end() => updates end_state
 	- Functionalize thoughts:
-		- What is the value of functionalizing? Maybe just convert output to buffer??
+		- What is the value of functionalizing? Maybe just convert output to buffer??	
+
+
+
+
+Some Day:
+	- Investigate AWS implemenations
+	- Future deployment options: Cloud web, instance, container, Lambda / serverless, mobile, text, echo
 
 3.x Minor Edits:
 	Joshua idea: give the player an option to be a boy (Burt) or a girl (Rose); or maybe let them choose their own name
