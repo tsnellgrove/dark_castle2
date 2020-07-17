@@ -17,16 +17,14 @@
 NEXT: collect notes and start serious pseudo-coding		
 
 To Dos:
-	- set a versioning scheme (x.y.z) and official version notes; also create a version command in Dark Castle 
-	- Link: https://medium.com/@GabEarnsh/versioning-mobile-app-releases-like-a-pro-25137766150a
-	- decide on how to store data... maybe first pass is client-side cookies, then server-side JSON then Redis
-		Need to re-apply description updates on load.. or maybe just JSON?? Or maybe special dict just for those?
-		Create dynamic description dict and update descript_dict on load (for update in update_dict descript_dict[update] = update_dict[update])
-	- convert interpreter_text to function using print to buffer approach (redirect stdio)
+
 	- flaskify main routine
-	- get it working on local host website
-	- get working on python anywhere or Heroku
-	- figure out sessions
+		- decide on how to store data... 
+				- maybe first pass is client-side cookies, then server-side JSON then Redis
+				- Need to re-apply description updates on load.. or maybe just JSON?? Or maybe special dict just for those?
+				- Create dynamic description dict and update descript_dict on load (for update in update_dict descript_dict[update] = update_dict[update])
+		- convert interpreter_text to function using print to buffer approach (redirect stdio)	
+
 	- Initial function thinking:
 		- dark_castle includes:
 			- fask code, dictionaries, imports, while != end_state (input, interpreter_text(), print buffer)
@@ -34,10 +32,20 @@ To Dos:
 		- interpreter_text includes: 
 			- imports, check for quit, timer code, std code (all prints to buffer)
 			- end() => updates end_state
+
+	- First steps
+		- Make interpreter_txt callable from main routine in a stateless fashion
+		- print to buffer and do all printing in main routine
+
+
+	- set a versioning scheme (x.y.z) and official version notes; also create a version command in Dark Castle 
+	- Link: https://medium.com/@GabEarnsh/versioning-mobile-app-releases-like-a-pro-25137766150a
+	- Web sites
+		- get it working on local host website
+		- get working on python anywhere or Heroku
+		- figure out sessions
 	- Functionalize thoughts:
 		- What is the value of functionalizing? Maybe just convert output to buffer??	
-
-
 
 
 Some Day:
