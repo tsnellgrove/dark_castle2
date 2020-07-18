@@ -1,11 +1,11 @@
-"""Castle Adventure 2.0
+"""Castle Adventure 2.1.1 (candidate)
 
 This is a simple Zork-like text adventure game.
 I am creating it in order to learn how to program in Python.
 
 Written and programmed by Tom Snellgrove
 
-Last update = May 25, 2020
+Last update = July 18, 2020
 """
 
 # *** Imports ***
@@ -352,6 +352,13 @@ def interpreter_text(
     backpack = state_dict['backpack']
     worn = state_dict['worn']
     post_action_trigger = static_dict['post_action_trigger_lst']
+
+# *** Start of Game Welcome Text ***
+    if user_input == 'start of game':
+        printtw(description_dict['intro'])
+        printtw(description_dict['help'])
+        look(room_dict, state_dict, description_dict, static_dict)
+        return 
 
 # *** Convert User Input to single word strings ***
 
@@ -1029,15 +1036,15 @@ switch_dict['big_red_button']['success_value'] = random.randint(0, 7)
 description_dict['messy_handwriting-read'] = "'..ode is " \
     + str(switch_dict['big_red_button']['success_value']) \
     + ". Don't tell anyo..'"
-
-# *** Start of Game Welcome Text ***
-printtw(description_dict['intro'])
-printtw(description_dict['help'])
-look(room_dict, state_dict, description_dict, static_dict)
+start_of_game = True
 
 # *** Get User Input ***
 while True:
-    user_input = input("> ").lower()
+    if start_of_game:
+        user_input = 'start of game'
+        start_of_game = False
+    else:
+        user_input = input("> ").lower()
     print()
     if user_input == "quit":
         print("Goodbye Burt!\n")

@@ -10,13 +10,30 @@
 			- Less clear is coding across platforms... it's beginning to look like there's no one simple solution to this
 			- I will need to roll my own
 			- Maybe start by functionalizing Dark Castle and make that version work at the command line
-	- 2.1.1 
+	- 2.1.1 updates
 			- Took the plunge today - just decided that	I needed to get started - copied DC files into dark_castle2 - will use a separate repo
 			- Updated docs
+			- Moved start-of-game text to interpreter_txt
+
 			
-NEXT: collect notes and start serious pseudo-coding		
+						
+									
+															
 
 To Dos:
+
+- The zen of functionalizing:
+	- All input and output from main routine
+		- print to buffer variable and then actually print buffer variable in main
+	- move all code into interpreter_txt as possible
+		- move timer into interpreter_txt
+	- move all static lists & dictionaries into interpreter_txt
+	- move all variable lists & dictionaries into main and pass back & forth
+	- establish load descriptions in interpreter_txt
+		- create independent variable description dictionary
+	- last but not least, move imports to main routine
+- eventually get to the state where I can call intereter_txt from another routine locally
+
 
 	- flaskify main routine
 		- decide on how to store data... 
