@@ -14,24 +14,41 @@
 			- Took the plunge today - just decided that	I needed to get started - copied DC files into dark_castle2 - will use a separate repo
 			- Updated docs
 			- Moved start-of-game text to interpreter_txt
+			- Created descript_updates_dict
+			- Added messy_handwriting_read to descript_updates_dict
 
 			
-						
-									
-															
+										
 
 To Dos:
 
 - The zen of functionalizing:
-	- All input and output from main routine
-		- print to buffer variable and then actually print buffer variable in main
-	- move all code into interpreter_txt as possible
-		- move timer into interpreter_txt
-	- move all static lists & dictionaries into interpreter_txt
-	- move all variable lists & dictionaries into main and pass back & forth
+
 	- establish load descriptions in interpreter_txt
-		- create independent variable description dictionary
+		- create independent variable description dictionary; call it descript_updates = []
+			- Need to sort out description_update routine
+			- DONE: Also, can put messy_handwriting_code in descript_update_dict
+			- Also, all of the '-base' door and container description cases
+		- Alter 'examine' verb to check descript_updates first
+
+	- All input and output from main routine
+		- input already gathered there
+		- print to buffer variable and then actually print buffer variable in main
+
+	- move as much code into interpreter_txt as possible
+
+		- DONE: move start of adventure text into interpreter_txt
+
+		- move timer into interpreter_txt
+
+		- All dict writes should be in interpreter - move to top of routine and execute "start game" code based on start_of_game = True
+
+	- move all static lists & dictionaries into interpreter_txt
+
+	- move all variable lists & dictionaries into main and pass back & forth
+
 	- last but not least, move imports to main routine
+
 - eventually get to the state where I can call intereter_txt from another routine locally
 
 

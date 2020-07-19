@@ -5,7 +5,7 @@ I am creating it in order to learn how to program in Python.
 
 Written and programmed by Tom Snellgrove
 
-Last update = July 18, 2020
+Last update = July 19, 2020
 """
 
 # *** Imports ***
@@ -1032,10 +1032,13 @@ with file:
         description_dict[key] = val
 
 # *** Variable Assignment ***
-switch_dict['big_red_button']['success_value'] = random.randint(0, 7)
-description_dict['messy_handwriting-read'] = "'..ode is " \
-    + str(switch_dict['big_red_button']['success_value']) \
-    + ". Don't tell anyo..'"
+portcullis_code = random.randint(0, 7)
+switch_dict['big_red_button']['success_value'] = portcullis_code
+port_code_txt = "'..ode is " + str(portcullis_code) + ". Don't tell anyo..'"
+description_dict['messy_handwriting-read'] = port_code_txt
+descript_updates_dict = {}
+descript_updates_dict['messy_handwriting-read'] = port_code_txt
+
 start_of_game = True
 
 # *** Get User Input ***
