@@ -5,7 +5,7 @@ I am creating it in order to learn how to program in Python.
 
 Written and programmed by Tom Snellgrove
 
-Last update = July 19, 2020
+Last update = July 20, 2020
 """
 
 # *** Imports ***
@@ -338,7 +338,7 @@ def score(score_key, state_dict, static_dict):
 def interpreter_text(
         user_input, description_dict, path_dict, room_dict,
         door_dict, state_dict, allowed_lang_dict, creature_dict,
-        switch_dict, static_dict):
+        switch_dict, static_dict, descript_updates_dict):
 
     # *** local variables ***
     allowed_verbs = allowed_lang_dict['allowed_verbs']
@@ -430,7 +430,10 @@ def interpreter_text(
         if word2 not in visible_items:
             print("Burt you can't " + word1 + " that!\n")
         else:
-            printtw(description_dict[word2])
+            if word2 in descript_updates_dict:
+                printtw(descript_updates_dict[word2])
+            else:
+                printtw(description_dict[word2])
             if word2 in allowed_lang_dict['is_container']:
                 if door_dict[word2]['door_state'] == 'open':
                     contain_inv = ', '.join(door_dict[word2]['contains'])
@@ -603,7 +606,10 @@ def interpreter_text(
         elif static_dict['written_on_dict'][word2] not in visible_items:
             print("Burt, you can't read what you can't see!\n")
         else:
-            printtw(description_dict[word2 + "-read"])
+            if (word2 + "-read") in descript_updates_dict:
+                printtw(descript_updates_dict[word2 + "-read"])
+            else:
+                printtw(description_dict[word2 + "-read"])
 
             if trigger_key in post_action_trigger:
                 trigger(
@@ -1035,7 +1041,7 @@ with file:
 portcullis_code = random.randint(0, 7)
 switch_dict['big_red_button']['success_value'] = portcullis_code
 port_code_txt = "'..ode is " + str(portcullis_code) + ". Don't tell anyo..'"
-description_dict['messy_handwriting-read'] = port_code_txt
+#description_dict['messy_handwriting-read'] = port_code_txt
 descript_updates_dict = {}
 descript_updates_dict['messy_handwriting-read'] = port_code_txt
 
@@ -1058,6 +1064,6 @@ while True:
         interpreter_text(
             user_input, description_dict, path_dict, room_dict,
             door_dict, state_dict, allowed_lang_dict, creature_dict,
-            switch_dict, static_dict)
+            switch_dict, static_dict, descript_updates_dict)
         if state_dict['active_timer'] != 'none':
             timer(room_dict, state_dict, description_dict)

@@ -16,6 +16,7 @@
 			- Moved start-of-game text to interpreter_txt
 			- Created descript_updates_dict
 			- Added messy_handwriting_read to descript_updates_dict
+			- updated read and examine ifel to read first from descript_updates_dict
 
 			
 										
@@ -24,12 +25,21 @@ To Dos:
 
 - The zen of functionalizing:
 
-	- establish load descriptions in interpreter_txt
-		- create independent variable description dictionary; call it descript_updates = []
-			- Need to sort out description_update routine
-			- DONE: Also, can put messy_handwriting_code in descript_update_dict
-			- Also, all of the '-base' door and container description cases
-		- Alter 'examine' verb to check descript_updates first
+	Need for description_dict to be called from interpreter_txt
+		- This means description_dict must be *static*
+		- establish load descriptions in interpreter_txt
+		- DONE: create independent variable description dictionary; call it descript_updates_dict = []
+		- Known description change cases
+			- DONE: messy_handwriting_read assignment (main routine)
+			- '-base' door and container description cases
+			- push-big_red_button-success trigger
+		- Alter verbs to check descript_updates first
+			- DONE: examine
+			- DONE: read
+			- look
+			- attack
+			- eat
+		- Eliminate description_update() routine
 
 	- All input and output from main routine
 		- input already gathered there
