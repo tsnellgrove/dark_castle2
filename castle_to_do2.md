@@ -25,20 +25,19 @@ To Dos:
 
 - The zen of functionalizing:
 
-	Need for description_dict to be called from interpreter_txt
-		- This means description_dict must be *static*
-		- establish load descriptions in interpreter_txt
+	Need for description_dict to be called from interpreter_txt (this means description_dict must be *static*)
 		- DONE: create independent variable description dictionary; call it descript_updates_dict = []
 		- Known description change cases
 			- DONE: messy_handwriting_read assignment (main routine)
 			- '-base' door and container description cases
 			- push-big_red_button-success trigger
-		- Alter verbs to check descript_updates first
+		- DONE: Alter verbs to check descript_updates first
 			- DONE: examine
 			- DONE: read
-			- look
-			- attack
-			- eat
+			- DONE: look
+			- DONE: attack
+			- DONE: eat
+		- load descriptions in interpreter_txt
 		- Eliminate description_update() routine
 
 	- All input and output from main routine

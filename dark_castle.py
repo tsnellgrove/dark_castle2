@@ -5,7 +5,7 @@ I am creating it in order to learn how to program in Python.
 
 Written and programmed by Tom Snellgrove
 
-Last update = July 20, 2020
+Last update = July 21, 2020
 """
 
 # *** Imports ***
@@ -232,7 +232,10 @@ def look(room_dict, state_dict, description_dict, static_dict):
     items = room_dict[room]['items']
     score_key = room
 
-    printtw(description_dict[room])
+    if room in descript_updates_dict:
+        printtw(descript_updates_dict[room])
+    else:
+        printtw(description_dict[room])
     if len(features) > 0:
         for feature in features:
             print("There is a " + feature + " here.\n")
@@ -634,7 +637,10 @@ def interpreter_text(
             attack_weapon = word1 + "-" + weapon
             attack_result = attack_weapon + "-" + 'result'
             attack_description = word2 + "-" + attack_weapon
-            printtw(description_dict[attack_description])
+            if attack_description in descript_updates_dict:
+                printtw(descript_updates_dict[attack_description])
+            else:
+                printtw(description_dict[attack_description])
 
             if creature_dict[word2][attack_result] == 'creature_death':
                 room_dict[room]['features'].remove(word2)
@@ -667,7 +673,10 @@ def interpreter_text(
         elif word2 not in hand:
             print("Burt you can't eat something that's not in your hand!")
         else:
-            printtw(description_dict[word2 + "-eat"])
+            if word2 in descript_updates_dict:
+                printtw(descript_updates_dict[word2 + "-eat"])
+            else:
+                printtw(description_dict[word2 + "-eat"])
 
             if trigger_key in post_action_trigger:
                 trigger(
