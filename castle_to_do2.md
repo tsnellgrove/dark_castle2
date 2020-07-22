@@ -33,6 +33,7 @@ To Dos:
 			- DONE: '-base' door and container description cases
 			- DONE: push-big_red_button-success trigger
 			- full playthrough testing
+			- description_update() routine - hedgehog description updates
 			- delete comments
 		- DONE: Alter verbs to check descript_updates first
 			- DONE: examine
