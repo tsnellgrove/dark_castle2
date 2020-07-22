@@ -5,7 +5,7 @@ I am creating it in order to learn how to program in Python.
 
 Written and programmed by Tom Snellgrove
 
-Last update = July 21, 2020
+Last update = July 22, 2020
 """
 
 # *** Imports ***
@@ -34,7 +34,8 @@ def switch_value(switch_key, switch_dict):
 
 
 def trigger(trigger_key, room_dict, description_dict,
-            state_dict, static_dict, door_dict, creature_dict):
+            state_dict, static_dict, door_dict, creature_dict,
+            descript_updates_dict):
     # *** Situational triggers and switch results ***
 
     room = state_dict['room']
@@ -139,12 +140,14 @@ def trigger(trigger_key, room_dict, description_dict,
         if door_dict['iron_portcullis']['door_state'] == 'closed':
             door_dict['iron_portcullis']['door_state'] = 'open'
             printtw(description_dict['push-big_red_button-open'])
-            description_dict['iron_portcullis'] = \
+#            description_dict['iron_portcullis'] = \
+            descript_updates_dict['iron_portcullis'] = \
                 description_dict['iron_portcullis-base'] + "open.\n"
         else:
             door_dict['iron_portcullis']['door_state'] = 'closed'
             printtw(description_dict['push-big_red_button-close'])
-            description_dict['iron_portcullis'] = \
+#            description_dict['iron_portcullis'] = \
+            descript_updates_dict['iron_portcullis'] = \
                 description_dict['iron_portcullis-base'] + "closed.\n"
 
     return(False)
@@ -385,7 +388,8 @@ def interpreter_text(
     if trigger_key in static_dict['pre_action_trigger_lst']:
         if trigger(
                 trigger_key, room_dict, description_dict,
-                state_dict, static_dict, door_dict, creature_dict):
+                state_dict, static_dict, door_dict, creature_dict,
+                descript_updates_dict):
             return
 
 
@@ -446,7 +450,8 @@ def interpreter_text(
             if trigger_key in post_action_trigger:
                 trigger(
                     trigger_key, room_dict, description_dict,
-                    state_dict, static_dict, door_dict, creature_dict)
+                    state_dict, static_dict, door_dict, creature_dict,
+                    descript_updates_dict)
 
             if score_key in state_dict['score_dict']:
                 score(score_key, state_dict, static_dict)
@@ -504,7 +509,8 @@ def interpreter_text(
             if trigger_key in post_action_trigger:
                 trigger(
                     trigger_key, room_dict, description_dict,
-                    state_dict, static_dict, door_dict, creature_dict)
+                    state_dict, static_dict, door_dict, creature_dict,
+                    descript_updates_dict)
 
             if score_key in state_dict['score_dict']:
                 score(score_key, state_dict, static_dict)
@@ -528,7 +534,8 @@ def interpreter_text(
             if trigger_key in post_action_trigger:
                 trigger(
                     trigger_key, room_dict, description_dict,
-                    state_dict, static_dict, door_dict, creature_dict)
+                    state_dict, static_dict, door_dict, creature_dict,
+                    descript_updates_dict)
 
             if score_key in state_dict['score_dict']:
                 score(score_key, state_dict, static_dict)
@@ -552,7 +559,8 @@ def interpreter_text(
                 print("Opened\n")
                 door_state = 'open'
                 door_dict[word2]['door_state'] = door_state
-                description_dict[word2] = description_dict[word2 + '-base'] \
+#                description_dict[word2] = description_dict[word2 + '-base'] \
+                descript_updates_dict[word2] = description_dict[word2 + '-base'] \
                     + door_state + ".\n"
                 if door_dict[word2]['is_container']:
                     contain_inv = ', '.join(door_dict[word2]['contains'])
@@ -564,7 +572,8 @@ def interpreter_text(
                 if trigger_key in post_action_trigger:
                     trigger(
                         trigger_key, room_dict, description_dict,
-                        state_dict, static_dict, door_dict, creature_dict)
+                        state_dict, static_dict, door_dict, creature_dict,
+                        descript_updates_dict)
 
                 if score_key in state_dict['score_dict']:
                     score(score_key, state_dict, static_dict)
@@ -593,7 +602,8 @@ def interpreter_text(
                 if trigger_key in post_action_trigger:
                     trigger(
                         trigger_key, room_dict, description_dict,
-                        state_dict, static_dict, door_dict, creature_dict)
+                        state_dict, static_dict, door_dict, creature_dict,
+                        descript_updates_dict)
 
                 if score_key in state_dict['score_dict']:
                     score(score_key, state_dict, static_dict)
@@ -617,7 +627,8 @@ def interpreter_text(
             if trigger_key in post_action_trigger:
                 trigger(
                     trigger_key, room_dict, description_dict,
-                    state_dict, static_dict, door_dict, creature_dict)
+                    state_dict, static_dict, door_dict, creature_dict,
+                    descript_updates_dict)
 
             if score_key in state_dict['score_dict']:
                 score(score_key, state_dict, static_dict)
@@ -663,7 +674,8 @@ def interpreter_text(
             if trigger_key in post_action_trigger:
                 trigger(
                     trigger_key, room_dict, description_dict,
-                    state_dict, static_dict, door_dict, creature_dict)
+                    state_dict, static_dict, door_dict, creature_dict,
+                    descript_updates_dict)
 
 # --- eat verb
 
@@ -681,7 +693,8 @@ def interpreter_text(
             if trigger_key in post_action_trigger:
                 trigger(
                     trigger_key, room_dict, description_dict,
-                    state_dict, static_dict, door_dict, creature_dict)
+                    state_dict, static_dict, door_dict, creature_dict,
+                    descript_updates_dict)
 
             if score_key in state_dict['score_dict']:
                 score(score_key, state_dict, static_dict)
@@ -709,7 +722,8 @@ def interpreter_text(
             if trigger_key in post_action_trigger:
                 trigger(
                     trigger_key, room_dict, description_dict,
-                    state_dict, static_dict, door_dict, creature_dict)
+                    state_dict, static_dict, door_dict, creature_dict,
+                    descript_updates_dict)
 
             if score_key in state_dict['score_dict']:
                 score(score_key, state_dict, static_dict)
@@ -737,7 +751,8 @@ def interpreter_text(
             if trigger_key in post_action_trigger:
                 trigger(
                     trigger_key, room_dict, description_dict,
-                    state_dict, static_dict, door_dict, creature_dict)
+                    state_dict, static_dict, door_dict, creature_dict,
+                    descript_updates_dict)
 
             if score_key in state_dict['score_dict']:
                 score(score_key, state_dict, static_dict)
@@ -770,7 +785,8 @@ def interpreter_text(
             if trigger_key in post_action_trigger:
                 trigger(
                     trigger_key, room_dict, description_dict,
-                    state_dict, static_dict, door_dict, creature_dict)
+                    state_dict, static_dict, door_dict, creature_dict,
+                    descript_updates_dict)
 
             if score_key in state_dict['score_dict']:
                 score(score_key, state_dict, static_dict)

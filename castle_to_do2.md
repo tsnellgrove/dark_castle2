@@ -17,6 +17,7 @@
 			- Created descript_updates_dict
 			- Added messy_handwriting_read to descript_updates_dict
 			- updated read and examine ifel to read first from descript_updates_dict
+			- updated "-base" description updates in 'push' and 'trigger'
 
 			
 										
@@ -29,8 +30,10 @@ To Dos:
 		- DONE: create independent variable description dictionary; call it descript_updates_dict = []
 		- Known description change cases
 			- DONE: messy_handwriting_read assignment (main routine)
-			- '-base' door and container description cases
-			- push-big_red_button-success trigger
+			- DONE: '-base' door and container description cases
+			- DONE: push-big_red_button-success trigger
+			- full playthrough testing
+			- delete comments
 		- DONE: Alter verbs to check descript_updates first
 			- DONE: examine
 			- DONE: read
