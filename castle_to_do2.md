@@ -18,8 +18,7 @@
 			- Added messy_handwriting_read to descript_updates_dict
 			- updated read and examine ifel to read first from descript_updates_dict
 			- updated "-base" description updates in 'push' and 'trigger'
-
-			
+			- changed description_updates() (hedgehog description updates called from trigger & timer) to write to descript_updates_dict
 										
 
 To Dos:
@@ -27,22 +26,25 @@ To Dos:
 - The zen of functionalizing:
 
 	Need for description_dict to be called from interpreter_txt (this means description_dict must be *static*)
-		- DONE: create independent variable description dictionary; call it descript_updates_dict = []
-		- Known description change cases
+		- DONE: create independent variable description dictionary
+			- DONE: call it descript_updates_dict = {}
+		- DONE: Known description change cases
 			- DONE: messy_handwriting_read assignment (main routine)
 			- DONE: '-base' door and container description cases
 			- DONE: push-big_red_button-success trigger
-			- full playthrough testing
-			- description_update() routine - hedgehog description updates
-			- delete comments
+			- DONE: door / container testing
+			- DONE: change description_update() routine (hedgehog updates) to write to descript_updates_dict
+			- DONE: hedgehog testing
 		- DONE: Alter verbs to check descript_updates first
 			- DONE: examine
 			- DONE: read
 			- DONE: look
 			- DONE: attack
 			- DONE: eat
-		- load descriptions in interpreter_txt
-		- Eliminate description_update() routine
+		- Wrapup
+			- load descriptions in interpreter_txt
+			- delete comments
+			- full play-through testging
 
 	- All input and output from main routine
 		- input already gathered there

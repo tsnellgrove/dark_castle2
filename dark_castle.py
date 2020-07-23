@@ -93,14 +93,16 @@ def trigger(trigger_key, room_dict, description_dict,
             state_dict['timer_dict']['drop-stale_biscuits'] = 5
             creature_dict['hedgehog']['state'] = 'hedgehog_eating'
             description_update(
-                'hedgehog', 'hedgehog_eating', description_dict)
+                'hedgehog', 'hedgehog_eating', description_dict,
+                descript_updates_dict)
 
     elif trigger_key == 'drop-shiny_sword':
         if room == 'main_hall' and 'hedgehog' in features \
                 and state_dict['active_timer'] != 'drop-stale_biscuits':
             creature_dict['hedgehog']['state'] = 'hedgehog_fed_sword_returned'
             description_update(
-                'hedgehog', 'hedgehog_fed_sword_returned', description_dict)
+                'hedgehog', 'hedgehog_fed_sword_returned', description_dict,
+                descript_updates_dict)
             printtw(trigger_descript)
             room_dict[room]['items'].append('silver_key')
 
@@ -153,7 +155,7 @@ def trigger(trigger_key, room_dict, description_dict,
     return(False)
 
 
-def timer(room_dict, state_dict, description_dict):
+def timer(room_dict, state_dict, description_dict, descript_updates_dict):
     # *** Timer conditionals ***
 
     timer_key = state_dict['active_timer']
@@ -192,12 +194,12 @@ def timer(room_dict, state_dict, description_dict):
                 creature_dict['hedgehog']['state'] = 'fed_sword_returned'
                 description_update(
                     'hedgehog', 'hedgehog_fed_sword_not_taken',
-                    description_dict)
+                    description_dict, descript_updates_dict)
             else:
                 creature_dict['hedgehog']['state'] = 'fed_sword_taken'
                 description_update(
                     'hedgehog', 'hedgehog_fed_sword_taken',
-                    description_dict)
+                    description_dict, descript_updates_dict)
 
         return
 
@@ -255,8 +257,9 @@ def str_to_lst(user_input):
     return(lst[0].split())
 
 
-def description_update(description_key, update_key, description_dict):
-    description_dict[description_key] = description_dict[update_key]
+def description_update(description_key, update_key, description_dict, descript_updates_dict):
+    descript_updates_dict[description_key] = description_dict[update_key]
+#    description_dict[description_key] = description_dict[update_key]
     return
 
 
@@ -1091,4 +1094,4 @@ while True:
             door_dict, state_dict, allowed_lang_dict, creature_dict,
             switch_dict, static_dict, descript_updates_dict)
         if state_dict['active_timer'] != 'none':
-            timer(room_dict, state_dict, description_dict)
+            timer(room_dict, state_dict, description_dict, descript_updates_dict)
