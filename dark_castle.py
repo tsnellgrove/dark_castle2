@@ -5,7 +5,7 @@ I am creating it in order to learn how to program in Python.
 
 Written and programmed by Tom Snellgrove
 
-Last update = July 22, 2020
+Last update = July 24, 2020
 """
 
 # *** Imports ***
@@ -345,7 +345,7 @@ def score(score_key, state_dict, static_dict):
 
 
 def interpreter_text(
-        user_input, description_dict, path_dict, room_dict,
+        user_input, path_dict, room_dict,
         door_dict, state_dict, allowed_lang_dict, creature_dict,
         switch_dict, static_dict, descript_updates_dict):
 
@@ -361,6 +361,16 @@ def interpreter_text(
     backpack = state_dict['backpack']
     worn = state_dict['worn']
     post_action_trigger = static_dict['post_action_trigger_lst']
+
+# *** Load Description Dictionary ***
+    file = open('description.csv', 'r', newline='')
+    description_dict = {}
+    with file:
+        reader = csv.reader(file)
+        for row in reader:
+            key = row[0]
+            val = row[1].replace('\\n', '\n')
+            description_dict[key] = val
 
 # *** Start of Game Welcome Text ***
     if user_input == 'start of game':
@@ -797,6 +807,11 @@ def interpreter_text(
     else:
         unknown_word()
 
+    state_dict['move_counter'] += 1
+    if state_dict['active_timer'] != 'none':
+        timer(room_dict, state_dict, description_dict, descript_updates_dict)
+
+
 # ************************
 # --- DICTIONARIES & LISTS
 # ************************
@@ -1056,14 +1071,14 @@ allowed_lang_dict = {
 # ****************
 
 # *** Load Description Dictionary ***
-file = open('description.csv', 'r', newline='')
-description_dict = {}
-with file:
-    reader = csv.reader(file)
-    for row in reader:
-        key = row[0]
-        val = row[1].replace('\\n', '\n')
-        description_dict[key] = val
+#file = open('description.csv', 'r', newline='')
+#description_dict = {}
+#with file:
+#    reader = csv.reader(file)
+#    for row in reader:
+#        key = row[0]
+#        val = row[1].replace('\\n', '\n')
+#        description_dict[key] = val
 
 # *** Variable Assignment ***
 portcullis_code = random.randint(0, 7)
@@ -1088,10 +1103,10 @@ while True:
         state_dict['game_ending'] = 'quit'
         end(state_dict, static_dict)
     else:
-        state_dict['move_counter'] += 1
         interpreter_text(
-            user_input, description_dict, path_dict, room_dict,
+            user_input, path_dict, room_dict,
             door_dict, state_dict, allowed_lang_dict, creature_dict,
             switch_dict, static_dict, descript_updates_dict)
-        if state_dict['active_timer'] != 'none':
-            timer(room_dict, state_dict, description_dict, descript_updates_dict)
+#        state_dict['move_counter'] += 1
+#        if state_dict['active_timer'] != 'none':
+#            timer(room_dict, state_dict, description_dict, descript_updates_dict)

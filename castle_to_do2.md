@@ -19,6 +19,7 @@
 			- updated read and examine ifel to read first from descript_updates_dict
 			- updated "-base" description updates in 'push' and 'trigger'
 			- changed description_updates() (hedgehog description updates called from trigger & timer) to write to descript_updates_dict
+			- description_dict load and timer moved to interpreter_txt; not fully functional!
 										
 
 To Dos:
@@ -42,9 +43,23 @@ To Dos:
 			- DONE: attack
 			- DONE: eat
 		- Wrapup
-			- load descriptions in interpreter_txt
-			- delete comments
+			- DONE: load descriptions in interpreter_txt
+			- DONE: testing
+				- testing discovery: timer() passes description_dict and is called from main... where description_dict is now 'undefined'
+				- I need to move timer() to interpreter_txt to fix this
+			- DONE: move code to interpreter_txt
+				- DONE: increment move count
+				- DONE: timer call
+			- DONE: testing
+				 - testing discovery: upon winning, end() needs description_dict in order to print credits but description_dict is not currently passed..
+				 - since end() is also called from the quit rountine in main that means I need to move the quit routine to interpreter_txt...
+				 - before I can correctly pass description_dict
+			- move quit routine to interpreter_txt
+			- pass description_dict to end()
 			- full play-through testging
+			- delete comments
+			- check move count on pre-action triggers (e.g. 'south' or 'east' from front_gate) - maybe move back to top of interpreter_txt
+			- final play-through testing
 
 	- All input and output from main routine
 		- input already gathered there
@@ -55,6 +70,8 @@ To Dos:
 		- DONE: move start of adventure text into interpreter_txt
 
 		- move timer into interpreter_txt
+
+		- move quit logic into interpreter_txt
 
 		- All dict writes should be in interpreter - move to top of routine and execute "start game" code based on start_of_game = True
 
