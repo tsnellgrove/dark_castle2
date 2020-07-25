@@ -69,6 +69,9 @@ To Dos:
 		- DONE: move start of adventure text into interpreter_txt
 		- DONE: execute "start game" code based on start_of_game = True
 		- move variable assignments to interpreter - move to top of routine	
+	- Variable passing of end_of_game value
+		- track in state_dict
+		- then return value via main routine statement end_of_game = interpreter_txt()	
 	- All input and output from main routine
 		- DONE: input already gathered there
 		- print to buffer variable and then actually print buffer variable in main
