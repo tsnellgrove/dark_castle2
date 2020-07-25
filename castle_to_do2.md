@@ -20,6 +20,7 @@
 			- updated "-base" description updates in 'push' and 'trigger'
 			- changed description_updates() (hedgehog description updates called from trigger & timer) to write to descript_updates_dict
 			- description_dict load and timer moved to interpreter_txt; not fully functional!
+			- move quit routine into interpreter_txt
 										
 
 To Dos:
@@ -54,31 +55,22 @@ To Dos:
 				 - testing discovery: upon winning, end() needs description_dict in order to print credits but description_dict is not currently passed..
 				 - since end() is also called from the quit rountine in main that means I need to move the quit routine to interpreter_txt...
 				 - before I can correctly pass description_dict
-			- move quit routine to interpreter_txt
-			- pass description_dict to end()
-			- full play-through testging
+			- DONE: move quit routine to interpreter_txt
+			- DONE: check move count on pre-action triggers (e.g. 'south' or 'east' from front_gate) - maybe move back to top of interpreter_txt
+			- DONE: pass description_dict to end()
+			- DONE: win play-through testging
+			- get end_of_game variable passing working
 			- delete comments
-			- check move count on pre-action triggers (e.g. 'south' or 'east' from front_gate) - maybe move back to top of interpreter_txt
 			- final play-through testing
 
 	- All input and output from main routine
 		- input already gathered there
 		- print to buffer variable and then actually print buffer variable in main
-
 	- move as much code into interpreter_txt as possible
-
 		- DONE: move start of adventure text into interpreter_txt
-
-		- move timer into interpreter_txt
-
-		- move quit logic into interpreter_txt
-
 		- All dict writes should be in interpreter - move to top of routine and execute "start game" code based on start_of_game = True
-
 	- move all static lists & dictionaries into interpreter_txt
-
 	- move all variable lists & dictionaries into main and pass back & forth
-
 	- last but not least, move imports to main routine
 
 - eventually get to the state where I can call intereter_txt from another routine locally

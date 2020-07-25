@@ -35,7 +35,7 @@ def switch_value(switch_key, switch_dict):
 
 def trigger(trigger_key, room_dict, description_dict,
             state_dict, static_dict, door_dict, creature_dict,
-            descript_updates_dict):
+            descript_updates_dict, end_of_game):
     # *** Situational triggers and switch results ***
 
     room = state_dict['room']
@@ -80,7 +80,7 @@ def trigger(trigger_key, room_dict, description_dict,
         elif room == 'antechamber' and 'goblin' in features \
                 and 'shiny_sword' 'shiny_sword' not in hand:
             printtw(description_dict['goblin_attacks-death'])
-            end(state_dict, static_dict)
+            end(state_dict, static_dict, description_dict, end_of_game)
         else:
             return(False)
 
@@ -135,7 +135,7 @@ def trigger(trigger_key, room_dict, description_dict,
             printtw(description_dict['read-illuminated_letters-win'])
             score(trigger_key, state_dict, static_dict)
             state_dict['game_ending'] = 'won'
-            end(state_dict, static_dict)
+            end(state_dict, static_dict, description_dict, end_of_game)
 
 
     elif trigger_key == 'push-big_red_button-success':
@@ -273,7 +273,7 @@ def print_score(state_dict, static_dict):
     return
 
 
-def end(state_dict, static_dict):
+def end(state_dict, static_dict, description_dict, end_of_game):
 
     score = state_dict['current_score']
     moves = state_dict['move_counter']
@@ -299,6 +299,10 @@ def end(state_dict, static_dict):
     if game_ending == 'won':
         printtw(description_dict['credits'])
     exit()
+    end_of_game = True
+#    print(end_of_game)
+    return
+# could return value True instead?
 
 
 def room_action(
@@ -347,7 +351,7 @@ def score(score_key, state_dict, static_dict):
 def interpreter_text(
         user_input, path_dict, room_dict,
         door_dict, state_dict, allowed_lang_dict, creature_dict,
-        switch_dict, static_dict, descript_updates_dict):
+        switch_dict, static_dict, descript_updates_dict, end_of_game):
 
     # *** local variables ***
     allowed_verbs = allowed_lang_dict['allowed_verbs']
@@ -389,6 +393,8 @@ def interpreter_text(
     else:
         word2 = "blank"
 
+    print()
+
     if (word1 in allowed_verbs) and (len(user_input_lst) == 1):
         print(word1 + " what Burt?")
         return
@@ -397,12 +403,13 @@ def interpreter_text(
     trigger_key = score_key
     switch_key = score_key
     path_key = room + "-" + word1
+    state_dict['move_counter'] += 1
 
     if trigger_key in static_dict['pre_action_trigger_lst']:
         if trigger(
                 trigger_key, room_dict, description_dict,
                 state_dict, static_dict, door_dict, creature_dict,
-                descript_updates_dict):
+                descript_updates_dict, end_of_game):
             return
 
 
@@ -427,6 +434,13 @@ def interpreter_text(
 
     elif word1 == "credits":
         printtw(description_dict['credits'])
+
+    elif user_input == "quit":
+        print("Goodbye Burt!\n")
+        state_dict['game_ending'] = 'quit'
+#        end_of_game = True
+#        print(end_of_game)
+        end(state_dict, static_dict, description_dict, end_of_game)
 
     elif word1 in allowed_movement:
         if (path_key) in path_dict:
@@ -464,7 +478,7 @@ def interpreter_text(
                 trigger(
                     trigger_key, room_dict, description_dict,
                     state_dict, static_dict, door_dict, creature_dict,
-                    descript_updates_dict)
+                    descript_updates_dict, end_of_game)
 
             if score_key in state_dict['score_dict']:
                 score(score_key, state_dict, static_dict)
@@ -523,7 +537,7 @@ def interpreter_text(
                 trigger(
                     trigger_key, room_dict, description_dict,
                     state_dict, static_dict, door_dict, creature_dict,
-                    descript_updates_dict)
+                    descript_updates_dict, end_of_game)
 
             if score_key in state_dict['score_dict']:
                 score(score_key, state_dict, static_dict)
@@ -548,7 +562,7 @@ def interpreter_text(
                 trigger(
                     trigger_key, room_dict, description_dict,
                     state_dict, static_dict, door_dict, creature_dict,
-                    descript_updates_dict)
+                    descript_updates_dict, end_of_game)
 
             if score_key in state_dict['score_dict']:
                 score(score_key, state_dict, static_dict)
@@ -586,7 +600,7 @@ def interpreter_text(
                     trigger(
                         trigger_key, room_dict, description_dict,
                         state_dict, static_dict, door_dict, creature_dict,
-                        descript_updates_dict)
+                        descript_updates_dict, end_of_game)
 
                 if score_key in state_dict['score_dict']:
                     score(score_key, state_dict, static_dict)
@@ -616,7 +630,7 @@ def interpreter_text(
                     trigger(
                         trigger_key, room_dict, description_dict,
                         state_dict, static_dict, door_dict, creature_dict,
-                        descript_updates_dict)
+                        descript_updates_dict, end_of_game)
 
                 if score_key in state_dict['score_dict']:
                     score(score_key, state_dict, static_dict)
@@ -641,7 +655,7 @@ def interpreter_text(
                 trigger(
                     trigger_key, room_dict, description_dict,
                     state_dict, static_dict, door_dict, creature_dict,
-                    descript_updates_dict)
+                    descript_updates_dict, end_of_game)
 
             if score_key in state_dict['score_dict']:
                 score(score_key, state_dict, static_dict)
@@ -682,13 +696,13 @@ def interpreter_text(
 
             elif creature_dict[word2][attack_result] == 'player_death':
                 state_dict['game_ending'] = 'death'
-                end(state_dict, static_dict)  # print_score() called by end()
+                end(state_dict, static_dict, description_dict, end_of_game)  # print_score() called by end()
 
             if trigger_key in post_action_trigger:
                 trigger(
                     trigger_key, room_dict, description_dict,
                     state_dict, static_dict, door_dict, creature_dict,
-                    descript_updates_dict)
+                    descript_updates_dict, end_of_game)
 
 # --- eat verb
 
@@ -707,7 +721,7 @@ def interpreter_text(
                 trigger(
                     trigger_key, room_dict, description_dict,
                     state_dict, static_dict, door_dict, creature_dict,
-                    descript_updates_dict)
+                    descript_updates_dict, end_of_game)
 
             if score_key in state_dict['score_dict']:
                 score(score_key, state_dict, static_dict)
@@ -736,7 +750,7 @@ def interpreter_text(
                 trigger(
                     trigger_key, room_dict, description_dict,
                     state_dict, static_dict, door_dict, creature_dict,
-                    descript_updates_dict)
+                    descript_updates_dict, end_of_game)
 
             if score_key in state_dict['score_dict']:
                 score(score_key, state_dict, static_dict)
@@ -765,7 +779,7 @@ def interpreter_text(
                 trigger(
                     trigger_key, room_dict, description_dict,
                     state_dict, static_dict, door_dict, creature_dict,
-                    descript_updates_dict)
+                    descript_updates_dict, end_of_game)
 
             if score_key in state_dict['score_dict']:
                 score(score_key, state_dict, static_dict)
@@ -799,7 +813,7 @@ def interpreter_text(
                 trigger(
                     trigger_key, room_dict, description_dict,
                     state_dict, static_dict, door_dict, creature_dict,
-                    descript_updates_dict)
+                    descript_updates_dict, end_of_game)
 
             if score_key in state_dict['score_dict']:
                 score(score_key, state_dict, static_dict)
@@ -807,7 +821,8 @@ def interpreter_text(
     else:
         unknown_word()
 
-    state_dict['move_counter'] += 1
+#    print(end_of_game)
+
     if state_dict['active_timer'] != 'none':
         timer(room_dict, state_dict, description_dict, descript_updates_dict)
 
@@ -1089,24 +1104,29 @@ descript_updates_dict = {}
 descript_updates_dict['messy_handwriting-read'] = port_code_txt
 
 start_of_game = True
+end_of_game = False
 
 # *** Get User Input ***
-while True:
+while end_of_game == False:
     if start_of_game:
         user_input = 'start of game'
         start_of_game = False
     else:
         user_input = input("> ").lower()
-    print()
-    if user_input == "quit":
-        print("Goodbye Burt!\n")
-        state_dict['game_ending'] = 'quit'
-        end(state_dict, static_dict)
-    else:
-        interpreter_text(
-            user_input, path_dict, room_dict,
-            door_dict, state_dict, allowed_lang_dict, creature_dict,
-            switch_dict, static_dict, descript_updates_dict)
+#    print()
+#    if user_input == "quit":
+#        print("Goodbye Burt!\n")
+#        state_dict['game_ending'] = 'quit'
+#        end(state_dict, static_dict)
+#    else:
+    interpreter_text(
+        user_input, path_dict, room_dict,
+        door_dict, state_dict, allowed_lang_dict, creature_dict,
+        switch_dict, static_dict, descript_updates_dict, end_of_game)
+#    print(end_of_game)
 #        state_dict['move_counter'] += 1
 #        if state_dict['active_timer'] != 'none':
 #            timer(room_dict, state_dict, description_dict, descript_updates_dict)
+print("THANKS FOR PLAYING!")
+exit()
+
