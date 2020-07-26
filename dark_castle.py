@@ -376,7 +376,7 @@ def interpreter_text(
         printtw(description_dict['intro'])
         printtw(description_dict['help'])
         look(room_dict, state_dict, description_dict, static_dict)
-        return 
+        return state_dict['end_of_game']
 
 # *** Convert User Input to single word strings ***
 
@@ -392,7 +392,7 @@ def interpreter_text(
 
     if (word1 in allowed_verbs) and (len(user_input_lst) == 1):
         print(word1 + " what Burt?")
-        return
+        return state_dict['end_of_game']
 
     score_key = word1 + "-" + word2
     trigger_key = score_key
@@ -405,7 +405,7 @@ def interpreter_text(
                 trigger_key, room_dict, description_dict,
                 state_dict, static_dict, door_dict, creature_dict,
                 descript_updates_dict):
-            return
+            return state_dict['end_of_game']
 
 
 # --- Handle One Word Commands
@@ -817,7 +817,8 @@ def interpreter_text(
     if state_dict['active_timer'] != 'none':
         timer(room_dict, state_dict, description_dict, descript_updates_dict)
 
-    return
+    return state_dict['end_of_game']
+
 
 # ************************
 # --- DICTIONARIES & LISTS
@@ -1096,11 +1097,10 @@ while end_of_game == False:
         start_of_game = False
     else:
         user_input = input("> ").lower()
-    interpreter_text(
+    end_of_game = interpreter_text(
         user_input, path_dict, room_dict,
         door_dict, state_dict, allowed_lang_dict, creature_dict,
         switch_dict, static_dict, descript_updates_dict)
-    end_of_game = state_dict['end_of_game']
 print("THANKS FOR PLAYING!")
 exit()
 

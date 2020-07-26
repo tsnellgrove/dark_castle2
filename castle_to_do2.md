@@ -61,6 +61,9 @@ To Dos:
 			- DONE: pass description_dict to end()
 			- DONE: win play-through testing
 			- DONE: get end_of_game variable passing working
+				- DONE: track in state_dict
+				- DONE: then return value via main routine statement end_of_game = interpreter_txt()
+				- DONE: Worked - had to add return state_dict['end_of_game'] to all interpreter_txt returns - not just the last one!!
 			- DONE: delete comments
 			- DONE: final play-through testing
 
@@ -68,10 +71,8 @@ To Dos:
 - move as much code into interpreter_txt as possible
 		- DONE: move start of adventure text into interpreter_txt
 		- DONE: execute "start game" code based on start_of_game = True
-		- move variable assignments to interpreter - move to top of routine	
-	- Variable passing of end_of_game value
-		- track in state_dict
-		- then return value via main routine statement end_of_game = interpreter_txt()	
+		- move remaining variable assignments to interpreter - move to top of routine	
+		- full play-thorugh test
 	- All input and output from main routine
 		- DONE: input already gathered there
 		- print to buffer variable and then actually print buffer variable in main
