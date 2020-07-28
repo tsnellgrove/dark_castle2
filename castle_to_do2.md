@@ -22,6 +22,7 @@
 			- description_dict load and timer moved to interpreter_txt; not fully functional!
 			- move quit routine into interpreter_txt
 			- solve issues with end() 
+			- moved big_red_button success_code variable assignment to interpreter_txt; fixed pull description assignment
 		
 
 To Dos:
@@ -66,13 +67,12 @@ To Dos:
 				- DONE: Worked - had to add return state_dict['end_of_game'] to all interpreter_txt returns - not just the last one!!
 			- DONE: delete comments
 			- DONE: final play-through testing
-
-
 - move as much code into interpreter_txt as possible
 		- DONE: move start of adventure text into interpreter_txt
 		- DONE: execute "start game" code based on start_of_game = True
-		- move remaining variable assignments to interpreter - move to top of routine	
-		- full play-thorugh test
+		- DONE: move remaining variable assignments to interpreter - move to top of routine	
+		- DONE: first half play-thorugh test (iron_portcullis openned)
+		- second half play-through test (win!)
 	- All input and output from main routine
 		- DONE: input already gathered there
 		- print to buffer variable and then actually print buffer variable in main

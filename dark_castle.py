@@ -348,6 +348,16 @@ def interpreter_text(
         door_dict, state_dict, allowed_lang_dict, creature_dict,
         switch_dict, static_dict, descript_updates_dict):
 
+# *** Load Description Dictionary ***
+    file = open('description.csv', 'r', newline='')
+    description_dict = {}
+    with file:
+        reader = csv.reader(file)
+        for row in reader:
+            key = row[0]
+            val = row[1].replace('\\n', '\n')
+            description_dict[key] = val
+
     # *** local variables ***
     allowed_verbs = allowed_lang_dict['allowed_verbs']
     allowed_movement = allowed_lang_dict['allowed_movement']
@@ -361,21 +371,15 @@ def interpreter_text(
     worn = state_dict['worn']
     post_action_trigger = static_dict['post_action_trigger_lst']
 
-# *** Load Description Dictionary ***
-    file = open('description.csv', 'r', newline='')
-    description_dict = {}
-    with file:
-        reader = csv.reader(file)
-        for row in reader:
-            key = row[0]
-            val = row[1].replace('\\n', '\n')
-            description_dict[key] = val
-
-# *** Start of Game Welcome Text ***
+# *** Start of Game Welcome Text and Variable Assignment ***
     if user_input == 'start of game':
         printtw(description_dict['intro'])
         printtw(description_dict['help'])
         look(room_dict, state_dict, description_dict, static_dict)
+        portcullis_code = random.randint(0, 7)
+        switch_dict['big_red_button']['success_value'] = portcullis_code
+        port_code_txt = "'..ode is " + str(portcullis_code) + ". Don't tell anyo..'"
+        descript_updates_dict['messy_handwriting-read'] = port_code_txt
         return state_dict['end_of_game']
 
 # *** Convert User Input to single word strings ***
@@ -735,7 +739,7 @@ def interpreter_text(
                     switch_state = 'up'
                 else:
                     switch_state = 'down'
-                description_dict[word2] = "The " + word2 + " is " \
+                descript_updates_dict[word2] = "The " + word2 + " is " \
                     + switch_state + ".\n"
                 switch_dict[word2]['state'] = switch_state
 
@@ -1080,12 +1084,7 @@ allowed_lang_dict = {
 # ****************
 
 # *** Variable Assignment ***
-portcullis_code = random.randint(0, 7)
-switch_dict['big_red_button']['success_value'] = portcullis_code
-port_code_txt = "'..ode is " + str(portcullis_code) + ". Don't tell anyo..'"
 descript_updates_dict = {}
-descript_updates_dict['messy_handwriting-read'] = port_code_txt
-
 start_of_game = True
 end_of_game = False
 
