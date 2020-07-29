@@ -1,11 +1,11 @@
-"""Castle Adventure 2.1.1 (candidate)
+"""Castle Adventure 2.1.1 (complete)
 
 This is a simple Zork-like text adventure game.
 I am creating it in order to learn how to program in Python.
 
 Written and programmed by Tom Snellgrove
 
-Last update = July 24, 2020
+Last update = July 29, 2020
 """
 
 # *** Imports ***
