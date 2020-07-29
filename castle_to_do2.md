@@ -116,9 +116,12 @@ To Dos:
 
 
 Ideas:
-- Additional Clues:
+- Additional Puzzle Clues:
 	- call the crown 'royal_crown' in Nana's memory
 	- Indicate in the grimy_axe description that it could kill a crocodile
+- Features:
+	- Add a 'version' command (set in static_dict['version'])
+	- Add 'you can't X and object that's not in your hand' error for allowed_verbs; also: 'you can only read text'
 
 
 Some Day:
