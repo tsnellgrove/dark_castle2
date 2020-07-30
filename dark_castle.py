@@ -223,7 +223,7 @@ def printtw(txt_str):
                 print(element)
             print()
             output = output + buffer.getvalue()
-    print(output)
+#    print(output)
 
     return
 
@@ -425,7 +425,7 @@ def interpreter_text(
         switch_dict['big_red_button']['success_value'] = portcullis_code
         port_code_txt = "'..ode is " + str(portcullis_code) + ". Don't tell anyo..'"
         descript_updates_dict['messy_handwriting-read'] = port_code_txt
-        return state_dict['end_of_game']
+        return state_dict['end_of_game'], output
 
 # *** Convert User Input to single word strings ***
 
@@ -441,7 +441,7 @@ def interpreter_text(
 
     if (word1 in allowed_verbs) and (len(user_input_lst) == 1):
         print(word1 + " what Burt?")
-        return state_dict['end_of_game']
+        return state_dict['end_of_game'], output
 
     score_key = word1 + "-" + word2
     trigger_key = score_key
@@ -454,7 +454,7 @@ def interpreter_text(
                 trigger_key, room_dict, description_dict,
                 state_dict, static_dict, door_dict, creature_dict,
                 descript_updates_dict):
-            return state_dict['end_of_game']
+            return state_dict['end_of_game'], output
 
 
 # --- Handle One Word Commands
@@ -866,7 +866,7 @@ def interpreter_text(
     if state_dict['active_timer'] != 'none':
         timer(room_dict, state_dict, description_dict, descript_updates_dict)
 
-    return state_dict['end_of_game']
+    return state_dict['end_of_game'], output
 
 
 # ************************
@@ -1141,10 +1141,11 @@ while end_of_game == False:
         start_of_game = False
     else:
         user_input = input("> ").lower()
-    end_of_game = interpreter_text(
+    end_of_game, output = interpreter_text(
         user_input, path_dict, room_dict,
         door_dict, state_dict, allowed_lang_dict, creature_dict,
         switch_dict, static_dict, descript_updates_dict)
+    print(output)
 print("THANKS FOR PLAYING!")
 exit()
 

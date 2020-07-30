@@ -27,6 +27,7 @@
 		-2.1.2 updates
 			- redirect interpreter_txt stdout to string, return string to dark_castle2, and print string from main routine
 				- redirected stdout in printtw; getting repeat prints due to print within function
+				- return 'output' from interpet_txt and print from main routine
 
 To Dos:
 
@@ -85,7 +86,7 @@ The zen of functionalizing:
 			- DONE: redirected to output in printtw and appending with each print
 				- DONE: used global variable 'output' to avoid passing to printtw a zillion times
 				- DONE: still getting repeat prints due to printing within printtw
-			- Next: Try printing from main routine
+			- DONE: return 'output' from interpet_txt and print from main routine (as expected, non printtw text is now first)
 			- If this works, do all prints via printtw
 	- Break into to 'dark_castle2' and 'interpreter' and call 'interpreter' from 'dark_castle2'
 		- move imports to main routine
