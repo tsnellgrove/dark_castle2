@@ -26,12 +26,13 @@
 			- full playthrough and some minor text tweaks; started stdout redirect research
 		-2.1.2 updates
 			- redirect interpreter_txt stdout to string, return string to dark_castle2, and print string from main routine
-		
+				- redirected stdout in printtw; getting repeat prints due to print within function
 
 To Dos:
 
-- The zen of functionalizing:
+The zen of functionalizing:
 
+-2.1.1
 	DONE: need for description_dict to be called from interpreter_txt (this means description_dict must be *static*)
 		- DONE: create independent variable description dictionary
 			- DONE: call it descript_updates_dict = {}
@@ -70,15 +71,22 @@ To Dos:
 				- DONE: Worked - had to add return state_dict['end_of_game'] to all interpreter_txt returns - not just the last one!!
 			- DONE: delete comments
 			- DONE: final play-through testing
-- DONE: move as much code into interpreter_txt as possible
-		- DONE: move start of adventure text into interpreter_txt
-		- DONE: execute "start game" code based on start_of_game = True
-		- DONE: move remaining variable assignments to interpreter - move to top of routine	
-		- DONE: first half play-thorugh test (iron_portcullis openned)
-		- DONE: second half play-through test (win!)
+	- DONE: move as much code into interpreter_txt as possible
+			- DONE: move start of adventure text into interpreter_txt
+			- DONE: execute "start game" code based on start_of_game = True
+			- DONE: move remaining variable assignments to interpreter - move to top of routine	
+			- DONE: first half play-thorugh test (iron_portcullis openned)
+			- DONE: second half play-through test (win!)
+
+-2.1.2	
 	- All input and output from main routine
 		- DONE: input already gathered there
 		- print to buffer variable and then actually print buffer variable in main
+			- DONE: redirected to output in printtw and appending with each print
+				- DONE: used global variable 'output' to avoid passing to printtw a zillion times
+				- DONE: still getting repeat prints due to printing within printtw
+			- Next: Try printing from main routine
+			- If this works, do all prints via printtw
 	- Break into to 'dark_castle2' and 'interpreter' and call 'interpreter' from 'dark_castle2'
 		- move imports to main routine
 		- move all static lists & dictionaries into interpreter_txt

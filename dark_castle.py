@@ -1,11 +1,11 @@
-"""Castle Adventure 2.1.1 (complete)
+"""Castle Adventure 2.1.2 (candidate)
 
 This is a simple Zork-like text adventure game.
 I am creating it in order to learn how to program in Python.
 
 Written and programmed by Tom Snellgrove
 
-Last update = July 29, 2020
+Last update = July 30, 2020
 """
 
 # *** Imports ***
@@ -13,6 +13,8 @@ import random
 import math
 import textwrap
 import csv
+import io
+from contextlib import redirect_stdout
 
 # *********************
 # --- SITUATIONAL LOGIC
@@ -207,6 +209,8 @@ def timer(room_dict, state_dict, description_dict, descript_updates_dict):
 
 def printtw(txt_str):
 
+    global output
+
     txt_lst = []
     txt_lst = txt_str.split("\n")
 
@@ -214,9 +218,12 @@ def printtw(txt_str):
         wrapper = textwrap.TextWrapper(width=80,break_long_words=False)
         word_list = wrapper.wrap(text=paragraph) 
 
-        for element in word_list: 
-            print(element)
-        print()
+        with io.StringIO() as buffer, redirect_stdout(buffer):
+            for element in word_list:
+                print(element)
+            print()
+            output = output + buffer.getvalue()
+    print(output)
 
     return
 
@@ -347,6 +354,44 @@ def interpreter_text(
         user_input, path_dict, room_dict,
         door_dict, state_dict, allowed_lang_dict, creature_dict,
         switch_dict, static_dict, descript_updates_dict):
+
+
+### Stack Overflow 1
+#old_stdout = sys.stdout
+#sys.stdout = mystdout = StringIO()
+
+### blah blah lots of code ...
+
+#sys.stdout = old_stdout
+
+### Stack Overflow 2
+#import io
+#from contextlib import redirect_stdout
+
+#with io.StringIO() as buf, redirect_stdout(buf):
+#    print('redirected')
+#    output = buf.getvalue()
+
+
+### Stack Overflow 3
+#import io
+#import sys
+
+#real_stdout = sys.stdout
+#fake_stdout = io.BytesIO()   # or perhaps io.StringIO()
+#try:
+    #sys.stdout = fake_stdout
+    ### do what you have to do to create some output
+#finally:
+    #sys.stdout = real_stdout
+    #output_string = fake_stdout.getvalue()
+    #fake_stdout.close()
+    ### do what you want with the output_string
+
+
+# *** Global Variable Declaration ***
+    global output
+    output = ""
 
 # *** Load Description Dictionary ***
     file = open('description.csv', 'r', newline='')
