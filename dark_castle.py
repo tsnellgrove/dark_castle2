@@ -1,4 +1,4 @@
-"""Castle Adventure 2.1.2 (candidate)
+"""Castle Adventure 2.1.2 (complete)
 
 This is a simple Zork-like text adventure game.
 I am creating it in order to learn how to program in Python.
@@ -145,12 +145,12 @@ def trigger(trigger_key, room_dict, description_dict,
             door_dict['iron_portcullis']['door_state'] = 'open'
             printtw(description_dict['push-big_red_button-open'])
             descript_updates_dict['iron_portcullis'] = \
-                description_dict['iron_portcullis-base'] + "open.\n"
+                description_dict['iron_portcullis-base'] + "open."
         else:
             door_dict['iron_portcullis']['door_state'] = 'closed'
             printtw(description_dict['push-big_red_button-close'])
             descript_updates_dict['iron_portcullis'] = \
-                description_dict['iron_portcullis-base'] + "closed.\n"
+                description_dict['iron_portcullis-base'] + "closed."
 
     return(False)
 
@@ -223,7 +223,6 @@ def printtw(txt_str):
                 print(element)
             print()
             output = output + buffer.getvalue()
-#    print(output)
 
     return
 
@@ -248,7 +247,7 @@ def look(room_dict, state_dict, description_dict, static_dict):
         printtw(description_dict[room])
     if len(features) > 0:
         for feature in features:
-            printtw("There is a " + feature + " here.\n")
+            printtw("There is a " + feature + " here.")
     if len(items) > 0:
         printtw("The following items are here: " + ", ".join(items))
     if score_key in state_dict['score_dict']:
@@ -274,7 +273,7 @@ def print_score(state_dict, static_dict):
     max_score = static_dict['global_dict']['max_score']
 
     printtw("Your score is now " + str(current_score)
-        + " out of " + str(max_score) + "\n")	
+        + " out of " + str(max_score))	
     return
 
 
@@ -293,14 +292,14 @@ def end(state_dict, static_dict, description_dict):
     title = static_dict['titles_dict'][title_score]
 
     if game_ending == 'death':
-        printtw("You have died.\n")
+        printtw("You have died.")
     elif game_ending == 'quit':
-        printtw("You have quit.\n")
+        printtw("You have quit.")
     elif game_ending == 'won':
-        printtw("You have won!\n")
-    printtw("Your adventure ended after " + str(moves) + " moves.\n")
+        printtw("You have won!")
+    printtw("Your adventure ended after " + str(moves) + " moves.")
     print_score(state_dict, static_dict)
-    printtw("Your title is: " + title + "\n")
+    printtw("Your title is: " + title)
     if game_ending == 'won':
         printtw(description_dict['credits'])
     state_dict['end_of_game'] = True
@@ -324,7 +323,7 @@ def room_action(
             state_dict['room'] = next_room
             look(room_dict, state_dict, description_dict, static_dict)
         else:
-            printtw("The " + door_name + " is closed.\n")
+            printtw("The " + door_name + " is closed.")
     elif action == "passage":
         state_dict['room'] = next_room
         look(room_dict, state_dict, description_dict, static_dict)
@@ -354,40 +353,6 @@ def interpreter_text(
         user_input, path_dict, room_dict,
         door_dict, state_dict, allowed_lang_dict, creature_dict,
         switch_dict, static_dict, descript_updates_dict):
-
-
-### Stack Overflow 1
-#old_stdout = sys.stdout
-#sys.stdout = mystdout = StringIO()
-
-### blah blah lots of code ...
-
-#sys.stdout = old_stdout
-
-### Stack Overflow 2
-#import io
-#from contextlib import redirect_stdout
-
-#with io.StringIO() as buf, redirect_stdout(buf):
-#    print('redirected')
-#    output = buf.getvalue()
-
-
-### Stack Overflow 3
-#import io
-#import sys
-
-#real_stdout = sys.stdout
-#fake_stdout = io.BytesIO()   # or perhaps io.StringIO()
-#try:
-    #sys.stdout = fake_stdout
-    ### do what you have to do to create some output
-#finally:
-    #sys.stdout = real_stdout
-    #output_string = fake_stdout.getvalue()
-    #fake_stdout.close()
-    ### do what you want with the output_string
-
 
 # *** Global Variable Declaration ***
     global output
@@ -437,7 +402,7 @@ def interpreter_text(
     else:
         word2 = "blank"
 
-    print("")
+    printtw("")
 
     if (word1 in allowed_verbs) and (len(user_input_lst) == 1):
         printtw(word1 + " what Burt?")
@@ -480,7 +445,7 @@ def interpreter_text(
         printtw(description_dict['credits'])
 
     elif user_input == "quit":
-        printtw("Goodbye Burt!\n")
+        printtw("Goodbye Burt!")
         state_dict['game_ending'] = 'quit'
         state_dict['move_counter'] -= 1
         end(state_dict, static_dict, description_dict)
@@ -505,7 +470,7 @@ def interpreter_text(
         visible_items.append(room)
 
         if word2 not in visible_items:
-            printtw("Burt you can't " + word1 + " that!\n")
+            printtw("Burt you can't " + word1 + " that!")
         else:
             if word2 in descript_updates_dict:
                 printtw(descript_updates_dict[word2])
@@ -515,7 +480,7 @@ def interpreter_text(
                 if door_dict[word2]['door_state'] == 'open':
                     contain_inv = ', '.join(door_dict[word2]['contains'])
                     printtw("The " + word2 + " contains a "
-                        + contain_inv + ".\n")
+                        + contain_inv + ".")
 
             if trigger_key in post_action_trigger:
                 trigger(
@@ -532,7 +497,7 @@ def interpreter_text(
         takeable_items = backpack + room_items + worn
 
         if word2 not in takeable_items or word2 == "nothing":
-            printtw("Burt you can't " + word1 + " that!\n")
+            printtw("Burt you can't " + word1 + " that!")
         else:
             # *** new item=>hand; old hand item=>backpack (except 'nothing')***
             temp_swap = hand[0]
@@ -557,7 +522,7 @@ def interpreter_text(
                     if len(door_dict[container]['contains']) == 0:
                         door_dict[container]['contains'].append('nothing')
                     del state_dict['item_containers'][word2]
-            printtw("Taken\n") # confirm to play that item has been taken
+            printtw("Taken") # confirm to play that item has been taken
 
             # *** if the backpack is now empty add placeholder "nothing" ***
             if len(backpack) == 0:
@@ -591,7 +556,7 @@ def interpreter_text(
         droppable_items = hand
         
         if word2 not in droppable_items or word2 == "nothing":
-            printtw("Burt you can't " + word1 + " that!\n")
+            printtw("Burt you can't " + word1 + " that!")
         else:
             temp_swap = hand[0]
             del hand[0]
@@ -599,7 +564,7 @@ def interpreter_text(
             state_dict['hand'] = hand
             room_items.append(temp_swap)
             room_dict[room]['room_items'] = room_items
-            printtw("Dropped\n")
+            printtw("Dropped")
 
             if trigger_key in post_action_trigger:
                 trigger(
@@ -614,27 +579,27 @@ def interpreter_text(
 
     elif word1 == "open":
         if word2 not in allowed_lang_dict['can_be_opened']:
-            printtw("Burt you can't " + word1 + " that!\n")
+            printtw("Burt you can't " + word1 + " that!")
         else:
             door_state = door_dict[word2]['door_state']
             lock_state = door_dict[word2]['lock_state']
 
             if word2 not in room_features:
-                printtw("Burt, you can't see a " + word2 + " here!\n")
+                printtw("Burt, you can't see a " + word2 + " here!")
             elif door_state == 'open':
-                printtw("Burt, the " + word2 + " is already open!\n")
+                printtw("Burt, the " + word2 + " is already open!")
             elif lock_state == 'locked':
-                printtw("The " + word2 + " is locked.\n")
+                printtw("The " + word2 + " is locked.")
             else:
-                printtw("Opened\n")
+                printtw("Opened")
                 door_state = 'open'
                 door_dict[word2]['door_state'] = door_state
                 descript_updates_dict[word2] = description_dict[word2 + '-base'] \
-                    + door_state + ".\n"
+                    + door_state + "."
                 if door_dict[word2]['is_container']:
                     contain_inv = ', '.join(door_dict[word2]['contains'])
                     printtw("The " + word2 + " contains a "
-                        + contain_inv + ".\n")
+                        + contain_inv + ".")
                     room_dict[room]['items'].extend(
                         door_dict[word2]['contains'])
 
@@ -657,15 +622,15 @@ def interpreter_text(
             lock_state = door_dict[word2]['lock_state']
 
             if word2 not in room_features:
-                printtw("Burt, you can't see a " + word2 + " here!\n")
+                printtw("Burt, you can't see a " + word2 + " here!")
             elif door_state == 'open':
-                printtw("Burt, the " + word2 + " is already open!\n")
+                printtw("Burt, the " + word2 + " is already open!")
             elif lock_state == 'unlocked':
-                printtw("The " + word2 + " is already unlocked.\n")
+                printtw("The " + word2 + " is already unlocked.")
             elif hand[0] != door_dict[word2]['key']:
-                printtw("Burt, you don't have the key in your hand!\n")
+                printtw("Burt, you don't have the key in your hand!")
             else:
-                printtw("Unlocked\n")
+                printtw("Unlocked")
                 door_dict[word2]['lock_state'] = 'unlocked'
 
                 if trigger_key in post_action_trigger:
@@ -684,9 +649,9 @@ def interpreter_text(
             + room_view_only)
 
         if word2 not in allowed_lang_dict['can_be_read']:
-            printtw("Burt you can't " + word1 + " that!\n")
+            printtw("Burt you can't " + word1 + " that!")
         elif static_dict['written_on_dict'][word2] not in visible_items:
-            printtw("Burt, you can't read what you can't see!\n")
+            printtw("Burt, you can't read what you can't see!")
         else:
             if (word2 + "-read") in descript_updates_dict:
                 printtw(descript_updates_dict[word2 + "-read"])
@@ -707,7 +672,7 @@ def interpreter_text(
     elif word1 == "attack":
         if word2 not in allowed_lang_dict['can_be_attacked'] \
                 or word2 not in room_features:
-            printtw("Burt you can't " + word1 + " that!\n")
+            printtw("Burt you can't " + word1 + " that!")
         else:
             if hand[0] not in allowed_lang_dict['weapons']:
                 weapon = 'fist'
@@ -725,14 +690,14 @@ def interpreter_text(
             if creature_dict[word2][attack_result] == 'creature_death':
                 room_dict[room]['features'].remove(word2)
                 room_dict[room]['features'].append('dead_' + word2)
-                printtw("the " + word2 + " has died.\n")
+                printtw("the " + word2 + " has died.")
                 if score_key in state_dict['score_dict']:
                     score(score_key, state_dict, static_dict)
                 room_dict[room]['items'].extend(creature_dict[word2]['drops'])
 
             elif creature_dict[word2][attack_result] == 'creature_runs':
                 room_dict[room]['features'].remove(word2)
-                printtw("the " + word2 + " has run away.\n")
+                printtw("the " + word2 + " has run away.")
                 if score_key in state_dict['score_dict']:
                     score(score_key, state_dict, static_dict)
 
@@ -750,7 +715,7 @@ def interpreter_text(
 
     elif word1 == "eat":
         if word2 not in allowed_lang_dict['can_be_eaten_lst']:
-            printtw("Burt you can't " + word1 + " that!\n")
+            printtw("Burt you can't " + word1 + " that!")
         elif word2 not in hand:
             printtw("Burt you can't eat something that's not in your hand!")
         else:
@@ -772,11 +737,11 @@ def interpreter_text(
 
     elif word1 == 'pull':
         if word2 not in allowed_lang_dict['can_be_pulled_lst']:
-            printtw("Burt you can't " + word1 + " that!\n")
+            printtw("Burt you can't " + word1 + " that!")
         elif (word2 not in room_view_only) and (word2 not in room_features):
             printtw("Burt, you can't pull what you can't see!")
         else:
-            printtw("Pulled.\n")
+            printtw("Pulled.")
 
             if word2 in switch_dict:
                 switch_state = switch_dict[word2]['state']
@@ -785,7 +750,7 @@ def interpreter_text(
                 else:
                     switch_state = 'down'
                 descript_updates_dict[word2] = "The " + word2 + " is " \
-                    + switch_state + ".\n"
+                    + switch_state + "."
                 switch_dict[word2]['state'] = switch_state
 
             if trigger_key in post_action_trigger:
@@ -801,11 +766,11 @@ def interpreter_text(
 
     elif word1 == 'push':
         if word2 not in allowed_lang_dict['can_be_pushed_lst']:
-            printtw("Burt you can't " + word1 + " that!\n")
+            printtw("Burt you can't " + word1 + " that!")
         elif (word2 not in room_view_only) and (word2 not in room_features):
             printtw("Burt, you can't push what you can't see!")
         else:
-            printtw("Pushed.\n")
+            printtw("Pushed.")
 
             if word2 in switch_dict:
                 success_num = switch_dict[word2]['success_value']
@@ -830,9 +795,9 @@ def interpreter_text(
 
     elif word1 == "wear":
         if word2 == "nothing" or word2 not in allowed_lang_dict['can_be_worn']:
-            printtw("Burt you can't " + word1 + " that!\n")
+            printtw("Burt you can't " + word1 + " that!")
         elif word2 not in hand:
-            printtw("Burt, you're not holding the " + word2 + "!\n")
+            printtw("Burt, you're not holding the " + word2 + "!")
         else:
             # *** wear the taken item ***
             worn.append(word2)
@@ -848,7 +813,7 @@ def interpreter_text(
             state_dict['hand'] = hand
 
             # *** confirm worn and print effect ***
-            printtw("Worn\n")
+            printtw("Worn")
             printtw(description_dict[score_key])
 
             if trigger_key in post_action_trigger:
@@ -1046,11 +1011,11 @@ static_dict = {
         'max_score': 75
     },
     'invalid_path_lst': [
-        "Ouch! You have walked into a wall.\n",
-        "Ouch! Burt, stop walking into walls!\n",
-        "You can't go that way.\n",
-        "And exactly how do you propose to do that?\n",
-        "There's no exit that way.\n"
+        "Ouch! You have walked into a wall.",
+        "Ouch! Burt, stop walking into walls!",
+        "You can't go that way.",
+        "And exactly how do you propose to do that?",
+        "There's no exit that way."
     ],
     'pre_action_trigger_lst': [
         'take-shiny_sword',
@@ -1080,12 +1045,12 @@ static_dict = {
         'illuminated_letters': 'scroll_of_the_king'
     },
     'unknown_word_lst': [
-        "Burt, I have no idea what you're talking about!\n",
-        "Burt, are you babbling again?\n",
-        "Burt, I'm just going to pretend I didn't hear that\n",
+        "Burt, I have no idea what you're talking about!",
+        "Burt, are you babbling again?",
+        "Burt, I'm just going to pretend I didn't hear that",
         "Burt, you've said some strange things over the years but "
-        "that was a doosey!\n",
-        "Burt! What would your mother say if she heard you speaking like that!?\n"
+        "that was a doosey!",
+        "Burt! What would your mother say if she heard you speaking like that!?"
     ],
     'food_dict': {
         'stale_biscuits': 'none'
@@ -1145,7 +1110,7 @@ while end_of_game == False:
         user_input, path_dict, room_dict,
         door_dict, state_dict, allowed_lang_dict, creature_dict,
         switch_dict, static_dict, descript_updates_dict)
-    print(output)
+    print(output, end = '')
 print("THANKS FOR PLAYING!")
 exit()
 

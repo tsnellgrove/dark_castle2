@@ -29,6 +29,7 @@
 				- redirected stdout in printtw; getting repeat prints due to print within function
 				- return 'output' from interpet_txt and print from main routine
 				- convert all print() commands to printtw()
+				- troubleshoot all print spacing
 
 To Dos:
 
@@ -89,7 +90,7 @@ The zen of functionalizing:
 				- DONE: still getting repeat prints due to printing within printtw
 			- DONE: return 'output' from interpet_txt and print from main routine (as expected, non printtw text is now first)
 			- DONE: convert all prints via printtw
-			- troubleshoot print spacing (eliminated "/n" as needed)
+			- DONE: troubleshoot print spacing (eliminated "/n" as needed)
 	- Break into to 'dark_castle2' and 'interpreter' and call 'interpreter' from 'dark_castle2'
 		- move imports to main routine
 		- move all static lists & dictionaries into interpreter_txt
