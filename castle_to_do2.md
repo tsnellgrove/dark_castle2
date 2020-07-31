@@ -30,6 +30,11 @@
 				- return 'output' from interpet_txt and print from main routine
 				- convert all print() commands to printtw()
 				- troubleshoot all print spacing
+		-2.1.3 updates:
+			- DONE: separated dark-castle into front-end and back-end routines!
+			- DONE: successful win play-through test
+			- reduce imports for main where possible
+			- full play-through test
 
 To Dos:
 
@@ -82,20 +87,23 @@ The zen of functionalizing:
 			- DONE: second half play-through test (win!)
 
 -2.1.2	
-	- All input and output from main routine
+	- DON:E All input and output from main routine
 		- DONE: input already gathered there
-		- print to buffer variable and then actually print buffer variable in main
+		- DONE: print to output variable and then actually print buffer variable in main
 			- DONE: redirected to output in printtw and appending with each print
 				- DONE: used global variable 'output' to avoid passing to printtw a zillion times
 				- DONE: still getting repeat prints due to printing within printtw
 			- DONE: return 'output' from interpet_txt and print from main routine (as expected, non printtw text is now first)
 			- DONE: convert all prints via printtw
 			- DONE: troubleshoot print spacing (eliminated "/n" as needed)
-	- Break into to 'dark_castle2' and 'interpreter' and call 'interpreter' from 'dark_castle2'
-		- move imports to main routine
-		- move all static lists & dictionaries into interpreter_txt
-		- move all variable lists & dictionaries into main and pass back & forth
 
+- 2.1.3
+	- DONE: Break into to 'dark_castle2' and 'interpreter' and call 'interpreter' from 'dark_castle2'
+		- DONE: move imports to main routine
+		- DONE: move all static lists & dictionaries into interpreter_txt
+		- DONE: move all variable lists & dictionaries into main and pass back & forth
+		- DONE: testing and troubleshooing - win play-through
+			- nb: most of my errors were just long-standing variable passing misses... I guess it was lax in the monolithic form
 
 	- flaskify main routine
 		- decide on how to store data... 
