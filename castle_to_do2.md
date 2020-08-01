@@ -4,13 +4,14 @@
 *** Future Versions and Features ***
 
 2.1.x Website To Do
-		- 2.1.0 NEXT TO DO - REALLY FIGURE OUT HOW TO USE GIT BRANCHING / FORKS
-		- July 13: Reading up on Git branching - sounds like tags will be helpful - more research to do
-		- July 14: Read up on app versioning - I need to get more consistent about this
+		- 2.1.0 - decice on repo strat: fork?, branch?, new repo?
+			- July 13: Reading up on Git branching - sounds like tags will be helpful - more research to do
+			- July 14: Read up on app versioning - I need to get more consistent about this
 			- Less clear is coding across platforms... it's beginning to look like there's no one simple solution to this
 			- I will need to roll my own
 			- Maybe start by functionalizing Dark Castle and make that version work at the command line
-	- 2.1.1 updates
+			- decision = new repo
+	- 2.1.1 - move timer, quit, one-time variable assignment, create updated descript dict, and description.csv load to interpreter_text
 			- Took the plunge today - just decided that	I needed to get started - copied DC files into dark_castle2 - will use a separate repo
 			- Updated docs
 			- Moved start-of-game text to interpreter_txt
@@ -24,17 +25,22 @@
 			- solve issues with end() 
 			- moved big_red_button success_code variable assignment to interpreter_txt; fixed pull description assignment
 			- full playthrough and some minor text tweaks; started stdout redirect research
-		-2.1.2 updates
-			- redirect interpreter_txt stdout to string, return string to dark_castle2, and print string from main routine
-				- redirected stdout in printtw; getting repeat prints due to print within function
-				- return 'output' from interpet_txt and print from main routine
-				- convert all print() commands to printtw()
-				- troubleshoot all print spacing
-		-2.1.3 updates:
+		-2.1.2 - redirect interpreter_txt stdout to string, return string to dark_castle2, and print string from main routine
+			- redirected stdout in printtw; getting repeat prints due to print within function
+			- return 'output' from interpet_txt and print from main routine
+			- convert all print() commands to printtw()
+			- troubleshoot all print spacing
+		-2.1.3 - client-server deployment
 			- DONE: separated dark-castle into front-end and back-end routines!
 			- DONE: successful win play-through test
-			- reduce imports for main where possible
-			- full play-through test
+			- DONE: reduce imports for main where possible
+			- DONE: full play-through test
+		-2.1.4 - final clean-up pre flaskify
+			- additional puzzle clues
+			- version feature
+			- improved error messages
+			- style check
+
 
 To Dos:
 
@@ -105,6 +111,16 @@ The zen of functionalizing:
 		- DONE: testing and troubleshooing - win play-through
 			- nb: most of my errors were just long-standing variable passing misses... I guess it was lax in the monolithic form
 
+2.1.4 - Clean-up
+	- Additional Puzzle Clues:
+		- call the crown 'royal_crown' in Nana's memory
+		- Indicate in the grimy_axe description that it could kill a crocodile
+			- 'small_print' = 'ACME Axe: Effective at dispatching small dragons, large crocidiles, and even the most agressive of trees.'
+	- Features:
+		- Add a 'version' command (set in static_dict['version'])
+		- Add 'you can't X and object that's not in your hand' error for allowed_verbs; also: 'you can only read text'
+
+
 	- flaskify main routine
 		- decide on how to store data... 
 				- maybe first pass is client-side cookies, then server-side JSON then Redis
@@ -134,14 +150,6 @@ The zen of functionalizing:
 	- Functionalize thoughts:
 		- What is the value of functionalizing? Maybe just convert output to buffer??	
 
-
-Ideas:
-- Additional Puzzle Clues:
-	- call the crown 'royal_crown' in Nana's memory
-	- Indicate in the grimy_axe description that it could kill a crocodile
-- Features:
-	- Add a 'version' command (set in static_dict['version'])
-	- Add 'you can't X and object that's not in your hand' error for allowed_verbs; also: 'you can only read text'
 
 
 Some Day:

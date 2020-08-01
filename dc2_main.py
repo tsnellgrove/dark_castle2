@@ -1,4 +1,4 @@
-"""Castle Adventure 2.1.3 (candidate)
+"""Castle Adventure 2.1.3 (complete)
 
 This is a simple Zork-like text adventure game.
 I am creating it in order to learn how to program in Python.
@@ -7,16 +7,16 @@ This is the front-end code
 
 Written and programmed by Tom Snellgrove
 
-Last update = July 31, 2020
+Last update = August 1, 2020
 """
 
 # *** Imports ***
-import random
-import math
-import textwrap
-import csv
-import io
-from contextlib import redirect_stdout
+# import random
+# import math
+# import textwrap
+# import csv
+# import io
+# from contextlib import redirect_stdout
 from dc2_interpreter import interpreter_text
 
 # ************************
@@ -160,7 +160,8 @@ while end_of_game == False:
         start_of_game = False
     else:
         user_input = input("> ").lower()
-    end_of_game, output, room_dict, door_dict, switch_dict, creature_dict, state_dict = interpreter_text(
+    end_of_game, output, room_dict, door_dict, switch_dict, \
+        creature_dict, state_dict = interpreter_text(
         user_input, room_dict, door_dict, state_dict,
         creature_dict, switch_dict, descript_updates_dict)
     print(output, end = '')
