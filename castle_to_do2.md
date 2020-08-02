@@ -4,7 +4,7 @@
 *** Future Versions and Features ***
 
 2.1.x Website To Do
-		- 2.1.0 - decice on repo strat: fork?, branch?, new repo?
+	- 2.1.0 - decice on repo strat: fork?, branch?, new repo?
 			- July 13: Reading up on Git branching - sounds like tags will be helpful - more research to do
 			- July 14: Read up on app versioning - I need to get more consistent about this
 			- Less clear is coding across platforms... it's beginning to look like there's no one simple solution to this
@@ -25,26 +25,29 @@
 			- solve issues with end() 
 			- moved big_red_button success_code variable assignment to interpreter_txt; fixed pull description assignment
 			- full playthrough and some minor text tweaks; started stdout redirect research
-		-2.1.2 - redirect interpreter_txt stdout to string, return string to dark_castle2, and print string from main routine
+	-2.1.2 - redirect interpreter_txt stdout to string, return string to dark_castle2, and print string from main routine
 			- redirected stdout in printtw; getting repeat prints due to print within function
 			- return 'output' from interpet_txt and print from main routine
 			- convert all print() commands to printtw()
 			- troubleshoot all print spacing
-		-2.1.3 - client-server deployment
+	-2.1.3 - client-server deployment
 			- DONE: separated dark-castle into front-end and back-end routines!
 			- DONE: successful win play-through test
 			- DONE: reduce imports for main where possible
 			- DONE: full play-through test
-		-2.1.4 - final clean-up pre flaskify
-			- additional puzzle clues
-			- version feature
+	-2.1.4 - final clean-up pre flaskify
+			- DONE: version feature
+			- DONE: additional puzzle clues
+					- DONE: call the crown 'royal_crown' in Nana's memory
+					- DONE: Indicate in the grimy_axe description that it could kill a crocodile
+						- 'small_print' = 'ACME AXE: Effective at dispatching small dragons, large crocidiles, and even the most agressive of trees.'
 			- improved error messages
 			- style check
 
 
 To Dos:
 
-The zen of functionalizing:
+The Zen of Functionalizing - Detailed Notes:
 
 -2.1.1
 	DONE: need for description_dict to be called from interpreter_txt (this means description_dict must be *static*)

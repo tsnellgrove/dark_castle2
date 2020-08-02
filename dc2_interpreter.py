@@ -1,4 +1,4 @@
-"""Castle Adventure 2.1.3 (complete)
+"""Dark Castle 2.1.4 (candidate)
 
 This is a simple Zork-like text adventure game.
 I am creating it in order to learn how to program in Python.
@@ -74,7 +74,8 @@ path_dict = {
 # --- Static Dictionary [STATIC]
 static_dict = {
     'global_dict': {
-        'max_score': 75
+        'max_score': 75,
+        'version': "2.1.4 (candidate)"
     },
     'invalid_path_lst': [
         "Ouch! You have walked into a wall.",
@@ -108,7 +109,8 @@ static_dict = {
         'dwarven_runes': 'shiny_sword',
         'messy_handwriting': 'torn_note',
         'calligraphy': 'crystal_box',
-        'illuminated_letters': 'scroll_of_the_king'
+        'illuminated_letters': 'scroll_of_the_king',
+        'small_print': 'grimy_axe'
     },
     'unknown_word_lst': [
         "Burt, I have no idea what you're talking about!",
@@ -144,7 +146,7 @@ allowed_lang_dict = {
     'can_be_opened': ['front_gate', 'iron_portcullis', 'crystal_box'],
     'can_be_read': [
         'rusty_lettering', 'trademark', 'dwarven_runes',
-        'messy_handwriting', 'calligraphy', 'illuminated_letters'],
+        'messy_handwriting', 'small_print', 'calligraphy', 'illuminated_letters'],
     'can_be_attacked': ['hedgehog', 'goblin'],
     'weapons': ['shiny_sword', 'grimy_axe'],
     'can_be_eaten_lst': ['stale_biscuits'],
@@ -571,7 +573,6 @@ def interpreter_text(
     elif word1 == "score":
         print_score(state_dict, static_dict)
 
-
     elif word1 == "inventory":
         printtw("In your hand you have: " + hand[0])
         backpack_inv = ', '.join(backpack)
@@ -587,6 +588,9 @@ def interpreter_text(
         state_dict['game_ending'] = 'quit'
         state_dict['move_counter'] -= 1
         end(state_dict, static_dict, description_dict)
+
+    elif user_input == "version":
+        printtw(static_dict['global_dict']['version'])
 
     elif word1 in allowed_movement:
         if (path_key) in path_dict:
