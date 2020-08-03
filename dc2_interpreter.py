@@ -695,10 +695,12 @@ def interpreter_text(
 # --- Drop verb
 
     elif word1 == "drop":
-        droppable_items = hand
+        taken_items = hand + backpack + worn
         
-        if word2 not in droppable_items or word2 == "nothing":
+        if word2 not in taken_items or word2 == "nothing":
             printtw("Burt you can't " + word1 + " that!")
+        elif word2 not in hand:
+            printtw("Burt you can't drop something that's not in your hand!")
         else:
             temp_swap = hand[0]
             del hand[0]
