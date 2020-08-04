@@ -43,7 +43,7 @@
 						- 'small_print' = 'ACME AXE: Effective at dispatching small dragons, large crocidiles, and even the most agressive of trees.'
 			- improved error messages
 				- DONE: drop from hand only (see 'eat' or 'wear')
-				- can only read text - not the item containing text
+				- DONE: can only read text - not the item containing text
 				- On attempt to 'wear hedgehog_broach' - "You can't bring yourself to put it on - the memories of seeing your dear Nana wearing it are suddenly too fresh. Perahps there is something else around the castle you could wear?"
 			- style check
 

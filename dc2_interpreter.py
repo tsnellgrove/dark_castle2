@@ -7,7 +7,7 @@ This is the back-end code
 
 Written and programmed by Tom Snellgrove
 
-Last update = August 1, 2020
+Last update = August 4, 2020
 """
 
 # *** Imports ***
@@ -368,7 +368,7 @@ def printtw(txt_str):
     return
 
 
-def unknown_word():
+def unknown_word(static_dict, state_dict):
     response = random.randint(0, 4)
     printtw(static_dict['unknown_word_lst'][response])
     state_dict['move_counter'] -= 1
@@ -792,7 +792,9 @@ def interpreter_text(
         visible_items = (hand + backpack + worn + room_items + room_features
             + room_view_only)
 
-        if word2 not in allowed_lang_dict['can_be_read']:
+        if (word2 in static_dict['written_on_dict'].values()) and (word2 in visible_items):
+            printtw("Burt, you can't read the " + word2 + " itself - you have to read the text that's written *on* it!")
+        elif word2 not in allowed_lang_dict['can_be_read']:
             printtw("Burt you can't " + word1 + " that!")
         elif static_dict['written_on_dict'][word2] not in visible_items:
             printtw("Burt, you can't read what you can't see!")
@@ -970,7 +972,7 @@ def interpreter_text(
                 score(score_key, state_dict, static_dict)
 
     else:
-        unknown_word()
+        unknown_word(static_dict, state_dict)
 
     if state_dict['active_timer'] != 'none':
         timer(room_dict, state_dict, description_dict, descript_updates_dict, creature_dict)

@@ -7,16 +7,10 @@ This is the front-end code
 
 Written and programmed by Tom Snellgrove
 
-Last update = August 1, 2020
+Last update = August 4, 2020
 """
 
 # *** Imports ***
-# import random
-# import math
-# import textwrap
-# import csv
-# import io
-# from contextlib import redirect_stdout
 from dc2_interpreter import interpreter_text
 
 # ************************
