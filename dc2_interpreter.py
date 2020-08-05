@@ -92,7 +92,8 @@ static_dict = {
         'examine-grimy_axe',
         'north-blank',
         'east-blank',
-        'west-blank'
+        'west-blank',
+        'wear-hedgehog_broach'
     ],
     'post_action_trigger_lst': [
         'drop-stale_biscuits',
@@ -154,7 +155,7 @@ allowed_lang_dict = {
         'left_lever', 'middle_lever', 'right_lever', 'throne'],
     'can_be_pushed_lst': ['big_red_button', 'throne'],
     'is_container': ['crystal_box'],
-    'can_be_worn': ['royal_crown']   # not broach; causes player confusion
+    'can_be_worn': ['royal_crown','hedgehog_broach']
 }
 
 # *********************
@@ -226,6 +227,10 @@ def trigger(trigger_key, room_dict, description_dict,
             end(state_dict, static_dict, description_dict)
         else:
             return(False)
+
+    elif (trigger_key == 'wear-hedgehog_broach') and (hand == 'hedgehog_broach'):
+        printtw(description_dict['wear-hedgehog_broach'])
+        return(True)
 
     # *** post-action triggers - return value discarded ***
     elif trigger_key == 'drop-stale_biscuits':

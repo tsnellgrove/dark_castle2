@@ -44,8 +44,9 @@
 			- improved error messages
 				- DONE: drop from hand only (see 'eat' or 'wear')
 				- DONE: can only read text - not the item containing text
-				- On attempt to 'wear hedgehog_broach' - "You can't bring yourself to put it on - the memories of seeing your dear Nana wearing it are suddenly too fresh. Perahps there is something else around the castle you could wear?"
-			- style check
+				- IN-PROC: On attempt to 'wear hedgehog_broach' - "You can't bring yourself to put it on - the memories of seeing your dear Nana wearing it are suddenly too fresh. Perahps there is something else around the castle you could wear?"
+					- pre-action trigger not working
+				- style check
 
 
 To Dos:
