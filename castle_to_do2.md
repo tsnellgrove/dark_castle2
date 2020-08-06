@@ -44,9 +44,11 @@
 			- improved error messages
 				- DONE: drop from hand only (see 'eat' or 'wear')
 				- DONE: can only read text - not the item containing text
-				- IN-PROC: On attempt to 'wear hedgehog_broach' - "You can't bring yourself to put it on - the memories of seeing your dear Nana wearing it are suddenly too fresh. Perahps there is something else around the castle you could wear?"
+				- DONE: On attempt to 'wear hedgehog_broach' - "You can't bring yourself to put it on - the memories of seeing your dear Nana wearing it are suddenly too fresh. Perahps there is something else around the castle you could wear?"
 					- pre-action trigger not working
+					- problem solved - was treating 'hand' as a string when it's actually a list (argh!!)
 				- style check
+				- full play-through test
 
 
 To Dos:

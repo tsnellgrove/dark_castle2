@@ -228,8 +228,8 @@ def trigger(trigger_key, room_dict, description_dict,
         else:
             return(False)
 
-    elif (trigger_key == 'wear-hedgehog_broach') and (hand == 'hedgehog_broach'):
-        printtw(description_dict['wear-hedgehog_broach'])
+    elif (trigger_key == 'wear-hedgehog_broach') and ('hedgehog_broach' in hand):
+        printtw(trigger_descript)
         return(True)
 
     # *** post-action triggers - return value discarded ***
@@ -558,6 +558,8 @@ def interpreter_text(
     switch_key = score_key
     path_key = room + "-" + word1
     state_dict['move_counter'] += 1
+
+# *** Pre-action Triggers
 
     if trigger_key in static_dict['pre_action_trigger_lst']:
         if trigger(
