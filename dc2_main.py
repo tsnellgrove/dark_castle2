@@ -7,7 +7,7 @@ This is the front-end code
 
 Written and programmed by Tom Snellgrove
 
-Last update = August 4, 2020
+Last update = August 7, 2020
 """
 
 # *** Imports ***
@@ -112,7 +112,7 @@ state_dict = {
     'backpack': ['rusty_key', 'stale_biscuits'],
     'view_special': ['fist', 'burt', 'conscious'],
     'item_containers': {'scroll_of_the_king': 'crystal_box'},
-    'max_count': {'broach_found': 1,},
+    'max_count': {'broach_found': 1},
     'move_counter': 0,
     'current_score': 0,
     'active_timer': 'none',
@@ -148,7 +148,7 @@ output = ""
 
 # *** Get User Input ***
 print("WELCOME TO DARK CASTLE!\n")
-while end_of_game == False:
+while end_of_game is False:
     if start_of_game:
         user_input = 'start of game'
         start_of_game = False
@@ -158,7 +158,7 @@ while end_of_game == False:
         creature_dict, state_dict = interpreter_text(
         user_input, room_dict, door_dict, state_dict,
         creature_dict, switch_dict, descript_updates_dict)
-    print(output, end = '')
+    print(output, end='')
 print("THANKS FOR PLAYING!")
 exit()
 

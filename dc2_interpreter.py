@@ -7,7 +7,7 @@ This is the back-end code
 
 Written and programmed by Tom Snellgrove
 
-Last update = August 4, 2020
+Last update = August 7, 2020
 """
 
 # *** Imports ***
@@ -116,14 +116,15 @@ static_dict = {
     'unknown_word_lst': [
         "Burt, I have no idea what you're talking about!",
         "Burt, are you babbling again?",
-        "Burt, I'm just going to pretend I didn't hear that",
+        "Burt, I'm just going to pretend I didn't hear that.",
         "Burt, you've said some strange things over the years but "
         "that was a doosey!",
-        "Burt! What would your mother say if she heard you speaking like that!?"
+        "Burt! What would your mother say if she heard you speaking "
+        "like that!?"
     ],
-    'food_dict': {
+    'food_dict': { #  to be used to track food results
         'stale_biscuits': 'none'
-    }, #  to be used to track food results
+    },
     'titles_dict': {
         -10: 'Burt the Best Forgotten',
         0: 'Burt the Boneheaded',
@@ -147,7 +148,8 @@ allowed_lang_dict = {
     'can_be_opened': ['front_gate', 'iron_portcullis', 'crystal_box'],
     'can_be_read': [
         'rusty_lettering', 'trademark', 'dwarven_runes',
-        'messy_handwriting', 'small_print', 'calligraphy', 'illuminated_letters'],
+        'messy_handwriting', 'small_print', 'calligraphy',
+        'illuminated_letters'],
     'can_be_attacked': ['hedgehog', 'goblin'],
     'weapons': ['shiny_sword', 'grimy_axe'],
     'can_be_eaten_lst': ['stale_biscuits'],
@@ -155,7 +157,7 @@ allowed_lang_dict = {
         'left_lever', 'middle_lever', 'right_lever', 'throne'],
     'can_be_pushed_lst': ['big_red_button', 'throne'],
     'is_container': ['crystal_box'],
-    'can_be_worn': ['royal_crown','hedgehog_broach']
+    'can_be_worn': ['royal_crown', 'hedgehog_broach']
 }
 
 # *********************
@@ -228,7 +230,8 @@ def trigger(trigger_key, room_dict, description_dict,
         else:
             return(False)
 
-    elif (trigger_key == 'wear-hedgehog_broach') and ('hedgehog_broach' in hand):
+    elif (trigger_key == 'wear-hedgehog_broach') and \
+            ('hedgehog_broach' in hand):
         printtw(trigger_descript)
         return(True)
 
@@ -285,7 +288,6 @@ def trigger(trigger_key, room_dict, description_dict,
             state_dict['game_ending'] = 'won'
             end(state_dict, static_dict, description_dict)
 
-
     elif trigger_key == 'push-big_red_button-success':
         if door_dict['iron_portcullis']['door_state'] == 'closed':
             door_dict['iron_portcullis']['door_state'] = 'open'
@@ -301,7 +303,8 @@ def trigger(trigger_key, room_dict, description_dict,
     return(False)
 
 
-def timer(room_dict, state_dict, description_dict, descript_updates_dict, creature_dict):
+def timer(room_dict, state_dict, description_dict, descript_updates_dict,
+        creature_dict):
     # *** Timer conditionals ***
 
     timer_key = state_dict['active_timer']
@@ -353,6 +356,7 @@ def timer(room_dict, state_dict, description_dict, descript_updates_dict, creatu
 # --- HELPER ROUTINES
 # *******************
 
+
 def printtw(txt_str):
 
     global output
@@ -361,8 +365,8 @@ def printtw(txt_str):
     txt_lst = txt_str.split("\n")
 
     for paragraph in txt_lst:
-        wrapper = textwrap.TextWrapper(width=80,break_long_words=False)
-        word_list = wrapper.wrap(text=paragraph) 
+        wrapper = textwrap.TextWrapper(width=80, break_long_words=False)
+        word_list = wrapper.wrap(text=paragraph)
 
         with io.StringIO() as buffer, redirect_stdout(buffer):
             for element in word_list:
@@ -380,7 +384,8 @@ def unknown_word(static_dict, state_dict):
     return
 
 
-def look(room_dict, state_dict, description_dict, static_dict, descript_updates_dict):
+def look(room_dict, state_dict, description_dict, static_dict,
+        descript_updates_dict):
 
     room = state_dict['room']
     features = room_dict[room]['features']
@@ -407,9 +412,9 @@ def str_to_lst(user_input):
     return(lst[0].split())
 
 
-def description_update(description_key, update_key, description_dict, descript_updates_dict):
+def description_update(description_key, update_key, description_dict,
+        descript_updates_dict):
     descript_updates_dict[description_key] = description_dict[update_key]
-#    description_dict[description_key] = description_dict[update_key]
     return
 
 
@@ -419,7 +424,7 @@ def print_score(state_dict, static_dict):
     max_score = static_dict['global_dict']['max_score']
 
     printtw("Your score is now " + str(current_score)
-        + " out of " + str(max_score))	
+        + " out of " + str(max_score))
     return
 
 
@@ -467,12 +472,14 @@ def room_action(
         door_state = door_dict[door_name]['door_state']
         if door_state == 'open':
             state_dict['room'] = next_room
-            look(room_dict, state_dict, description_dict, static_dict, descript_updates_dict)
+            look(room_dict, state_dict, description_dict, static_dict,
+                descript_updates_dict)
         else:
             printtw("The " + door_name + " is closed.")
     elif action == "passage":
         state_dict['room'] = next_room
-        look(room_dict, state_dict, description_dict, static_dict, descript_updates_dict)
+        look(room_dict, state_dict, description_dict, static_dict,
+            descript_updates_dict)
     return
 
 
@@ -530,12 +537,15 @@ def interpreter_text(
     if user_input == 'start of game':
         printtw(description_dict['intro'])
         printtw(description_dict['help'])
-        look(room_dict, state_dict, description_dict, static_dict, descript_updates_dict)
+        look(room_dict, state_dict, description_dict, static_dict,
+            descript_updates_dict)
         portcullis_code = random.randint(0, 7)
         switch_dict['big_red_button']['success_value'] = portcullis_code
-        port_code_txt = "'..ode is " + str(portcullis_code) + ". Don't tell anyo..'"
+        port_code_txt = "'..ode is " + str(portcullis_code) \
+            + ". Don't tell anyo..'"
         descript_updates_dict['messy_handwriting-read'] = port_code_txt
-        return state_dict['end_of_game'], output, room_dict, door_dict, switch_dict, creature_dict, state_dict
+        return (state_dict['end_of_game'], output, room_dict, door_dict,
+            switch_dict, creature_dict, state_dict)
 
 # *** Convert User Input to single word strings ***
 
@@ -551,7 +561,8 @@ def interpreter_text(
 
     if (word1 in allowed_verbs) and (len(user_input_lst) == 1):
         printtw(word1 + " what Burt?")
-        return state_dict['end_of_game'], output, room_dict, door_dict, switch_dict, creature_dict, state_dict
+        return (state_dict['end_of_game'], output, room_dict, door_dict,
+            switch_dict, creature_dict, state_dict)
 
     score_key = word1 + "-" + word2
     trigger_key = score_key
@@ -566,7 +577,8 @@ def interpreter_text(
                 trigger_key, room_dict, description_dict,
                 state_dict, static_dict, door_dict, creature_dict,
                 descript_updates_dict):
-            return state_dict['end_of_game'], output, room_dict, door_dict, switch_dict, creature_dict, state_dict
+            return (state_dict['end_of_game'], output, room_dict, door_dict,
+                switch_dict, creature_dict, state_dict)
 
 
 # --- Handle One Word Commands
@@ -575,7 +587,8 @@ def interpreter_text(
         printtw(description_dict['help'])
 
     elif word1 == "look":
-        look(room_dict, state_dict, description_dict, static_dict, descript_updates_dict)
+        look(room_dict, state_dict, description_dict, static_dict,
+            descript_updates_dict)
 
     elif word1 == "score":
         print_score(state_dict, static_dict)
@@ -671,7 +684,7 @@ def interpreter_text(
                     if len(door_dict[container]['contains']) == 0:
                         door_dict[container]['contains'].append('nothing')
                     del state_dict['item_containers'][word2]
-            printtw("Taken") # confirm to play that item has been taken
+            printtw("Taken")  # confirm to play that item has been taken
 
             # *** if the backpack is now empty add placeholder "nothing" ***
             if len(backpack) == 0:
@@ -682,7 +695,7 @@ def interpreter_text(
             # *** if worn is now empty add the placeholder "nothing" to it ***
             if len(worn) == 0:
                 worn.append("nothing")
-                printtw(description_dict[score_key + '-worn']) # worn removal txt
+                printtw(description_dict[score_key + '-worn'])  # wrn remove txt
             # *** ensure we don't get multiple "nothing" in worn ***
             if len(worn) > 1 and "nothing" in backpack:
                 worn.remove("nothing")
@@ -799,8 +812,10 @@ def interpreter_text(
         visible_items = (hand + backpack + worn + room_items + room_features
             + room_view_only)
 
-        if (word2 in static_dict['written_on_dict'].values()) and (word2 in visible_items):
-            printtw("Burt, you can't read the " + word2 + " itself - you have to read the text that's written *on* it!")
+        if (word2 in static_dict['written_on_dict'].values()) \
+            and (word2 in visible_items):
+            printtw("Burt, you can't read the " + word2
+                + " itself - you have to read the text that's written *on* it!")
         elif word2 not in allowed_lang_dict['can_be_read']:
             printtw("Burt you can't " + word1 + " that!")
         elif static_dict['written_on_dict'][word2] not in visible_items:
@@ -982,7 +997,9 @@ def interpreter_text(
         unknown_word(static_dict, state_dict)
 
     if state_dict['active_timer'] != 'none':
-        timer(room_dict, state_dict, description_dict, descript_updates_dict, creature_dict)
+        timer(room_dict, state_dict, description_dict, descript_updates_dict,
+            creature_dict)
 
-    return state_dict['end_of_game'], output, room_dict, door_dict, switch_dict, creature_dict, state_dict
+    return (state_dict['end_of_game'], output, room_dict, door_dict,
+        switch_dict, creature_dict, state_dict)
 
