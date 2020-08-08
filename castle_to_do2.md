@@ -47,8 +47,8 @@
 				- DONE: On attempt to 'wear hedgehog_broach' - "You can't bring yourself to put it on - the memories of seeing your dear Nana wearing it are suddenly too fresh. Perahps there is something else around the castle you could wear?"
 					- pre-action trigger not working
 					- problem solved - was treating 'hand' as a string when it's actually a list (argh!!)
-				- IN PROC: style check
-				- full play-through test
+				- DONE: style check
+				- DONE: full play-through test
 
 
 To Dos:
@@ -121,13 +121,13 @@ The Zen of Functionalizing - Detailed Notes:
 			- nb: most of my errors were just long-standing variable passing misses... I guess it was lax in the monolithic form
 
 2.1.4 - Clean-up
-	- Additional Puzzle Clues:
-		- call the crown 'royal_crown' in Nana's memory
-		- Indicate in the grimy_axe description that it could kill a crocodile
+	- DONE: Additional Puzzle Clues:
+		- DONE: call the crown 'royal_crown' in Nana's memory
+		- DONE: Indicate in the grimy_axe description that it could kill a crocodile
 			- 'small_print' = 'ACME Axe: Effective at dispatching small dragons, large crocidiles, and even the most agressive of trees.'
-	- Features:
-		- Add a 'version' command (set in static_dict['version'])
-		- Add 'you can't X and object that's not in your hand' error for allowed_verbs; also: 'you can only read text'
+	- DONE: Features:
+		- DONE: Add a 'version' command (set in static_dict['version'])
+		- DONE: Add 'you can't X and object that's not in your hand' error for allowed_verbs; also: 'you can only read text'
 
 
 	- flaskify main routine

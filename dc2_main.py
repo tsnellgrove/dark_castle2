@@ -1,4 +1,4 @@
-"""Dark Castle 2.1.4 (candidate)
+"""Dark Castle 2.1.4 (complete)
 
 This is a simple Zork-like text adventure game.
 I am creating it in order to learn how to program in Python.
@@ -7,7 +7,7 @@ This is the front-end code
 
 Written and programmed by Tom Snellgrove
 
-Last update = August 7, 2020
+Last update = August 8, 2020
 """
 
 # *** Imports ***
@@ -110,7 +110,7 @@ state_dict = {
     'hand': ["nothing"],
     'worn': ['nothing'],
     'backpack': ['rusty_key', 'stale_biscuits'],
-    'view_special': ['fist', 'burt', 'conscious'],
+    'view_special': ['fist', 'burt', 'conscience'],
     'item_containers': {'scroll_of_the_king': 'crystal_box'},
     'max_count': {'broach_found': 1},
     'move_counter': 0,
@@ -155,9 +155,10 @@ while end_of_game is False:
     else:
         user_input = input("> ").lower()
     end_of_game, output, room_dict, door_dict, switch_dict, \
-        creature_dict, state_dict = interpreter_text(
-        user_input, room_dict, door_dict, state_dict,
-        creature_dict, switch_dict, descript_updates_dict)
+        creature_dict, state_dict \
+        = interpreter_text(
+            user_input, room_dict, door_dict, state_dict,
+            creature_dict, switch_dict, descript_updates_dict)
     print(output, end='')
 print("THANKS FOR PLAYING!")
 exit()
