@@ -3,7 +3,7 @@
 
 *** Future Versions and Features ***
 
-2.1.x Website To Do
+2.1.x - functionalize darkcastle into a client-server app
 	- 2.1.0 - decice on repo strat: fork?, branch?, new repo?
 			- July 13: Reading up on Git branching - sounds like tags will be helpful - more research to do
 			- July 14: Read up on app versioning - I need to get more consistent about this
@@ -49,6 +49,14 @@
 					- problem solved - was treating 'hand' as a string when it's actually a list (argh!!)
 				- DONE: style check
 				- DONE: full play-through test
+	-2.2.x - flaskify client-server app
+		-2.2.0 - basic 'wiring' for flaskification
+			- DONE: Copy static and template directories into repo
+			- DONE: Create copies of client & server app in repo
+			- DONE: Update import statement in main and pefrom basic functionality test
+			- DONE: Copy flash variable assignment into dc22_main.py
+			- 'wire-up' flask and client-server control variables
+			- 'sessionize' client-server dictionary variables
 
 
 To Dos:

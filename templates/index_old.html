@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><h1>Dark Castle</h1></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Welcome to Dark Castle!</h1>
+            <br>
+
+            <p>Adventure Text:</p>
+            <p>{{ output }}</p>
+            <br>
+
+            <p>Enter your command:</p>
+            <form method="post" action=".">
+                <p><input name="player_command" /></p>
+                <p><input type="submit" value="Submit" /></p>
+            </form>
+
+        </div>
+    </body>
+</html>

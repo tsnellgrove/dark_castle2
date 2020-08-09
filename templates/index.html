@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title>Dark Castle</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Welcome to Dark Castle!</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{ msg }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <table>
+        <tr>
+            <th>Moves</th>
+            <th>Score</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <br>
+    <p>Adventure Text:</p>
+    <p>{{ output }}</p>
+    <br>
+    <p>Enter your command:</p>
+    <form method="POST" action="">
+        <p><input type = "text" name="player_command" /></p>
+        <p><input type="submit" name="submit_button" value="Submit" /></p>
+        <p><input type="submit" name="submit_button" value="Restart" /></p>
+    </form>
+</div>
+{% endblock %}
+
+
+
