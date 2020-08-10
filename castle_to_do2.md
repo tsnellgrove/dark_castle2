@@ -55,9 +55,20 @@
 			- DONE: Create copies of client & server app in repo
 			- DONE: Update import statement in main and pefrom basic functionality test
 			- DONE: Copy flash variable assignment into dc22_main.py
+			- DONE: 'sessionize' client-server dictionary variables
+			- DONE: Added remaining code from flask_test3
+			- Sort out actual function call
 			- 'wire-up' flask and client-server control variables
-			- 'sessionize' client-server dictionary variables
-
+			- link variable calls / updates to index.html
+			- internalize implicit while loop of flask in calls
+			- maybe move non-dictionary variables back to top ???
+			- Someday - update to nice template
+			- Someday - tab for readme and github link
+			- Someday - tab for feedback
+			- Someday - moves, score, and version presented continuously in corners of index.htm.
+			- Someday - fresh repo with only the needed code
+			- Someday - update doc!
+			
 
 To Dos:
 
@@ -236,6 +247,7 @@ Some Day:
 	concept of the container being _in_ the room - currently contents basically just dumped to room
 
 5.x Additional rooms
+	Have portait of Willie revealed in throne room and give player mouse hole and time travel quest
 	5th room
 		mouse hole - to exercise existing capabilities (e.g. "food" that can be eaten)
 		copper key opens cabinet which holds potion
@@ -254,6 +266,9 @@ Some Day:
 		repeat option like 'again' / 'g' in Zork (JE request)
 	Possibly add a room 6 with time travel??
 		find a use for the word "griffonage" (illegible handwriting)
+		Opportunity to include princess in game - perhaps have Willie give her the hedgehog_broach to time travel
+		Depict future (opportunity but challenges) by painting to portrait
+		Also get key from time travel - put in container and then refind 100 years later
 
 5.x Future Ideas:
 	fun idea - small creature - like a mouse - as an item

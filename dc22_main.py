@@ -7,7 +7,7 @@ This is the front-end code
 
 Written and programmed by Tom Snellgrove
 
-Last update = August 9, 2020
+Last update = August 10, 2020
 """
 
 # *** Imports ***
@@ -33,31 +33,13 @@ def index():
 
     # Initial falsh variable assignment
     if "id" not in session:
-        session['id'] = 'active'
-        session["game_over"] = False
-        session['player_command'] = "blank"
-        session['buffer_txt'] = ""
-        session['test_lst'] = []
-        session['restart'] = False
-        session["count"] = 0
-        session.permanent = True
-
-# XXX
-# XXX NEED TO WIRE TOGETHER FLASH AND CLIENT-SERVER VARIABLES
-# XXX NEED TO SESSIONIZE DICTIONARY VARIABLES
-# XXX
-
-        # *** Client-Sever Control Variable Assignment ***
-        start_of_game = True
-        end_of_game = False
-        output = ""
 
         # *** Client-Sever Dictionary Variable Assignment ***
 
-        descript_updates_dict = {}
+        session.['descript_updates_dict'] = {}
 
         # --- Door Dictionary [Variable]
-        door_dict = {
+        session.['door_dict'] = {
             'front_gate': {
                 'door_state': 'closed',
                 'lock_state': 'locked',
@@ -80,7 +62,7 @@ def index():
         }
 
         # --- Switch Dictionary [Variable]
-        switch_dict = {
+        session.['switch_dict'] = {
             # *** Control Panel ***
             'left_lever': {
                 'state': 'down'
@@ -99,7 +81,7 @@ def index():
         }
 
         # --- Room Dictionary [VARIABLE]
-        room_dict = {
+        session.['room_dict'] = {
             'entrance': {
                 'features': ["front_gate"],
                 'items': [],
@@ -123,7 +105,7 @@ def index():
         }
 
         # --- Creature Dictionary [VARIABLE]
-        creature_dict = {
+        session.['creature_dict'] = {
             'hedgehog': {
                 'drops': [],
                 'state': 'hungry_has_sword',
@@ -140,7 +122,7 @@ def index():
         }
 
         # --- State Dictionary [VARIABLE]
-        state_dict = {
+        session.['state_dict'] = {
             'room': 'entrance',
             'hand': ["nothing"],
             'worn': ['nothing'],
@@ -172,15 +154,68 @@ def index():
             }
         }
 
-        # post variable aissignment flask flash message
-        flash(f"Welcome to Dark Castle Tester - please enter a primary color", "info")
+        session['id'] = 'active'
+#        session["game_over"] = False
+#        session['player_command'] = "blank"
+#        session['buffer_txt'] = ""
+##        session['test_lst'] = []
+##        session['restart'] = False
+##        session["count"] = 0
+
+        # *** Client-Sever Control Variable Assignment ***
+        session.['user_input'] = "start of game"
+        session.['start_of_game'] = True
+        session.['end_of_game'] = False
+        session.['output'] = ""
+
+        session.permanent = True
 
 # ****************
 # --- Main Routine
 # ****************
 
+        # post variable aissignment flask flash message
+        flash(f"WELCOME TO DARK CASTLE", "info")
+
+    if request.method == "POST":
+
+        if request.form['submit_button'] == 'Submit':
+            session['player_command'] = str(request.form['player_command'])
+            session['user_input'] = str(request.form['user_input'])
+#            session["count"] = session["count"] + 1
+##            print(session['count'])
+        if request.form['submit_button'] == 'Restart':
+#            session['restart'] = True
+            session['end_of_game'] = True
+
+        if session['end_of_game']:
+#        if session['restart']:
+            session.pop('id', None)
+            flash(f"WELCOME TO DARK CASTLE - PLEASE ENTER A COMMAND", "info")
+
+        elif not session["end_of_game"]:
+#        elif not session["game_over"]:
+            session["buffer_txt"], session["game_over"], session["test_lst"] = do_calculation(session['player_command'], session["test_lst"])
+            session.modified = True
+
+        else: # if session['game_over'] == True
+##            count = session['count']
+#            flash(f"THANKS FOR PLAYING! YOUR GAME HAS ENDED AFTER {count} MOVES - PRESS 'RESTART' TO PLAY AGAIN", "info")
+            flash(f"THANKS FOR PLAYING! YOUR GAME HAS ENDED - PRESS 'RESTART' TO PLAY AGAIN", "info")
+
+    else:
+        print('How did we get here?')
+
+#    return render_template('index.html', output = session["buffer_txt"], my_list = session["test_lst"])
+    return render_template('index.html', output = session['output'])
+
+if __name__ == '__main__':
+    app.run(use_reloader=False, debug=True)
+
+
+
 # *** Get User Input ***
-print("WELCOME TO DARK CASTLE!\n")
+#print("WELCOME TO DARK CASTLE!\n")
 while end_of_game is False:
     if start_of_game:
         user_input = 'start of game'
@@ -193,7 +228,7 @@ while end_of_game is False:
             user_input, room_dict, door_dict, state_dict,
             creature_dict, switch_dict, descript_updates_dict)
     print(output, end='')
-print("THANKS FOR PLAYING!")
-exit()
+#print("THANKS FOR PLAYING!")
+#exit()
 
 
