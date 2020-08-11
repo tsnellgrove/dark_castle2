@@ -57,11 +57,16 @@
 			- DONE: Copy flash variable assignment into dc22_main.py
 			- DONE: 'sessionize' client-server dictionary variables
 			- DONE: Added remaining code from flask_test3
-			- Sort out actual function call
-			- 'wire-up' flask and client-server control variables
-			- link variable calls / updates to index.html
-			- internalize implicit while loop of flask in calls
+			- DONE: Finish updating flask code in main
+				- DONE: re-enable the 'restart' variable
+				- DONE: Sort out actual function call
+				- DONE: 'wire-up' flask and client-server control variables
+				- DONE: link variable calls / updates to index.html
+				- DONE: internalize implicit while loop of flask in calls
+			- Run and troubleshoot!!!
+			- QUESTION: why don't I return descript_updates_dict back to main???
 			- maybe move non-dictionary variables back to top ???
+		-2.x.y
 			- Someday - update to nice template
 			- Someday - tab for readme and github link
 			- Someday - tab for feedback

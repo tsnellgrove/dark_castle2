@@ -7,7 +7,7 @@ This is the front-end code
 
 Written and programmed by Tom Snellgrove
 
-Last update = August 10, 2020
+Last update = August 11, 2020
 """
 
 # *** Imports ***
@@ -36,10 +36,10 @@ def index():
 
         # *** Client-Sever Dictionary Variable Assignment ***
 
-        session.['descript_updates_dict'] = {}
+        session['descript_updates_dict'] = {}
 
         # --- Door Dictionary [Variable]
-        session.['door_dict'] = {
+        session['door_dict'] = {
             'front_gate': {
                 'door_state': 'closed',
                 'lock_state': 'locked',
@@ -62,7 +62,7 @@ def index():
         }
 
         # --- Switch Dictionary [Variable]
-        session.['switch_dict'] = {
+        session['switch_dict'] = {
             # *** Control Panel ***
             'left_lever': {
                 'state': 'down'
@@ -81,7 +81,7 @@ def index():
         }
 
         # --- Room Dictionary [VARIABLE]
-        session.['room_dict'] = {
+        session['room_dict'] = {
             'entrance': {
                 'features': ["front_gate"],
                 'items': [],
@@ -105,7 +105,7 @@ def index():
         }
 
         # --- Creature Dictionary [VARIABLE]
-        session.['creature_dict'] = {
+        session['creature_dict'] = {
             'hedgehog': {
                 'drops': [],
                 'state': 'hungry_has_sword',
@@ -122,7 +122,7 @@ def index():
         }
 
         # --- State Dictionary [VARIABLE]
-        session.['state_dict'] = {
+        session['state_dict'] = {
             'room': 'entrance',
             'hand': ["nothing"],
             'worn': ['nothing'],
@@ -159,14 +159,14 @@ def index():
 #        session['player_command'] = "blank"
 #        session['buffer_txt'] = ""
 ##        session['test_lst'] = []
-##        session['restart'] = False
+        session['restart'] = False
 ##        session["count"] = 0
 
         # *** Client-Sever Control Variable Assignment ***
-        session.['user_input'] = "start of game"
-        session.['start_of_game'] = True
-        session.['end_of_game'] = False
-        session.['output'] = ""
+        session['user_input'] = "start of game"
+        session['start_of_game'] = True
+        session['end_of_game'] = False
+        session['output'] = ""
 
         session.permanent = True
 
@@ -180,22 +180,21 @@ def index():
     if request.method == "POST":
 
         if request.form['submit_button'] == 'Submit':
-            session['player_command'] = str(request.form['player_command'])
-            session['user_input'] = str(request.form['user_input'])
+#            session['player_command'] = str(request.form['player_command'])
+            session['user_input'] = str(request.form['user_input']).lower()
 #            session["count"] = session["count"] + 1
 ##            print(session['count'])
         if request.form['submit_button'] == 'Restart':
-#            session['restart'] = True
-            session['end_of_game'] = True
+            session['restart'] = True
 
-        if session['end_of_game']:
-#        if session['restart']:
+        if session['restart']:
             session.pop('id', None)
             flash(f"WELCOME TO DARK CASTLE - PLEASE ENTER A COMMAND", "info")
 
         elif not session["end_of_game"]:
 #        elif not session["game_over"]:
-            session["buffer_txt"], session["game_over"], session["test_lst"] = do_calculation(session['player_command'], session["test_lst"])
+#            session["buffer_txt"], session["game_over"], session["test_lst"] = do_calculation(session['player_command'], session["test_lst"])
+            session['end_of_game'], session['output'], session['room_dict'], session['door_dict'], session['switch_dict'], session['creature_dict'], session['state_dict'] = interpreter_text(session['user_input'], session['room_dict'], session['door_dict'], session['state_dict'], session['creature_dict'], session['switch_dict'], session['descript_updates_dict'])
             session.modified = True
 
         else: # if session['game_over'] == True
@@ -205,6 +204,12 @@ def index():
 
     else:
         print('How did we get here?')
+
+    if session['start_of_game']:
+#            session["buffer_txt"], session["game_over"], session["test_lst"] = do_calculation(session['player_command'], session["test_lst"])
+            session['end_of_game'], session['output'], session['room_dict'], session['door_dict'], session['switch_dict'], session['creature_dict'], session['state_dict'] = interpreter_text(session['user_input'], session['room_dict'], session['door_dict'], session['state_dict'], session['creature_dict'], session['switch_dict'], session['descript_updates_dict'])
+            session['start_of_game'] = False
+            session.modified = True
 
 #    return render_template('index.html', output = session["buffer_txt"], my_list = session["test_lst"])
     return render_template('index.html', output = session['output'])
@@ -216,18 +221,18 @@ if __name__ == '__main__':
 
 # *** Get User Input ***
 #print("WELCOME TO DARK CASTLE!\n")
-while end_of_game is False:
-    if start_of_game:
-        user_input = 'start of game'
-        start_of_game = False
-    else:
-        user_input = input("> ").lower()
-    end_of_game, output, room_dict, door_dict, switch_dict, \
-        creature_dict, state_dict \
-        = interpreter_text(
-            user_input, room_dict, door_dict, state_dict,
-            creature_dict, switch_dict, descript_updates_dict)
-    print(output, end='')
+#while end_of_game is False:
+#    if start_of_game:
+#        user_input = 'start of game'
+#        start_of_game = False
+#    else:
+#        user_input = input("> ").lower()
+#    end_of_game, output, room_dict, door_dict, switch_dict, \
+#        creature_dict, state_dict \
+#        = interpreter_text(
+#            user_input, room_dict, door_dict, state_dict,
+#            creature_dict, switch_dict, descript_updates_dict)
+#    print(output, end='')
 #print("THANKS FOR PLAYING!")
 #exit()
 
