@@ -7,7 +7,7 @@ This is the front-end code
 
 Written and programmed by Tom Snellgrove
 
-Last update = August 12, 2020
+Last update = August 13, 2020
 """
 
 # *** Imports ***
@@ -179,31 +179,40 @@ def index():
 
     if request.method == "POST":
 
-        print("GOT TO POST")
+#        print("GOT TO POST")
 
         if request.form['submit_button'] == 'Submit':
 
-            print("GOT TO SUBMIT ROUTINE")
+#            print("GOT TO SUBMIT ROUTINE")
+#            print(session['user_input'])
 
 #            session['player_command'] = str(request.form['player_command'])
             session['user_input'] = str(request.form['user_input']).lower()
 #            session["count"] = session["count"] + 1
 ##            print(session['count'])
 
-            print(session['user_input'])
+#            print(session['user_input'])
 
         if request.form['submit_button'] == 'Restart':
             session['restart'] = True
 
-        if session['restart']:
+### CAN'T WE MEREGE THESE 2 IF STATEMENTS??
+
+#        if session['restart']:
             session.pop('id', None)
             flash(f"WELCOME TO DARK CASTLE - PLEASE ENTER A COMMAND", "info")
 
-        elif not session["end_of_game"]:
+
+        elif not session['end_of_game']:
 #        elif not session["game_over"]:
 #            session["buffer_txt"], session["game_over"], session["test_lst"] = do_calculation(session['player_command'], session["test_lst"])
+
+#            print("GOT TO NON-START-OF-GAME GET")
+
             session['end_of_game'], session['output'], session['room_dict'], session['door_dict'], session['switch_dict'], session['creature_dict'], session['state_dict'] = interpreter_text(session['user_input'], session['room_dict'], session['door_dict'], session['state_dict'], session['creature_dict'], session['switch_dict'], session['descript_updates_dict'])
             session.modified = True
+
+#            print(session['output'])
 
         else: # if session['game_over'] == True
 ##            count = session['count']
@@ -220,7 +229,7 @@ def index():
                 session.modified = True
 
 #.       return render_template('index.html', output = session["buffer_txt"], my_list = session["test_lst"])
-        return render_template('index.html', output = session['output'])
+    return render_template('index.html', output = session['output'])
 
 if __name__ == '__main__':
     app.run(use_reloader=False, debug=True)

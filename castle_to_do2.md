@@ -65,7 +65,10 @@
 				- DONE: internalize implicit while loop of flask in calls
 			- DONE: Run and troubleshoot initial run errors
 				- I get to the submit routine but but I can't print the submit value??
-			- Run and troubleshoot web errors
+			- DONE: Run and troubleshoot web errors
+				- Primitive functionality achieved!!!
+			- Clean up test comments
+			- Troubleshoot restart functionality
 			- QUESTION: why don't I return descript_updates_dict back to main???
 			- maybe move non-dictionary variables back to top ???
 		-2.x.y
@@ -74,6 +77,7 @@
 			- Someday - tab for readme and github link
 			- Someday - tab for feedback
 			- Someday - moves, score, and version presented continuously in corners of index.htm.
+			- Someday - provide scrolling log of past moves
 			- Someday - fresh repo with only the needed code
 			- Someday - update doc!
 			
