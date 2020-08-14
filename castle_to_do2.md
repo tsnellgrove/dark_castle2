@@ -67,8 +67,10 @@
 				- I get to the submit routine but but I can't print the submit value??
 			- DONE: Run and troubleshoot web errors
 				- Primitive functionality achieved!!!
-			- Clean up test comments
+			- DONE: Clean up test comments
 			- Troubleshoot restart functionality
+				- Need to review code flow... walk through the ifels on paper... upon restart need to reset variables and play start of game txt
+				- Also track end of game through code block flow
 			- QUESTION: why don't I return descript_updates_dict back to main???
 			- maybe move non-dictionary variables back to top ???
 		-2.x.y

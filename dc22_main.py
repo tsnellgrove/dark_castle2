@@ -7,7 +7,7 @@ This is the front-end code
 
 Written and programmed by Tom Snellgrove
 
-Last update = August 13, 2020
+Last update = August 14, 2020
 """
 
 # *** Imports ***
@@ -32,7 +32,7 @@ app.permanent_session_lifetime = timedelta(minutes = 120)
 def index():
 
     # Initial falsh variable assignment
-    if "id" not in session:
+    if 'id' not in session:
 
         # *** Client-Sever Dictionary Variable Assignment ***
 
@@ -174,61 +174,39 @@ def index():
 # --- Main Routine
 # ****************
 
-        # post variable aissignment flask flash message
+        # post variable aissignment flask flash message for new session
         flash(f"WELCOME TO DARK CASTLE", "info")
 
+    print(session['start_of_game'])
+
+    if session['start_of_game']:
+            session['end_of_game'], session['output'], session['room_dict'], session['door_dict'], session['switch_dict'], session['creature_dict'], session['state_dict'] = interpreter_text(session['user_input'], session['room_dict'], session['door_dict'], session['state_dict'], session['creature_dict'], session['switch_dict'], session['descript_updates_dict'])
+            session['start_of_game'] = False
+            session.modified = True
+            return render_template('index.html', output = session['output'])
+
     if request.method == "POST":
-
-#        print("GOT TO POST")
-
         if request.form['submit_button'] == 'Submit':
-
-#            print("GOT TO SUBMIT ROUTINE")
-#            print(session['user_input'])
-
-#            session['player_command'] = str(request.form['player_command'])
             session['user_input'] = str(request.form['user_input']).lower()
-#            session["count"] = session["count"] + 1
-##            print(session['count'])
-
-#            print(session['user_input'])
-
         if request.form['submit_button'] == 'Restart':
             session['restart'] = True
-
-### CAN'T WE MEREGE THESE 2 IF STATEMENTS??
-
-#        if session['restart']:
+            session['start_of_game'] = True
+            session['user_input'] = "start of game"
             session.pop('id', None)
             flash(f"WELCOME TO DARK CASTLE - PLEASE ENTER A COMMAND", "info")
 
-
         elif not session['end_of_game']:
-#        elif not session["game_over"]:
-#            session["buffer_txt"], session["game_over"], session["test_lst"] = do_calculation(session['player_command'], session["test_lst"])
-
-#            print("GOT TO NON-START-OF-GAME GET")
-
             session['end_of_game'], session['output'], session['room_dict'], session['door_dict'], session['switch_dict'], session['creature_dict'], session['state_dict'] = interpreter_text(session['user_input'], session['room_dict'], session['door_dict'], session['state_dict'], session['creature_dict'], session['switch_dict'], session['descript_updates_dict'])
             session.modified = True
-
-#            print(session['output'])
-
         else: # if session['game_over'] == True
-##            count = session['count']
-#            flash(f"THANKS FOR PLAYING! YOUR GAME HAS ENDED AFTER {count} MOVES - PRESS 'RESTART' TO PLAY AGAIN", "info")
             flash(f"THANKS FOR PLAYING! YOUR GAME HAS ENDED - PRESS 'RESTART' TO PLAY AGAIN", "info")
 
-    else:  # (if not POST must be GET)
-#         print('How did we get here?')
+#    else:  # (if not POST must be GET)
+#        if session['start_of_game']:
+#                session['end_of_game'], session['output'], session['room_dict'], session['door_dict'], session['switch_dict'], session['creature_dict'], session['state_dict'] = interpreter_text(session['user_input'], session['room_dict'], session['door_dict'], session['state_dict'], session['creature_dict'], session['switch_dict'], session['descript_updates_dict'])
+#                session['start_of_game'] = False
+#                session.modified = True
 
-        if session['start_of_game']:
-#                session["buffer_txt"], session["game_over"], session["test_lst"] = do_calculation(session['player_command'], session["test_lst"])
-                session['end_of_game'], session['output'], session['room_dict'], session['door_dict'], session['switch_dict'], session['creature_dict'], session['state_dict'] = interpreter_text(session['user_input'], session['room_dict'], session['door_dict'], session['state_dict'], session['creature_dict'], session['switch_dict'], session['descript_updates_dict'])
-                session['start_of_game'] = False
-                session.modified = True
-
-#.       return render_template('index.html', output = session["buffer_txt"], my_list = session["test_lst"])
     return render_template('index.html', output = session['output'])
 
 if __name__ == '__main__':
