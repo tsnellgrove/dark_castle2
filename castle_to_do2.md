@@ -68,12 +68,16 @@
 			- DONE: Run and troubleshoot web errors
 				- Primitive functionality achieved!!!
 			- DONE: Clean up test comments
-			- Troubleshoot restart functionality
+			- DONE: Troubleshoot restart functionality
 				- Need to review code flow... walk through the ifels on paper... upon restart need to reset variables and play start of game txt
 				- Also track end of game through code block flow
+			- clean up troubleshooting comments
+			- full game playthrough
+			- update static_dict and comments version numbers
+			- post to pythonanywhere
+		-2.x.y
 			- QUESTION: why don't I return descript_updates_dict back to main???
 			- maybe move non-dictionary variables back to top ???
-		-2.x.y
 			- will need a routine the 'htmlize' my output text
 			- Someday - update to nice template
 			- Someday - tab for readme and github link

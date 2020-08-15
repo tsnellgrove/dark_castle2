@@ -7,7 +7,7 @@ This is the front-end code
 
 Written and programmed by Tom Snellgrove
 
-Last update = August 14, 2020
+Last update = August 15, 2020
 """
 
 # *** Imports ***
@@ -159,11 +159,12 @@ def index():
 #        session['player_command'] = "blank"
 #        session['buffer_txt'] = ""
 ##        session['test_lst'] = []
-        session['restart'] = False
+#        session['restart'] = False
 ##        session["count"] = 0
 
         # *** Client-Sever Control Variable Assignment ***
-        session['user_input'] = "start of game"
+        session['user_input'] = ""
+#        session['user_input'] = "start of game"
         session['start_of_game'] = True
         session['end_of_game'] = False
         session['output'] = ""
@@ -175,31 +176,33 @@ def index():
 # ****************
 
         # post variable aissignment flask flash message for new session
-        flash(f"WELCOME TO DARK CASTLE", "info")
+#        flash(f"WELCOME TO DARK CASTLE - PLEASE ENTER A COMMAND", "info")
 
-    print(session['start_of_game'])
+#    print(session['start_of_game'])
 
-    if session['start_of_game']:
-            session['end_of_game'], session['output'], session['room_dict'], session['door_dict'], session['switch_dict'], session['creature_dict'], session['state_dict'] = interpreter_text(session['user_input'], session['room_dict'], session['door_dict'], session['state_dict'], session['creature_dict'], session['switch_dict'], session['descript_updates_dict'])
-            session['start_of_game'] = False
-            session.modified = True
-            return render_template('index.html', output = session['output'])
 
-    if request.method == "POST":
-        if request.form['submit_button'] == 'Submit':
-            session['user_input'] = str(request.form['user_input']).lower()
-        if request.form['submit_button'] == 'Restart':
-            session['restart'] = True
-            session['start_of_game'] = True
-            session['user_input'] = "start of game"
-            session.pop('id', None)
-            flash(f"WELCOME TO DARK CASTLE - PLEASE ENTER A COMMAND", "info")
+    if not session['start_of_game']:
 
-        elif not session['end_of_game']:
-            session['end_of_game'], session['output'], session['room_dict'], session['door_dict'], session['switch_dict'], session['creature_dict'], session['state_dict'] = interpreter_text(session['user_input'], session['room_dict'], session['door_dict'], session['state_dict'], session['creature_dict'], session['switch_dict'], session['descript_updates_dict'])
-            session.modified = True
-        else: # if session['game_over'] == True
-            flash(f"THANKS FOR PLAYING! YOUR GAME HAS ENDED - PRESS 'RESTART' TO PLAY AGAIN", "info")
+
+#    elif request.method == "POST":
+        if request.method == "POST":
+
+            if request.form['submit_button'] == 'Submit':
+                session['user_input'] = str(request.form['user_input']).lower()
+
+            if request.form['submit_button'] == 'Restart':
+#                session['restart'] = True
+                session['start_of_game'] = True
+#                session['user_input'] = "start of game"
+                session.pop('id', None)
+#            flash(f"WELCOME TO DARK CASTLE - PLEASE ENTER A COMMAND", "info")
+
+            elif not session['end_of_game']:
+                session['end_of_game'], session['output'], session['room_dict'], session['door_dict'], session['switch_dict'], session['creature_dict'], session['state_dict'] = interpreter_text(session['user_input'], session['room_dict'], session['door_dict'], session['state_dict'], session['creature_dict'], session['switch_dict'], session['descript_updates_dict'])
+                session.modified = True
+
+            else: # if session['game_over'] == True
+                flash(f"THANKS FOR PLAYING! YOUR GAME HAS ENDED - PRESS 'RESTART' TO PLAY AGAIN", "info")
 
 #    else:  # (if not POST must be GET)
 #        if session['start_of_game']:
@@ -207,6 +210,16 @@ def index():
 #                session['start_of_game'] = False
 #                session.modified = True
 
+
+    if session['start_of_game']:
+        session['user_input'] = "start of game"
+        session['end_of_game'], session['output'], session['room_dict'], session['door_dict'], session['switch_dict'], session['creature_dict'], session['state_dict'] = interpreter_text(session['user_input'], session['room_dict'], session['door_dict'], session['state_dict'], session['creature_dict'], session['switch_dict'], session['descript_updates_dict'])
+        session['start_of_game'] = False
+        session.modified = True
+        flash(f"WELCOME TO DARK CASTLE - PLEASE ENTER A COMMAND", "info")
+#            return render_template('index.html', output = session['output'])
+
+#    if not session['restart']:
     return render_template('index.html', output = session['output'])
 
 if __name__ == '__main__':
