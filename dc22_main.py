@@ -156,7 +156,6 @@ def index():
         session['user_input'] = ""
         session['start_of_game'] = True
         session['end_of_game'] = False
-#        session['output'] = ""
         output = ""
 
         session.permanent = True
@@ -177,7 +176,6 @@ def index():
                 session.pop('id', None)
 
             elif not session['end_of_game']:
-#                session['end_of_game'], session['output'], \
                 session['end_of_game'], output, \
                     session['room_dict'], session['door_dict'], \
                     session['switch_dict'], session['creature_dict'], \
@@ -189,15 +187,12 @@ def index():
                         session['descript_updates_dict'])
                 session.modified = True
 
-#                print(session['output'])
-
             else:  # if session['game_over'] == True
                 flash(f"THANKS FOR PLAYING! YOUR GAME HAS ENDED - PRESS "
                     + "'RESTART' TO PLAY AGAIN", "info")
 
     if session['start_of_game']:
         session['user_input'] = "start of game"
-#        session['end_of_game'], session['output'], session['room_dict'], \
         session['end_of_game'], output, session['room_dict'], \
             session['door_dict'], session['switch_dict'], \
             session['creature_dict'], session['state_dict'], \
@@ -211,7 +206,6 @@ def index():
         session.modified = True
         flash(f"WELCOME TO DARK CASTLE - PLEASE ENTER A COMMAND", "info")
 
-#    return render_template('index.html', output=session['output'])
     return render_template('index.html', output=output)
 
 if __name__ == '__main__':

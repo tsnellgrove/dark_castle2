@@ -83,7 +83,12 @@
 					- How to disable auto-escaping: https://stackoverflow.com/questions/12244057/any-way-to-add-a-new-line-from-a-string-with-the-n-character-in-flask
 					- How to manually escape '<' and '>': https://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-in-html
 					- Overview doc: https://jinja.palletsprojects.com/en/2.11.x/templates/
-			- TROUBLESHOOT error on 'examine hedgehog_broach'
+			- DONE: troubleshoot error on 'examine hedgehog_broach' - convert session['output'] to non-session output variable 
+				- Does not need to persist across HTML renders
+				- instead, runs in memory for the specific user
+				- this avoids issues with the 4 KB client-side cookie limitation when rendering the hedgehog broach text
+				- problem solved by JoyEllen!
+				- tested on pythonanywhere.com where we both hit server with simultaneous submits at least a dozen times
 		-2.x.y
 			- Someday - update to nice template
 			- Someday - tab for readme and github link
