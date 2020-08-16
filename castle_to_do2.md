@@ -79,6 +79,9 @@
 		2.2.1
 			- DONE: post to pythonanywhere
 			- DONE: 'htmlize' my output text
+				- Key reference links:
+					- How to disable auto-escaping: https://stackoverflow.com/questions/12244057/any-way-to-add-a-new-line-from-a-string-with-the-n-character-in-flask
+					- How to manually escape '<' and '>': https://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-in-html
 		-2.x.y
 			- Someday - update to nice template
 			- Someday - tab for readme and github link
