@@ -91,6 +91,7 @@
 			- Someday - provide scrolling log of past moves
 			- Someday - fresh repo with only the needed code
 			- Someday - update doc!
+			- Someday - consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
 			
 
 To Dos:
