@@ -1,4 +1,4 @@
-"""Dark Castle 2.2.0
+"""Dark Castle 2.2.1
 
 This is a simple Zork-like text adventure game.
 I am creating it in order to learn how to program in Python.

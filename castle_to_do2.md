@@ -77,9 +77,8 @@
 			- DONE: update static_dict and comments version numbers
 			- DONE: win game playthrough
 		2.2.1
-			- post to pythonanywhere
-				- reset git on pythonanywhere - clear out old repository
-				- will need a routine the 'htmlize' my output text
+			- DONE: post to pythonanywhere
+			- DONE: 'htmlize' my output text
 		-2.x.y
 			- Someday - update to nice template
 			- Someday - tab for readme and github link

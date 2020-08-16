@@ -1,4 +1,4 @@
-"""Dark Castle 2.2.0
+"""Dark Castle 2.2.1
 
 This is a simple Zork-like text adventure game.
 I am creating it in order to learn how to program in Python.
@@ -75,7 +75,7 @@ path_dict = {
 static_dict = {
     'global_dict': {
         'max_score': 75,
-        'version': "2.2.0"
+        'version': "2.2.1"
     },
     'invalid_path_lst': [
         "Ouch! You have walked into a wall.",
@@ -371,9 +371,10 @@ def printtw(txt_str):
         word_list = wrapper.wrap(text=paragraph)
 
         with io.StringIO() as buffer, redirect_stdout(buffer):
+            print("<p>")
             for element in word_list:
-                print(element)
-            print()
+                print(element + "<br>")
+            print("</p>")
             output = output + buffer.getvalue()
 
     return

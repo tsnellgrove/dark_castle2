@@ -27,8 +27,9 @@
     </table>
     <br>
     <p>Adventure Text:</p>
+    {% autoescape false %}
     <p>{{ output }}</p>
-    <br>
+    {% endautoescape %}
     <p>Enter your command:</p>
     <form method="POST" action="">
         <p><input type = "text" name="user_input" /></p>
