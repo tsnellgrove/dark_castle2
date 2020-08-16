@@ -71,12 +71,13 @@
 			- DONE: Troubleshoot restart functionality
 				- Need to review code flow... walk through the ifels on paper... upon restart need to reset variables and play start of game txt
 				- Also track end of game through code block flow
-			- clean up troubleshooting comments
-			- full game playthrough
-			- update static_dict and comments version numbers
+			- DONE: clean up troubleshooting comments
+			- DONE: return descript_updates_dict back to main
+			- DONE: style clean-up
+			- DONE: update static_dict and comments version numbers
+			- DONE: win game playthrough
 			- post to pythonanywhere
 		-2.x.y
-			- QUESTION: why don't I return descript_updates_dict back to main???
 			- maybe move non-dictionary variables back to top ???
 			- will need a routine the 'htmlize' my output text
 			- Someday - update to nice template

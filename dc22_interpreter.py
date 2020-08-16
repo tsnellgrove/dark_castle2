@@ -1,4 +1,4 @@
-"""Dark Castle 2.2.0 (candidate)
+"""Dark Castle 2.2.0
 
 This is a simple Zork-like text adventure game.
 I am creating it in order to learn how to program in Python.
@@ -7,7 +7,7 @@ This is the back-end code
 
 Written and programmed by Tom Snellgrove
 
-Last update = August 9, 2020
+Last update = August 16, 2020
 """
 
 # *** Imports ***
@@ -75,7 +75,7 @@ path_dict = {
 static_dict = {
     'global_dict': {
         'max_score': 75,
-        'version': "2.2.0 (candidate)"
+        'version': "2.2.0"
     },
     'invalid_path_lst': [
         "Ouch! You have walked into a wall.",
@@ -552,7 +552,7 @@ def interpreter_text(
         descript_updates_dict['messy_handwriting-read'] = port_code_txt
         return (
             state_dict['end_of_game'], output, room_dict, door_dict,
-            switch_dict, creature_dict, state_dict)
+            switch_dict, creature_dict, state_dict, descript_updates_dict)
 
 # *** Convert User Input to single word strings ***
 
@@ -570,7 +570,7 @@ def interpreter_text(
         printtw(word1 + " what Burt?")
         return (
             state_dict['end_of_game'], output, room_dict, door_dict,
-            switch_dict, creature_dict, state_dict)
+            switch_dict, creature_dict, state_dict, descript_updates_dict)
 
     score_key = word1 + "-" + word2
     trigger_key = score_key
@@ -587,7 +587,7 @@ def interpreter_text(
                 descript_updates_dict):
             return(
                 state_dict['end_of_game'], output, room_dict, door_dict,
-                switch_dict, creature_dict, state_dict)
+                switch_dict, creature_dict, state_dict, descript_updates_dict)
 
 
 # --- Handle One Word Commands
@@ -1014,5 +1014,5 @@ def interpreter_text(
 
     return (
         state_dict['end_of_game'], output, room_dict, door_dict,
-        switch_dict, creature_dict, state_dict)
+        switch_dict, creature_dict, state_dict, descript_updates_dict)
 
