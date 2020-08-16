@@ -291,6 +291,13 @@ Some Day:
 		Opportunity to include princess in game - perhaps have Willie give her the hedgehog_broach to time travel
 		Depict future (opportunity but challenges) by painting to portrait
 		Also get key from time travel - put in container and then refind 100 years later
+		loose brick in dark_alcove - "appears not to have been disturbed for 100 years"
+		guard with key_detector in main hall
+		trade keys with princess? give her the hedgehog broach? maybe during dance in throne room
+		dungeon down stairs from throne room
+		in throne room 3 paintings of past and 1 blank space for future
+		key to open dungeon?
+		keys same colors as ready player 1
 
 5.x Future Ideas:
 	fun idea - small creature - like a mouse - as an item
