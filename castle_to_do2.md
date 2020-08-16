@@ -76,10 +76,11 @@
 			- DONE: style clean-up
 			- DONE: update static_dict and comments version numbers
 			- DONE: win game playthrough
+		2.2.1
 			- post to pythonanywhere
+				- reset git on pythonanywhere - clear out old repository
+				- will need a routine the 'htmlize' my output text
 		-2.x.y
-			- maybe move non-dictionary variables back to top ???
-			- will need a routine the 'htmlize' my output text
 			- Someday - update to nice template
 			- Someday - tab for readme and github link
 			- Someday - tab for feedback
