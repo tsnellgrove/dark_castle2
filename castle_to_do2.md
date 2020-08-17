@@ -89,16 +89,34 @@
 				- this avoids issues with the 4 KB client-side cookie limitation when rendering the hedgehog broach text
 				- problem solved by JoyEllen!
 				- tested on pythonanywhere.com where we both hit server with simultaneous submits at least a dozen times
-		-2.x.y
+		- 2.2.2
+			- DONE: Write up git for pythonanwhere steps
+			- Unify version doc
+			- Someday - moves, score, and version presented continuously in corners of index.htm.		
 			- Someday - update to nice template
 			- Someday - tab for readme and github link
+			- Someday - consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
+		-2.x.y
 			- Someday - tab for feedback
-			- Someday - moves, score, and version presented continuously in corners of index.htm.
 			- Someday - provide scrolling log of past moves
 			- Someday - fresh repo with only the needed code
 			- Someday - update doc!
-			- Someday - consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
+
 			
+Git for pythonanywhere.com
+1) New repo
+	A. Create new directory (e.g. dark_castle_2)
+	B. git clone <repo> <directory>
+	C. Go to pythonanywhere web tab
+	D. Set 'source code' and 'working directory' and, in WSGI, update the config with the name of the flask script (e.g. dc22_main.py)
+	E. click the button to 'Reload tsnellgrove.pythonanywhere.com'
+2) Update repo from GitHub Origin
+	A. Update code in Pythonista
+	B. Commit to Git and Push to GitHub origin via Working Copy commit
+	C. Go to pyhonanywhere Bash consonle
+	D. From within the repo directory: 'git pull https://github.com/tsnellgrove/dark_castle2' (replace 'dark_castle2' as needed)
+	E. From the pythonanywhere.com web tab, click the button to 'Reload tsnellgrove.pythonanywhere.com'
+
 
 To Dos:
 
