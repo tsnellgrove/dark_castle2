@@ -8,6 +8,13 @@
 {% block body %}
 <div class="container">
     <h1>Welcome to Dark Castle!</h1>
+
+    <p style="text-align:left;">
+        <b>{{ moves }} Moves
+        <span style="float:right;">
+            Score = {{ score }} / {{ max_score }} </b>
+        </span>
+    </p>
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for msg in messages %}
@@ -26,16 +33,19 @@
         </tr>
     </table>
     <br>
-    <p>Adventure Text:</p>
+    <p><b>Adventure Text:</b></p>
     {% autoescape false %}
     <p>{{ output }}</p>
     {% endautoescape %}
-    <p>Enter your command:</p>
+    <p><b>Enter your command:</b></p>
     <form method="POST" action="">
         <p><input type = "text" name="user_input" /></p>
         <p><input type="submit" name="submit_button" value="Submit" /></p>
         <p><input type="submit" name="submit_button" value="Restart" /></p>
     </form>
+    <p style="text-align:right;">
+        <b>Version {{ version }}</b>
+    </p>
 </div>
 {% endblock %}
 

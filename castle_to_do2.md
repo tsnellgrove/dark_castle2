@@ -91,8 +91,10 @@
 				- tested on pythonanywhere.com where we both hit server with simultaneous submits at least a dozen times
 		- 2.2.2
 			- DONE: Write up git for pythonanwhere steps
+			- DONE: Someday - moves, score, and version presented continuously in corners of index.htm.		
+				- How to get static_dict values to dc22_main ??
+				- How to set right margins??
 			- Unify version doc
-			- Someday - moves, score, and version presented continuously in corners of index.htm.		
 			- Someday - update to nice template
 			- Someday - tab for readme and github link
 			- Someday - consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()

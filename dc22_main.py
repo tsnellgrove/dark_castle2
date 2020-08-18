@@ -1,4 +1,4 @@
-"""Dark Castle 2.2.1
+"""Dark Castle 2.2.2 Candidate
 
 This is a simple Zork-like text adventure game.
 I am creating it in order to learn how to program in Python.
@@ -7,7 +7,7 @@ This is the front-end code
 
 Written and programmed by Tom Snellgrove
 
-Last update = August 16, 2020
+Last update = August 17, 2020
 """
 
 # *** Imports ***
@@ -206,7 +206,12 @@ def index():
         session.modified = True
         flash(f"WELCOME TO DARK CASTLE - PLEASE ENTER A COMMAND", "info")
 
-    return render_template('index.html', output=output)
+    move_counter = session['state_dict']['move_counter']
+    score = session['state_dict']['current_score']
+    max_score = 75
+    version = "2.2.2 Candidate"
+    return render_template('index.html', output=output, moves=move_counter,
+        score=score, max_score=max_score, version=version)
 
 if __name__ == '__main__':
     app.run(use_reloader=False, debug=True)
