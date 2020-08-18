@@ -538,6 +538,8 @@ def interpreter_text(
     backpack = state_dict['backpack']
     worn = state_dict['worn']
     post_action_trigger = static_dict['post_action_trigger_lst']
+    max_score = static_dict['global_dict']['max_score']
+    version = static_dict['global_dict']['version']
 
 # *** Start of Game Welcome Text and Variable Assignment ***
     if user_input == 'start of game':
@@ -553,7 +555,8 @@ def interpreter_text(
         descript_updates_dict['messy_handwriting-read'] = port_code_txt
         return (
             state_dict['end_of_game'], output, room_dict, door_dict,
-            switch_dict, creature_dict, state_dict, descript_updates_dict)
+            switch_dict, creature_dict, state_dict, descript_updates_dict,
+            max_score, version)
 
 # *** Convert User Input to single word strings ***
 
@@ -571,7 +574,8 @@ def interpreter_text(
         printtw(word1 + " what Burt?")
         return (
             state_dict['end_of_game'], output, room_dict, door_dict,
-            switch_dict, creature_dict, state_dict, descript_updates_dict)
+            switch_dict, creature_dict, state_dict, descript_updates_dict,
+            max_score, version)
 
     score_key = word1 + "-" + word2
     trigger_key = score_key
@@ -588,7 +592,8 @@ def interpreter_text(
                 descript_updates_dict):
             return(
                 state_dict['end_of_game'], output, room_dict, door_dict,
-                switch_dict, creature_dict, state_dict, descript_updates_dict)
+                switch_dict, creature_dict, state_dict, descript_updates_dict,
+                max_score, version)
 
 
 # --- Handle One Word Commands
@@ -1015,5 +1020,6 @@ def interpreter_text(
 
     return (
         state_dict['end_of_game'], output, room_dict, door_dict,
-        switch_dict, creature_dict, state_dict, descript_updates_dict)
+        switch_dict, creature_dict, state_dict, descript_updates_dict,
+        max_score, version)
 

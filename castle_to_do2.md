@@ -92,16 +92,19 @@
 		- 2.2.2
 			- DONE: Write up git for pythonanwhere steps
 			- DONE: Someday - moves, score, and version presented continuously in corners of index.htm.		
-				- How to get static_dict values to dc22_main ??
-				- How to set right margins??
+			- DONE: remove old score / move table
+			- DONE: How to get static_dict values to dc22_main ??
+			- How to set right margins??
+			- Consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
+		-2.3.y
+			- Someday - fresh repo with only the needed code
 			- Unify version doc
+			- Move completed updates to castle_done
+			- flash text blue (this is harder than I thought - requires some deep CSS)
 			- Someday - update to nice template
 			- Someday - tab for readme and github link
-			- Someday - consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
-		-2.x.y
 			- Someday - tab for feedback
 			- Someday - provide scrolling log of past moves
-			- Someday - fresh repo with only the needed code
 			- Someday - update doc!
 
 			

@@ -179,7 +179,8 @@ def index():
                 session['end_of_game'], output, \
                     session['room_dict'], session['door_dict'], \
                     session['switch_dict'], session['creature_dict'], \
-                    session['state_dict'], session['descript_updates_dict'] \
+                    session['state_dict'], session['descript_updates_dict'], \
+                    max_score, version \
                     = interpreter_text(
                         session['user_input'], session['room_dict'],
                         session['door_dict'], session['state_dict'],
@@ -196,7 +197,7 @@ def index():
         session['end_of_game'], output, session['room_dict'], \
             session['door_dict'], session['switch_dict'], \
             session['creature_dict'], session['state_dict'], \
-            session['descript_updates_dict'] \
+            session['descript_updates_dict'], max_score, version \
             = interpreter_text(
                 session['user_input'], session['room_dict'],
                 session['door_dict'], session['state_dict'],
@@ -208,8 +209,6 @@ def index():
 
     move_counter = session['state_dict']['move_counter']
     score = session['state_dict']['current_score']
-    max_score = 75
-    version = "2.2.2 Candidate"
     return render_template('index.html', output=output, moves=move_counter,
         score=score, max_score=max_score, version=version)
 
