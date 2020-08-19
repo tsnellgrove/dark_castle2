@@ -1,8 +1,30 @@
 +++ To Dos +++
 
-
-*** Future Versions and Features ***
-
+The Zen of Functionalizing - Early Thoughts:
+	- flaskify main routine
+		- decide on how to store data... 
+				- maybe first pass is client-side cookies, then server-side JSON then Redis
+				- Need to re-apply description updates on load.. or maybe just JSON?? Or maybe special dict just for those?
+				- Create dynamic description dict and update descript_dict on load (for update in update_dict descript_dict[update] = update_dict[update])
+		- convert interpreter_text to function using print to buffer approach (redirect stdio)	
+	- Initial function thinking:
+		- dark_castle includes:
+			- fask code, dictionaries, imports, while != end_state (input, interpreter_text(), print buffer)
+			- pass buffer and end_state in interpeter_text()
+		- interpreter_text includes: 
+			- imports, check for quit, timer code, std code (all prints to buffer)
+			- end() => updates end_state
+	- First steps
+		- Make interpreter_txt callable from main routine in a stateless fashion
+		- print to buffer and do all printing in main routine
+	- set a versioning scheme (x.y.z) and official version notes; also create a version command in Dark Castle 
+		- Link: https://medium.com/@GabEarnsh/versioning-mobile-app-releases-like-a-pro-25137766150a
+	- Web sites
+		- get it working on local host website
+		- get working on python anywhere or Heroku
+		- figure out sessions
+	- Functionalize thoughts:
+		- What is the value of functionalizing? Maybe just convert output to buffer??	
 2.1.x - functionalize darkcastle into a client-server app
 	- 2.1.0 - decice on repo strat: fork?, branch?, new repo?
 			- July 13: Reading up on Git branching - sounds like tags will be helpful - more research to do
@@ -25,109 +47,7 @@
 			- solve issues with end() 
 			- moved big_red_button success_code variable assignment to interpreter_txt; fixed pull description assignment
 			- full playthrough and some minor text tweaks; started stdout redirect research
-	-2.1.2 - redirect interpreter_txt stdout to string, return string to dark_castle2, and print string from main routine
-			- redirected stdout in printtw; getting repeat prints due to print within function
-			- return 'output' from interpet_txt and print from main routine
-			- convert all print() commands to printtw()
-			- troubleshoot all print spacing
-	-2.1.3 - client-server deployment
-			- DONE: separated dark-castle into front-end and back-end routines!
-			- DONE: successful win play-through test
-			- DONE: reduce imports for main where possible
-			- DONE: full play-through test
-	-2.1.4 - final clean-up pre flaskify
-			- DONE: version feature
-			- DONE: additional puzzle clues
-					- DONE: call the crown 'royal_crown' in Nana's memory
-					- DONE: Indicate in the grimy_axe description that it could kill a crocodile
-						- 'small_print' = 'ACME AXE: Effective at dispatching small dragons, large crocidiles, and even the most agressive of trees.'
-			- improved error messages
-				- DONE: drop from hand only (see 'eat' or 'wear')
-				- DONE: can only read text - not the item containing text
-				- DONE: On attempt to 'wear hedgehog_broach' - "You can't bring yourself to put it on - the memories of seeing your dear Nana wearing it are suddenly too fresh. Perahps there is something else around the castle you could wear?"
-					- pre-action trigger not working
-					- problem solved - was treating 'hand' as a string when it's actually a list (argh!!)
-				- DONE: style check
-				- DONE: full play-through test
-	-2.2.x - flaskify client-server app
-		-2.2.0 - basic 'wiring' for flaskification
-			- DONE: Copy static and template directories into repo
-			- DONE: Create copies of client & server app in repo
-			- DONE: Update import statement in main and pefrom basic functionality test
-			- DONE: Copy flash variable assignment into dc22_main.py
-			- DONE: 'sessionize' client-server dictionary variables
-			- DONE: Added remaining code from flask_test3
-			- DONE: Finish updating flask code in main
-				- DONE: re-enable the 'restart' variable
-				- DONE: Sort out actual function call
-				- DONE: 'wire-up' flask and client-server control variables
-				- DONE: link variable calls / updates to index.html
-				- DONE: internalize implicit while loop of flask in calls
-			- DONE: Run and troubleshoot initial run errors
-				- I get to the submit routine but but I can't print the submit value??
-			- DONE: Run and troubleshoot web errors
-				- Primitive functionality achieved!!!
-			- DONE: Clean up test comments
-			- DONE: Troubleshoot restart functionality
-				- Need to review code flow... walk through the ifels on paper... upon restart need to reset variables and play start of game txt
-				- Also track end of game through code block flow
-			- DONE: clean up troubleshooting comments
-			- DONE: return descript_updates_dict back to main
-			- DONE: style clean-up
-			- DONE: update static_dict and comments version numbers
-			- DONE: win game playthrough
-		2.2.1
-			- DONE: post to pythonanywhere
-			- DONE: 'htmlize' my output text
-				- Key reference links:
-					- How to disable auto-escaping: https://stackoverflow.com/questions/12244057/any-way-to-add-a-new-line-from-a-string-with-the-n-character-in-flask
-					- How to manually escape '<' and '>': https://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-in-html
-					- Overview doc: https://jinja.palletsprojects.com/en/2.11.x/templates/
-			- DONE: troubleshoot error on 'examine hedgehog_broach' - convert session['output'] to non-session output variable 
-				- Does not need to persist across HTML renders
-				- instead, runs in memory for the specific user
-				- this avoids issues with the 4 KB client-side cookie limitation when rendering the hedgehog broach text
-				- problem solved by JoyEllen!
-				- tested on pythonanywhere.com where we both hit server with simultaneous submits at least a dozen times
-		- 2.2.2
-			- DONE: Write up git for pythonanwhere steps
-			- DONE: Someday - moves, score, and version presented continuously in corners of index.htm.		
-			- DONE: remove old score / move table
-			- DONE: How to get static_dict values to dc22_main ??
-			- How to set right margins??
-			- Consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
-		-2.3.y
-			- Someday - fresh repo with only the needed code
-			- Unify version doc
-			- Move completed updates to castle_done
-			- flash text blue (this is harder than I thought - requires some deep CSS)
-			- Someday - update to nice template
-			- Someday - tab for readme and github link
-			- Someday - tab for feedback
-			- Someday - provide scrolling log of past moves
-			- Someday - update doc!
-
-			
-Git for pythonanywhere.com
-1) New repo
-	A. Create new directory (e.g. dark_castle_2)
-	B. git clone <repo> <directory>
-	C. Go to pythonanywhere web tab
-	D. Set 'source code' and 'working directory' and, in WSGI, update the config with the name of the flask script (e.g. dc22_main.py)
-	E. click the button to 'Reload tsnellgrove.pythonanywhere.com'
-2) Update repo from GitHub Origin
-	A. Update code in Pythonista
-	B. Commit to Git and Push to GitHub origin via Working Copy commit
-	C. Go to pyhonanywhere Bash consonle
-	D. From within the repo directory: 'git pull https://github.com/tsnellgrove/dark_castle2' (replace 'dark_castle2' as needed)
-	E. From the pythonanywhere.com web tab, click the button to 'Reload tsnellgrove.pythonanywhere.com'
-
-
-To Dos:
-
-The Zen of Functionalizing - Detailed Notes:
-
--2.1.1
+-2.1.1 (Detail)
 	DONE: need for description_dict to be called from interpreter_txt (this means description_dict must be *static*)
 		- DONE: create independent variable description dictionary
 			- DONE: call it descript_updates_dict = {}
@@ -172,9 +92,13 @@ The Zen of Functionalizing - Detailed Notes:
 			- DONE: move remaining variable assignments to interpreter - move to top of routine	
 			- DONE: first half play-thorugh test (iron_portcullis openned)
 			- DONE: second half play-through test (win!)
-
--2.1.2	
-	- DON:E All input and output from main routine
+	-2.1.2 - redirect interpreter_txt stdout to string, return string to dark_castle2, and print string from main routine
+			- redirected stdout in printtw; getting repeat prints due to print within function
+			- return 'output' from interpet_txt and print from main routine
+			- convert all print() commands to printtw()
+			- troubleshoot all print spacing
+-2.1.2 (detail)
+	- DONE: All input and output from main routine
 		- DONE: input already gathered there
 		- DONE: print to output variable and then actually print buffer variable in main
 			- DONE: redirected to output in printtw and appending with each print
@@ -183,15 +107,32 @@ The Zen of Functionalizing - Detailed Notes:
 			- DONE: return 'output' from interpet_txt and print from main routine (as expected, non printtw text is now first)
 			- DONE: convert all prints via printtw
 			- DONE: troubleshoot print spacing (eliminated "/n" as needed)
-
-- 2.1.3
+	-2.1.3 - client-server deployment
+			- DONE: separated dark-castle into front-end and back-end routines!
+			- DONE: successful win play-through test
+			- DONE: reduce imports for main where possible
+			- DONE: full play-through test
+- 2.1.3 (detail)
 	- DONE: Break into to 'dark_castle2' and 'interpreter' and call 'interpreter' from 'dark_castle2'
 		- DONE: move imports to main routine
 		- DONE: move all static lists & dictionaries into interpreter_txt
 		- DONE: move all variable lists & dictionaries into main and pass back & forth
 		- DONE: testing and troubleshooing - win play-through
 			- nb: most of my errors were just long-standing variable passing misses... I guess it was lax in the monolithic form
-
+	-2.1.4 - final clean-up pre flaskify
+			- DONE: version feature
+			- DONE: additional puzzle clues
+					- DONE: call the crown 'royal_crown' in Nana's memory
+					- DONE: Indicate in the grimy_axe description that it could kill a crocodile
+						- 'small_print' = 'ACME AXE: Effective at dispatching small dragons, large crocidiles, and even the most agressive of trees.'
+			- improved error messages
+				- DONE: drop from hand only (see 'eat' or 'wear')
+				- DONE: can only read text - not the item containing text
+				- DONE: On attempt to 'wear hedgehog_broach' - "You can't bring yourself to put it on - the memories of seeing your dear Nana wearing it are suddenly too fresh. Perahps there is something else around the castle you could wear?"
+					- pre-action trigger not working
+					- problem solved - was treating 'hand' as a string when it's actually a list (argh!!)
+				- DONE: style check
+				- DONE: full play-through test
 2.1.4 - Clean-up
 	- DONE: Additional Puzzle Clues:
 		- DONE: call the crown 'royal_crown' in Nana's memory
@@ -200,38 +141,85 @@ The Zen of Functionalizing - Detailed Notes:
 	- DONE: Features:
 		- DONE: Add a 'version' command (set in static_dict['version'])
 		- DONE: Add 'you can't X and object that's not in your hand' error for allowed_verbs; also: 'you can only read text'
+	-2.2.x - flaskify client-server app
+		-2.2.0 - basic 'wiring' for flaskification
+			- DONE: Copy static and template directories into repo
+			- DONE: Create copies of client & server app in repo
+			- DONE: Update import statement in main and pefrom basic functionality test
+			- DONE: Copy flash variable assignment into dc22_main.py
+			- DONE: 'sessionize' client-server dictionary variables
+			- DONE: Added remaining code from flask_test3
+			- DONE: Finish updating flask code in main
+				- DONE: re-enable the 'restart' variable
+				- DONE: Sort out actual function call
+				- DONE: 'wire-up' flask and client-server control variables
+				- DONE: link variable calls / updates to index.html
+				- DONE: internalize implicit while loop of flask in calls
+			- DONE: Run and troubleshoot initial run errors
+				- I get to the submit routine but but I can't print the submit value??
+			- DONE: Run and troubleshoot web errors
+				- Primitive functionality achieved!!!
+			- DONE: Clean up test comments
+			- DONE: Troubleshoot restart functionality
+				- Need to review code flow... walk through the ifels on paper... upon restart need to reset variables and play start of game txt
+				- Also track end of game through code block flow
+			- DONE: clean up troubleshooting comments
+			- DONE: return descript_updates_dict back to main
+			- DONE: style clean-up
+			- DONE: update static_dict and comments version numbers
+			- DONE: win game playthrough
+		2.2.1 
+			- DONE: post to pythonanywhere
+			- DONE: 'htmlize' my output text
+				- Key reference links:
+					- How to disable auto-escaping: https://stackoverflow.com/questions/12244057/any-way-to-add-a-new-line-from-a-string-with-the-n-character-in-flask
+					- How to manually escape '<' and '>': https://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-in-html
+					- Overview doc: https://jinja.palletsprojects.com/en/2.11.x/templates/
+			- DONE: troubleshoot error on 'examine hedgehog_broach' - convert session['output'] to non-session output variable 
+				- Does not need to persist across HTML renders
+				- instead, runs in memory for the specific user
+				- this avoids issues with the 4 KB client-side cookie limitation when rendering the hedgehog broach text
+				- problem solved by JoyEllen!
+				- tested on pythonanywhere.com where we both hit server with simultaneous submits at least a dozen times
+		- 2.2.2
+			- DONE: Write up git for pythonanwhere steps
+			- DONE: Someday - moves, score, and version presented continuously in corners of index.htm.		
+			- DONE: remove old score / move table
+			- DONE: How to get static_dict values to dc22_main ??
+			- DONE: Unify version doc
+			- Move completed updates to castle_done
+			- Commit and tag as 2.2.2 Complete
+		-2.2.3
+			- Learn how CSS and HTML relate to jinja and flask
+			- Better understand web server role vs. flask
+			- CSS: How to set right margins??
+			- CSS: flash text blue (this is harder than I thought - requires some deep CSS)
+			- Consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
+			- Someday - update to nice template			
+		-2.3.x
+			- Someday - fresh repo with only the needed code
+			- Someday - tab for readme and github link
+			- Someday - tab for feedback
+			- Someday - provide scrolling log of past moves
+			- Someday - update doc!
+
+			
+Git for pythonanywhere.com
+1) New repo
+	A. Create new directory (e.g. dark_castle_2)
+	B. git clone <repo> <directory>
+	C. Go to pythonanywhere web tab
+	D. Set 'source code' and 'working directory' and, in WSGI, update the config with the name of the flask script (e.g. dc22_main.py)
+	E. click the button to 'Reload tsnellgrove.pythonanywhere.com'
+2) Update repo from GitHub Origin
+	A. Update code in Pythonista
+	B. Commit to Git and Push to GitHub origin via Working Copy commit
+	C. Go to pyhonanywhere Bash consonle
+	D. From within the repo directory: 'git pull https://github.com/tsnellgrove/dark_castle2' (replace 'dark_castle2' as needed)
+	E. From the pythonanywhere.com web tab, click the button to 'Reload tsnellgrove.pythonanywhere.com'
 
 
-	- flaskify main routine
-		- decide on how to store data... 
-				- maybe first pass is client-side cookies, then server-side JSON then Redis
-				- Need to re-apply description updates on load.. or maybe just JSON?? Or maybe special dict just for those?
-				- Create dynamic description dict and update descript_dict on load (for update in update_dict descript_dict[update] = update_dict[update])
-		- convert interpreter_text to function using print to buffer approach (redirect stdio)	
-
-	- Initial function thinking:
-		- dark_castle includes:
-			- fask code, dictionaries, imports, while != end_state (input, interpreter_text(), print buffer)
-			- pass buffer and end_state in interpeter_text()
-		- interpreter_text includes: 
-			- imports, check for quit, timer code, std code (all prints to buffer)
-			- end() => updates end_state
-
-	- First steps
-		- Make interpreter_txt callable from main routine in a stateless fashion
-		- print to buffer and do all printing in main routine
-
-
-	- set a versioning scheme (x.y.z) and official version notes; also create a version command in Dark Castle 
-	- Link: https://medium.com/@GabEarnsh/versioning-mobile-app-releases-like-a-pro-25137766150a
-	- Web sites
-		- get it working on local host website
-		- get working on python anywhere or Heroku
-		- figure out sessions
-	- Functionalize thoughts:
-		- What is the value of functionalizing? Maybe just convert output to buffer??	
-
-
+*** Future Versions and Features ***
 
 Some Day:
 	- Investigate AWS implemenations
