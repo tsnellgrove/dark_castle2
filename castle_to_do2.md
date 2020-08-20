@@ -9,6 +9,7 @@
 			- DONE: Unify version doc
 			- DONE: Move completed updates to castle_done
 			- DONE: Commit and tag as 2.2.2 Complete
+			- DONE: Reset moves and score to zero in flask restart code
 		-2.2.3
 			- Learn how CSS and HTML relate to jinja and flask
 			- Better understand web server role vs. flask

@@ -173,6 +173,8 @@ def index():
 
             if request.form['submit_button'] == 'Restart':
                 session['start_of_game'] = True
+                session['state_dict']['move_counter'] = 0
+                session['state_dict']['current_score'] = 0
                 session.pop('id', None)
 
             elif not session['end_of_game']:
