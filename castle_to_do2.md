@@ -12,6 +12,7 @@
 			- DONE: Reset moves and score to zero in flask restart code
 		-2.2.3
 			- Learn how CSS and HTML relate to jinja and flask
+				- Started watching "CSS Crash Course for Absolute Beginners" on YouTube
 			- Better understand web server role vs. flask
 			- CSS: How to set right margins??
 			- CSS: flash text blue (this is harder than I thought - requires some deep CSS)
