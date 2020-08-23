@@ -39,6 +39,15 @@ Git for pythonanywhere.com
 	C. Go to pyhonanywhere Bash consonle
 	D. From within the repo directory: 'git pull https://github.com/tsnellgrove/dark_castle2' (replace 'dark_castle2' as needed)
 	E. From the pythonanywhere.com web tab, click the button to 'Reload tsnellgrove.pythonanywhere.com'
+3) Create new repo
+	A. Create repo and files in Working Copy
+	B. Navigate to "folder" within pythonista (this can be a bit tweaky)
+	C. Perform initial local commits in Working Copy
+	D. Create repo with same name in GitHub
+	E. Copy full repo url from GitHub (e.g. "https://github.com/tsnellgrove/css_cheat_sheet.git")
+	F. In working copy, within repo, "Add remotes"; Accept "origin" default and use coppied GitHub repo url; Save
+	G. working Copy repo Commits will now push to both local and origin git repos
+	
 
 
 *** Future Versions and Features ***
