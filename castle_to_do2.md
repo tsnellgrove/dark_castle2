@@ -12,17 +12,24 @@
 			- DONE: Reset moves and score to zero in flask restart code
 		-2.2.3
 			- Learn how CSS and HTML relate to jinja and flask
-				- Started watching "CSS Crash Course for Absolute Beginners" on YouTube
-			- Better understand web server role vs. flask
-			- CSS: How to set right margins??
-			- CSS: flash text blue (this is harder than I thought - requires some deep CSS)
-			- Consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
-			- Someday - update to nice template			
+				- DONE: Started watching "CSS Crash Course for Absolute Beginners" on YouTube
+				- Watch Jinja tutorial: https://youtu.be/7M1MaAPWnYg
+				- Better understand web server role vs. flask
+				- Update overview diagram
+			- Plan out web site
+				- What tabs and content to include
+				- Custom google email for feedback?
+			- Build CSS-style sheet
+				- CSS: How to set right margins??
+				- CSS: Stone background similar to zork for showcase?		
+				- CSS: flash text blue (this is harder than I thought - requires some deep CSS)
+				- Consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
+				- Someday - tab for readme and github link
+				- Someday - tab for feedback
+				- Someday - provide scrolling log of past moves	
+			- Maybe - update to nice bootstrap template			
 		-2.3.x
 			- Someday - fresh repo with only the needed code
-			- Someday - tab for readme and github link
-			- Someday - tab for feedback
-			- Someday - provide scrolling log of past moves
 			- Someday - update doc!
 
 			
