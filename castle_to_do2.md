@@ -34,19 +34,19 @@
 
 			
 Git for pythonanywhere.com
-1) New repo
+1) New repo on pythonanywhere server
 	A. Create new directory (e.g. dark_castle_2)
 	B. git clone <repo> <directory>
 	C. Go to pythonanywhere web tab
 	D. Set 'source code' and 'working directory' and, in WSGI, update the config with the name of the flask script (e.g. dc22_main.py)
 	E. click the button to 'Reload tsnellgrove.pythonanywhere.com'
-2) Update repo from GitHub Origin
+2) Update repo on PythonAnywhere from GitHub Origin
 	A. Update code in Pythonista
 	B. Commit to Git and Push to GitHub origin via Working Copy commit
 	C. Go to pyhonanywhere Bash consonle
 	D. From within the repo directory: 'git pull https://github.com/tsnellgrove/dark_castle2' (replace 'dark_castle2' as needed)
 	E. From the pythonanywhere.com web tab, click the button to 'Reload tsnellgrove.pythonanywhere.com'
-3) Create new repo
+3) Create new repo on GitHub
 	A. Create repo and files in Working Copy
 	B. Navigate to "folder" within pythonista (this can be a bit tweaky)
 	C. Perform initial local commits in Working Copy
