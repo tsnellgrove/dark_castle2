@@ -13,12 +13,16 @@
 		-2.2.3
 			- Learn how CSS and HTML relate to jinja and flask
 				- DONE: Started watching "CSS Crash Course for Absolute Beginners" on YouTube
-				- Watch Jinja tutorial: https://youtu.be/7M1MaAPWnYg
-				- Better understand web server role vs. flask
-				- Update overview diagram
+				- DONE: Watch Jinja tutorial: https://youtu.be/7M1MaAPWnYg
+				- DONE: Better understand web server role vs. flask
+				- DONE: Update overview diagram
 			- Plan out web site
 				- What tabs and content to include
-				- Custom google email for feedback?
+					- tabs:
+						- Adventure
+						- About
+					- page layout:
+						- TBD
 			- Build CSS-style sheet
 				- CSS: How to set right margins??
 				- CSS: Stone background similar to zork for showcase?		
@@ -26,6 +30,7 @@
 				- Consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
 				- Someday - tab for readme and github link
 				- Someday - tab for feedback
+				- Custom google email for feedback?
 				- Someday - provide scrolling log of past moves	
 			- Maybe - update to nice bootstrap template			
 		-2.3.x
