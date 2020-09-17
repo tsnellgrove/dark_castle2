@@ -22,7 +22,14 @@
 						- Adventure
 						- About
 					- page layout:
-						- TBD
+						- Header
+						- NavBar
+						- Showcase
+						- Content
+						- Footer
+					- Content
+						- Adventure: Alerts, Response, Form fields
+						- Sidebar (Zork quote?), What is IF?, Git links
 			- Build CSS-style sheet
 				- CSS: How to set right margins??
 				- CSS: Stone background similar to zork for showcase?		
