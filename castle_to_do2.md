@@ -22,14 +22,21 @@
 						- Adventure
 						- About
 					- page layout:
-						- Header
-						- NavBar
-						- Showcase
-						- Content
-						- Footer
+						- Header: dark gray
+						- NavBar: black
+						- Showcase:
+							- Art: https://www.canstockphoto.com/twelve-angle-stone-43317519.html
+							- Text: Have Fun Storming the Castle
+							- Matches Zork font: https://en.wikipedia.org/wiki/Zork#/media/File:Zork_I_box_art.jpg
+						- Content: light gray
+						- Footer: black
 					- Content
-						- Adventure: Alerts, Response, Form fields
-						- Sidebar (Zork quote?), What is IF?, Git links
+						- Adventure:
+							- Alerts
+							- Response
+							- Form fields
+						- About:
+							- Black: sidebar (Zork quote?), What is IF?, Git links
 			- Build CSS-style sheet
 				- CSS: How to set right margins??
 				- CSS: Stone background similar to zork for showcase?		
