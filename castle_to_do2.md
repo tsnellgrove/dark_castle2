@@ -16,7 +16,8 @@
 				- DONE: Watch Jinja tutorial: https://youtu.be/7M1MaAPWnYg
 				- DONE: Better understand web server role vs. flask
 				- DONE: Update overview diagram
-			- Plan out web site
+				- DONE: Vital next step - Sept 19, 2020 - Download and play some Infocome games ;-D 
+				- Plan out web site
 				- What tabs and content to include
 					- tabs:
 						- Adventure
@@ -37,7 +38,7 @@
 							- Form fields
 						- About:
 							- Black: sidebar (Zork quote?), What is IF?, Git links
-			- Build CSS-style sheet
+				- Build CSS-style sheet
 				- CSS: How to set right margins??
 				- CSS: Stone background similar to zork for showcase?		
 				- CSS: flash text blue (this is harder than I thought - requires some deep CSS)
