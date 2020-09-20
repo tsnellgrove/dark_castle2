@@ -17,8 +17,7 @@
 				- DONE: Better understand web server role vs. flask
 				- DONE: Update overview diagram
 				- DONE: Vital next step - Sept 19, 2020 - Download and play some Infocome games ;-D 
-				- Plan out web site
-				- What tabs and content to include
+				- DONE: Plan out web site - What tabs and content to include
 					- tabs:
 						- Adventure
 						- About
@@ -38,6 +37,11 @@
 							- Form fields
 						- About:
 							- Black: sidebar (Zork quote?), What is IF?, Git links
+				- Update existing environment
+					- INPROC: create base_new.html
+						- initial draft created but can't test due to game error
+					- INPROC: troubleshoot existing game issues
+						- undefined erro on output when called for index.html render; same error local & on PA
 				- Build CSS-style sheet
 				- CSS: How to set right margins??
 				- CSS: Stone background similar to zork for showcase?		
