@@ -38,10 +38,11 @@
 						- About:
 							- Black: sidebar (Zork quote?), What is IF?, Git links
 				- Update existing environment
-					- INPROC: create base_new.html
-						- initial draft created but can't test due to game error
 					- INPROC: troubleshoot existing game issues
 						- undefined erro on output when called for index.html render; same error local & on PA
+						- seems to be a global vs. local variables - renamed flask 'output' => 'flask_output'; maybe helped??
+					- INPROC: create base_new.html
+						- initial draft created but can't test due to game error
 				- Build CSS-style sheet
 				- CSS: How to set right margins??
 				- CSS: Stone background similar to zork for showcase?		

@@ -156,7 +156,7 @@ def index():
         session['user_input'] = ""
         session['start_of_game'] = True
         session['end_of_game'] = False
-        output = ""
+        flask_output = ""
 
         session.permanent = True
 
@@ -178,7 +178,7 @@ def index():
                 session.pop('id', None)
 
             elif not session['end_of_game']:
-                session['end_of_game'], output, \
+                session['end_of_game'], flask_output, \
                     session['room_dict'], session['door_dict'], \
                     session['switch_dict'], session['creature_dict'], \
                     session['state_dict'], session['descript_updates_dict'], \
@@ -196,7 +196,7 @@ def index():
 
     if session['start_of_game']:
         session['user_input'] = "start of game"
-        session['end_of_game'], output, session['room_dict'], \
+        session['end_of_game'], flask_output, session['room_dict'], \
             session['door_dict'], session['switch_dict'], \
             session['creature_dict'], session['state_dict'], \
             session['descript_updates_dict'], max_score, version \
@@ -211,8 +211,8 @@ def index():
 
     move_counter = session['state_dict']['move_counter']
     score = session['state_dict']['current_score']
-    return render_template('index.html', output=output, moves=move_counter,
-        score=score, max_score=max_score, version=version)
+    return render_template('index.html', flask_output=flask_output,
+        moves=move_counter, score=score, max_score=max_score, version=version)
 
 if __name__ == '__main__':
     app.run(use_reloader=False, debug=True)
