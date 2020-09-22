@@ -38,15 +38,18 @@
 						- About:
 							- Black: sidebar (Zork quote?), What is IF?, Git links
 				- Update existing environment
-					- INPROC: troubleshoot existing game issues
+					- DONE: troubleshoot existing game issues
 						- undefined erro on output when called for index.html render; same error local & on PA
 						- seems to be a global vs. local variables - renamed flask 'output' => 'flask_output'; maybe helped??
+						- Site seems to be working again? 
 					- INPROC: create base_new.html
 						- initial draft created but can't test due to game error
+						- when I try swapping in base_new.html I get a global undefined error on flask_output... and keep getting it even when I switch base_new => base again?? Even after restarting?!?
 				- Build CSS-style sheet
 				- CSS: How to set right margins??
 				- CSS: Stone background similar to zork for showcase?		
 				- CSS: flash text blue (this is harder than I thought - requires some deep CSS)
+				- Flask: fix Small error where you have to enter command twice upon restart
 				- Consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
 				- Someday - tab for readme and github link
 				- Someday - tab for feedback
