@@ -45,6 +45,9 @@
 					- INPROC: create base_new.html
 						- initial draft created but can't test due to game error
 						- when I try swapping in base_new.html I get a global undefined error on flask_output... and keep getting it even when I switch base_new => base again?? Even after restarting?!?
+						- I'm now convinced that the problem is "time" or "run itteration" based... every morning the program runs fine but then I work on other things and by the time I get back to it I get the same 'flask_output undefined' error
+						- to test this, today I referenced base_new.html in index... we'll see if tomorrow it runs fine
+						- I suspect that what I need to do is formally pass 'output' within interpreter.py but this is a pain because I call printtw() so many times from so many places... perhaps 'output' becomes a value in state_dict[] ? NO!! - that won't work - because then it will blow up my cookie 4 KB space limit :() 
 				- Build CSS-style sheet
 				- CSS: How to set right margins??
 				- CSS: Stone background similar to zork for showcase?		
