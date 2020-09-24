@@ -48,6 +48,8 @@
 						- I'm now convinced that the problem is "time" or "run itteration" based... every morning the program runs fine but then I work on other things and by the time I get back to it I get the same 'flask_output undefined' error
 						- to test this, today I referenced base_new.html in index... we'll see if tomorrow it runs fine
 						- I suspect that what I need to do is formally pass 'output' within interpreter.py but this is a pain because I call printtw() so many times from so many places... perhaps 'output' becomes a value in state_dict[] ? NO!! - that won't work - because then it will blow up my cookie 4 KB space limit :() 
+						- Confirmed: base_new.html worked fine until I got to quit
+						- Tested my suspicions about the problem being 'output' as a global in dc22_interpreter.py... created static_dict['global_dict']['output'] and stored output value here... still got 'flask_output' undefined but possibly this is a temporarily persistent state issue? We'll see if this change fixes the problem tomorrow (I doubt it); If not, time to drill down deeper into the flask code itself... problem seems to happen after quiting - need to walk through what happens to flask_output after user_input = 'quit' 
 				- Build CSS-style sheet
 				- CSS: How to set right margins??
 				- CSS: Stone background similar to zork for showcase?		

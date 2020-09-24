@@ -75,7 +75,8 @@ path_dict = {
 static_dict = {
     'global_dict': {
         'max_score': 75,
-        'version': "2.2.2"
+        'version': "2.2.2",
+        'output': ""
     },
     'invalid_path_lst': [
         "Ouch! You have walked into a wall.",
@@ -361,7 +362,9 @@ def timer(
 
 def printtw(txt_str):
 
-    global output
+#    global output
+
+    output = static_dict['global_dict']['output']
 
     txt_lst = []
     txt_lst = txt_str.split("\n")
@@ -376,6 +379,8 @@ def printtw(txt_str):
                 print(element + "<br>")
             print("</p>")
             output = output + buffer.getvalue()
+
+            static_dict['global_dict']['output'] = output
 
     return
 
@@ -513,7 +518,7 @@ def interpreter_text(
         creature_dict, switch_dict, descript_updates_dict):
 
     # *** Global Variable Declaration ***
-    global output
+#    global output
     output = ""
 
 # *** Load Description Dictionary ***
@@ -553,6 +558,7 @@ def interpreter_text(
         port_code_txt = "'..ode is " + str(portcullis_code) \
             + ". Don't tell anyo..'"
         descript_updates_dict['messy_handwriting-read'] = port_code_txt
+        output = static_dict['global_dict']['output']
         return (
             state_dict['end_of_game'], output, room_dict, door_dict,
             switch_dict, creature_dict, state_dict, descript_updates_dict,
@@ -572,6 +578,7 @@ def interpreter_text(
 
     if (word1 in allowed_verbs) and (len(user_input_lst) == 1):
         printtw(word1 + " what Burt?")
+        output = static_dict['global_dict']['output']
         return (
             state_dict['end_of_game'], output, room_dict, door_dict,
             switch_dict, creature_dict, state_dict, descript_updates_dict,
@@ -590,6 +597,7 @@ def interpreter_text(
                 trigger_key, room_dict, description_dict,
                 state_dict, static_dict, door_dict, creature_dict,
                 descript_updates_dict):
+            output = static_dict['global_dict']['output']
             return(
                 state_dict['end_of_game'], output, room_dict, door_dict,
                 switch_dict, creature_dict, state_dict, descript_updates_dict,
@@ -1018,6 +1026,7 @@ def interpreter_text(
             room_dict, state_dict, description_dict, descript_updates_dict,
             creature_dict)
 
+    output = static_dict['global_dict']['output']
     return (
         state_dict['end_of_game'], output, room_dict, door_dict,
         switch_dict, creature_dict, state_dict, descript_updates_dict,
