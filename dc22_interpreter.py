@@ -520,6 +520,7 @@ def interpreter_text(
     # *** Global Variable Declaration ***
 #    global output
     output = ""
+    static_dict['global_dict']['output'] = ""
 
 # *** Load Description Dictionary ***
     file = open('description.csv', 'r', newline='')

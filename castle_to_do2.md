@@ -50,6 +50,10 @@
 						- I suspect that what I need to do is formally pass 'output' within interpreter.py but this is a pain because I call printtw() so many times from so many places... perhaps 'output' becomes a value in state_dict[] ? NO!! - that won't work - because then it will blow up my cookie 4 KB space limit :() 
 						- Confirmed: base_new.html worked fine until I got to quit
 						- Tested my suspicions about the problem being 'output' as a global in dc22_interpreter.py... created static_dict['global_dict']['output'] and stored output value here... still got 'flask_output' undefined but possibly this is a temporarily persistent state issue? We'll see if this change fixes the problem tomorrow (I doubt it); If not, time to drill down deeper into the flask code itself... problem seems to happen after quiting - need to walk through what happens to flask_output after user_input = 'quit' 
+						- Confirmed, flask app looses its mind right after 'quit' - need to figure this out
+						- Had an unexpected result of moving 'output' to 'static_dict' => output did not reset! instead it kept building up the output history between user inputs! Did not expect this. Also don't think it will work in multi-user mode. not sure why the variable definition isn't working but need to investigate
+						- Set static_dict 'output' to "" at start of interpreter_text
+						- Need to carefully observe output on quit tomorrow morning; Are flash alerts and end of game score and title printed on 'quit'?
 				- Build CSS-style sheet
 				- CSS: How to set right margins??
 				- CSS: Stone background similar to zork for showcase?		
