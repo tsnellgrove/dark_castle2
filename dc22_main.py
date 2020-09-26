@@ -164,6 +164,9 @@ def index():
 # --- Main Routine
 # ****************
 
+    flask_output = ""
+    max_score = ""
+    version = ""
     if not session['start_of_game']:
 
         if request.method == "POST":
@@ -191,6 +194,9 @@ def index():
                 session.modified = True
 
             else:  # if session['game_over'] == True
+                flask_output = "GAME OVER"
+                max_score = "NA"
+                version = "NA"
                 flash(f"THANKS FOR PLAYING! YOUR GAME HAS ENDED - PRESS "
                     + "'RESTART' TO PLAY AGAIN", "info")
 

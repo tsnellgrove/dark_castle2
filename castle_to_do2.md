@@ -38,11 +38,11 @@
 						- About:
 							- Black: sidebar (Zork quote?), What is IF?, Git links
 				- Update existing environment
-					- DONE: troubleshoot existing game issues
+					- DONE!!: troubleshoot existing game issues
 						- undefined erro on output when called for index.html render; same error local & on PA
 						- seems to be a global vs. local variables - renamed flask 'output' => 'flask_output'; maybe helped??
 						- Site seems to be working again? 
-					- INPROC: create base_new.html
+					- DONE!!: create base_new.html
 						- initial draft created but can't test due to game error
 						- when I try swapping in base_new.html I get a global undefined error on flask_output... and keep getting it even when I switch base_new => base again?? Even after restarting?!?
 						- I'm now convinced that the problem is "time" or "run itteration" based... every morning the program runs fine but then I work on other things and by the time I get back to it I get the same 'flask_output undefined' error
@@ -54,6 +54,8 @@
 						- Had an unexpected result of moving 'output' to 'static_dict' => output did not reset! instead it kept building up the output history between user inputs! Did not expect this. Also don't think it will work in multi-user mode. not sure why the variable definition isn't working but need to investigate
 						- Set static_dict 'output' to "" at start of interpreter_text
 						- Need to carefully observe output on quit tomorrow morning; Are flash alerts and end of game score and title printed on 'quit'?
+					- NEXT: Fix need for double entry post restart
+
 				- Build CSS-style sheet
 				- CSS: How to set right margins??
 				- CSS: Stone background similar to zork for showcase?		
@@ -68,6 +70,72 @@
 		-2.3.x
 			- Someday - fresh repo with only the needed code
 			- Someday - update doc!
+
+
+- Flow Analysis
+
+	- RUN1='First Play' [no variables defined]
+		- if id not in session: # first playthrough
+			- stateful dicts defined, [id = 'active', user_input = "", start_of_game = True, end_of_game = False, flask_output = ""]
+		- if not start_of_game: SKIP
+		- if start_of_game:
+			- user_input = "start of game"
+			- interpreter_text() => end_of_game = False, flask_output = <intro text>
+			- start_of_game = False
+			- flash("WELCOME")
+		- return render_template() [id='active', user_input="start of game", start_of_game=False, end_of_game=False, flask_output=<intro text>]
+
+	- RUN2='Play Game' [id = 'active', user_input = "start of game", start_of_game = False, end_of_game = False, flask_output = <undefined>]
+		- if id not in session: # first playthrough => SKIP
+		- if not start_of_game:
+			- if POST:
+				- if 'Submit': user_input = "south"
+				- if 'Restart': SKIP
+				- elif not end_of_game:
+					- interpreter_text() => end_of_game = False, flask_output = <south text>
+				- else # end_of_game == True: SKIP
+		- if start_of_game: SKIP
+		- return render_template() [id= active', user_input="south", start_of_game=False, end_of_game=False, flask_output=<south text>]
+
+	- RUN3='Quit' [id = 'active', user_input = "south", start_of_game = False, end_of_game = False, flask_output = <undefined>]
+		- if id not in session: # first playthrough => SKIP
+		- if not start_of_game:
+			- if POST:
+				- if 'Submit': user_input = "quit"
+				- if 'Restart': SKIP
+				- elif not end_of_game:
+					- interpreter_text() => end_of_game = True, flask_output = <quit text>
+				- else # end_of_game == True: SKIP
+		- if start_of_game: SKIP
+		- return render_template() [id= active', user_input="quite", start_of_game=False, end_of_game=True, flask_output=<quit text>]
+
+	- RUN4='Post Quit Pre Restart' [id = 'active', user_input = "quit", start_of_game = False, end_of_game = True, flask_output = <undefined>]
+		- if id not in session: # first playthrough => SKIP
+		- if not start_of_game:
+			- if POST:
+				- if 'Submit': user_input = "north"
+				- if 'Restart': SKIP
+				- elif not end_of_game: SKIP
+				- else: # end_of_game == True
+					- flash("RESTART")
+		- if start_of_game: SKIP
+		- return render_template() [id= active', user_input="north", start_of_game=False, end_of_game=True, flask_output=<undefined>]
+			
+- RUN4='Restart'
+- RUN6='Restarted Play'
+- RUN7=
+
+
+Flow notes:
+- Why not 'else' instead of 'if not start_of_game' ???
+- flask_output is not a session variable... does it persist? Presumably not? So flask_output is undefined until interpreter_text assignment
+	- NOTE: Fixed this; flask_output, max_score, and version now all set to "" at start of code
+- end_of_game is sort of strange... it is a local session variable in main(); but it is also a key-value pair in state_dict, which is also a session variable, and which I pass to interpreter_text... and in interpreter() is only exists in state_dict... strange
+- found the problem I think!! If quit but not yet Restart then python code never runs and flask output is undefined!!
+	- Immedite fix is to set flask_output in this case (ditto for max_score and version) and set "" value at start of code
+	- Or, could hid form and 'Submit' in this case?
+	- Or, perhaps better, could pop 'id' upon end_of_game == True
+
 
 			
 Git for pythonanywhere.com
