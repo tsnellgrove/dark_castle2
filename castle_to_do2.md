@@ -54,7 +54,11 @@
 						- Had an unexpected result of moving 'output' to 'static_dict' => output did not reset! instead it kept building up the output history between user inputs! Did not expect this. Also don't think it will work in multi-user mode. not sure why the variable definition isn't working but need to investigate
 						- Set static_dict 'output' to "" at start of interpreter_text
 						- Need to carefully observe output on quit tomorrow morning; Are flash alerts and end of game score and title printed on 'quit'?
-					- NEXT: Fix need for double entry post restart
+					- DONE: Fix need for double entry post restart
+						- Now I understande why we get the intro screen twice upon restart... we need to show something once restart is pressed - but all variables will be reset on next run of 'main'... maybe need an interstitial flask_output of "PRESS ANY KEY TO RESTART"
+					- NEXT: Fully understand Flask code and comment all use cases
+					- Clean up redundant flask variable assignments; Address flow notes
+					- update flow model with any changes!! Keep this accurate!!
 
 				- Build CSS-style sheet
 				- CSS: How to set right margins??
@@ -117,12 +121,39 @@
 				- if 'Restart': SKIP
 				- elif not end_of_game: SKIP
 				- else: # end_of_game == True
+					- Set local vars: [flask_output="GAME OVER", max_score = "NA", version = "NA"]
 					- flash("RESTART")
 		- if start_of_game: SKIP
-		- return render_template() [id= active', user_input="north", start_of_game=False, end_of_game=True, flask_output=<undefined>]
+		- return render_template() [id= active', user_input="north", start_of_game=False, end_of_game=True, flask_output="GAME OVER"]
 			
-- RUN4='Restart'
-- RUN6='Restarted Play'
+- RUN5='Restart' [id = 'active', user_input = "north", start_of_game = False, end_of_game = True, flask_output = <undefined>]
+		- if id not in session: # first playthrough => SKIP
+		- if not start_of_game:
+			- if POST:
+				- if 'Submit': SKIP
+				- if 'Restart':
+					- start_of_game = True
+					- pop 'id'
+				- elif not end_of_game: SKIP
+				- else: # end_of_game SKIP
+		- if start_of_game:
+			- user_input = "start of game"
+			- interpreter_text() => end_of_game = False, flask_output = <intro text>
+			- start_of_game = False
+			- flash("WELCOME")
+		- return render_template() [id=<undefined>, user_input="start of game", start_of_game=False, end_of_game=False, flask_output=<intro text>]
+
+- RUN6='Restarted Play' [id = <undefined>, user_input = "start of game", start_of_game = False, end_of_game = False, flask_output = <undefined>]
+		- if id not in session: # first playthrough
+			- stateful dicts defined, [id = 'active', user_input = "", start_of_game = True, end_of_game = False, flask_output = ""]
+		- if not start_of_game: SKIP
+		- if start_of_game:
+			- user_input = "start of game"
+			- interpreter_text() => end_of_game = False, flask_output = <intro text>
+			- start_of_game = False
+			- flash("WELCOME")
+		- return render_template() [id='active', user_input="start of game", start_of_game=False, end_of_game=False, flask_output=<intro text>]
+
 - RUN7=
 
 
@@ -135,6 +166,9 @@ Flow notes:
 	- Immedite fix is to set flask_output in this case (ditto for max_score and version) and set "" value at start of code
 	- Or, could hid form and 'Submit' in this case?
 	- Or, perhaps better, could pop 'id' upon end_of_game == True
+	- no longer need flask_output defined in first 'if id exist'; create separate section for local variables in main routine
+	- improve on 'press any key to restart' interstitial?
+	
 
 
 			

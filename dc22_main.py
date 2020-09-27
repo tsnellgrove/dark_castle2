@@ -175,9 +175,10 @@ def index():
                 session['user_input'] = str(request.form['user_input']).lower()
 
             if request.form['submit_button'] == 'Restart':
-                session['start_of_game'] = True
+#                session['start_of_game'] = True
                 session['state_dict']['move_counter'] = 0
                 session['state_dict']['current_score'] = 0
+                flask_output = "PRESS ANY KEY TO RESTART"
                 session.pop('id', None)
 
             elif not session['end_of_game']:
