@@ -7,7 +7,7 @@ This is the front-end code
 
 Written and programmed by Tom Snellgrove
 
-Last update = August 20, 2020
+Last update = Sept 28, 2020
 """
 
 # *** Imports ***
@@ -26,6 +26,50 @@ app.permanent_session_lifetime = timedelta(minutes=120)
 
 @app.route('/', methods=["GET", "POST"])
 def index():
+
+
+# ****************
+# --- Main Routine
+# ****************
+
+    flask_output = ""
+    max_score = ""
+    version = ""
+    if 'id' in session:
+        if not session['start_of_game']:
+
+            if request.method == "POST":
+
+                if request.form['submit_button'] == 'Submit':
+                    session['user_input'] = str(request.form['user_input']).lower()
+
+                if request.form['submit_button'] == 'Restart':
+#                    session['start_of_game'] = True
+                    session['state_dict']['move_counter'] = 0
+                    session['state_dict']['current_score'] = 0
+                    flask_output = "PRESS ANY KEY TO RESTART"
+                    session.pop('id', None)
+
+                elif not session['end_of_game']:
+                    session['end_of_game'], flask_output, \
+                        session['room_dict'], session['door_dict'], \
+                        session['switch_dict'], session['creature_dict'], \
+                        session['state_dict'], session['descript_updates_dict'], \
+                        max_score, version \
+                        = interpreter_text(
+                            session['user_input'], session['room_dict'],
+                            session['door_dict'], session['state_dict'],
+                            session['creature_dict'], session['switch_dict'],
+                            session['descript_updates_dict'])
+                    session.modified = True
+
+                else:  # if session['game_over'] == True
+                    flask_output = "GAME OVER"
+                    max_score = "NA"
+                    version = "NA"
+                    flash(f"THANKS FOR PLAYING! YOUR GAME HAS ENDED - PRESS "
+                        + "'RESTART' TO PLAY AGAIN", "info")
+
 
     # Initial falsh variable assignment
     if 'id' not in session:
@@ -160,49 +204,11 @@ def index():
 
         session.permanent = True
 
-# ****************
-# --- Main Routine
-# ****************
-
-    flask_output = ""
-    max_score = ""
-    version = ""
-    if not session['start_of_game']:
-
-        if request.method == "POST":
-
-            if request.form['submit_button'] == 'Submit':
-                session['user_input'] = str(request.form['user_input']).lower()
-
-            if request.form['submit_button'] == 'Restart':
-#                session['start_of_game'] = True
-                session['state_dict']['move_counter'] = 0
-                session['state_dict']['current_score'] = 0
-                flask_output = "PRESS ANY KEY TO RESTART"
-                session.pop('id', None)
-
-            elif not session['end_of_game']:
-                session['end_of_game'], flask_output, \
-                    session['room_dict'], session['door_dict'], \
-                    session['switch_dict'], session['creature_dict'], \
-                    session['state_dict'], session['descript_updates_dict'], \
-                    max_score, version \
-                    = interpreter_text(
-                        session['user_input'], session['room_dict'],
-                        session['door_dict'], session['state_dict'],
-                        session['creature_dict'], session['switch_dict'],
-                        session['descript_updates_dict'])
-                session.modified = True
-
-            else:  # if session['game_over'] == True
-                flask_output = "GAME OVER"
-                max_score = "NA"
-                version = "NA"
-                flash(f"THANKS FOR PLAYING! YOUR GAME HAS ENDED - PRESS "
-                    + "'RESTART' TO PLAY AGAIN", "info")
 
     if session['start_of_game']:
         session['user_input'] = "start of game"
+
+
         session['end_of_game'], flask_output, session['room_dict'], \
             session['door_dict'], session['switch_dict'], \
             session['creature_dict'], session['state_dict'], \

@@ -56,7 +56,9 @@
 						- Need to carefully observe output on quit tomorrow morning; Are flash alerts and end of game score and title printed on 'quit'?
 					- DONE: Fix need for double entry post restart
 						- Now I understande why we get the intro screen twice upon restart... we need to show something once restart is pressed - but all variables will be reset on next run of 'main'... maybe need an interstitial flask_output of "PRESS ANY KEY TO RESTART"
-					- NEXT: Fully understand Flask code and comment all use cases
+					- DONE: Address restart interstitial
+					- NEXT: Simplify flask code - eliminate start_of_game and double interpreter_text call (see flow notes below)
+					- Fully understand Flask code and comment all use cases
 					- Clean up redundant flask variable assignments; Address flow notes
 					- update flow model with any changes!! Keep this accurate!!
 
@@ -168,6 +170,8 @@ Flow notes:
 	- Or, perhaps better, could pop 'id' upon end_of_game == True
 	- no longer need flask_output defined in first 'if id exist'; create separate section for local variables in main routine
 	- improve on 'press any key to restart' interstitial? Maybe move pwd reset to near bottom? (i.e. if 'id' exist: <...> else:)
+	- moved 'if id is in session' to just above 'if start_of_game == True'... now I'm wondering... do I really need start of game?? Is there ever a case where it's not start of game and fresh variable assignment?? Can I just make the "start of game run" a continuatio of the variable assignment "if"?
+	- Wondering if I can consolidate the 2 interpreter_text calls just before the 'return rneder_template'... at the end of the day there really only seem to be 2 choices... either game_over == True, in which case we flash "Hit Restart"... or game_over == False... in which case we need to call interpreter_text...
 	
 
 
