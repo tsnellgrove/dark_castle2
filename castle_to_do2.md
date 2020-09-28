@@ -167,7 +167,7 @@ Flow notes:
 	- Or, could hid form and 'Submit' in this case?
 	- Or, perhaps better, could pop 'id' upon end_of_game == True
 	- no longer need flask_output defined in first 'if id exist'; create separate section for local variables in main routine
-	- improve on 'press any key to restart' interstitial?
+	- improve on 'press any key to restart' interstitial? Maybe move pwd reset to near bottom? (i.e. if 'id' exist: <...> else:)
 	
 
 
