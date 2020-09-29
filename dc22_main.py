@@ -36,39 +36,35 @@ def index():
     max_score = ""
     version = ""
     if 'id' in session:
-        if not session['start_of_game']:
+        if request.method == "POST":
+            if request.form['submit_button'] == 'Submit':
+                session['user_input'] = str(request.form['user_input']).lower()
 
-            if request.method == "POST":
+            if request.form['submit_button'] == 'Restart':
+                session['state_dict']['move_counter'] = 0
+                session['state_dict']['current_score'] = 0
+                flask_output = "PRESS ANY KEY TO RESTART"
+                session.pop('id', None)
 
-                if request.form['submit_button'] == 'Submit':
-                    session['user_input'] = str(request.form['user_input']).lower()
+            elif not session['end_of_game']:
+                session['end_of_game'], flask_output, \
+                session['room_dict'], session['door_dict'], \
+                    session['switch_dict'], session['creature_dict'], \
+                    session['state_dict'], session['descript_updates_dict'], \
+                    max_score, version \
+                    = interpreter_text(
+                        session['user_input'], session['room_dict'],
+                        session['door_dict'], session['state_dict'],
+                        session['creature_dict'], session['switch_dict'],
+                        session['descript_updates_dict'])
+                session.modified = True
 
-                if request.form['submit_button'] == 'Restart':
-#                    session['start_of_game'] = True
-                    session['state_dict']['move_counter'] = 0
-                    session['state_dict']['current_score'] = 0
-                    flask_output = "PRESS ANY KEY TO RESTART"
-                    session.pop('id', None)
-
-                elif not session['end_of_game']:
-                    session['end_of_game'], flask_output, \
-                        session['room_dict'], session['door_dict'], \
-                        session['switch_dict'], session['creature_dict'], \
-                        session['state_dict'], session['descript_updates_dict'], \
-                        max_score, version \
-                        = interpreter_text(
-                            session['user_input'], session['room_dict'],
-                            session['door_dict'], session['state_dict'],
-                            session['creature_dict'], session['switch_dict'],
-                            session['descript_updates_dict'])
-                    session.modified = True
-
-                else:  # if session['game_over'] == True
-                    flask_output = "GAME OVER"
-                    max_score = "NA"
-                    version = "NA"
-                    flash(f"THANKS FOR PLAYING! YOUR GAME HAS ENDED - PRESS "
-                        + "'RESTART' TO PLAY AGAIN", "info")
+            else:  # if session['game_over'] == True
+                flask_output = "GAME OVER"
+                max_score = "NA"
+                version = "NA"
+                flash(f"THANKS FOR PLAYING! YOUR GAME HAS ENDED - PRESS "
+                    + "'RESTART' TO PLAY AGAIN", "info")
 
 
     # Initial falsh variable assignment
@@ -197,17 +193,10 @@ def index():
         session['id'] = 'active'
 
         # *** Client-Sever Control Variable Assignment ***
-        session['user_input'] = ""
-        session['start_of_game'] = True
+        session['user_input'] = "start of game"
         session['end_of_game'] = False
         flask_output = ""
-
         session.permanent = True
-
-
-    if session['start_of_game']:
-        session['user_input'] = "start of game"
-
 
         session['end_of_game'], flask_output, session['room_dict'], \
             session['door_dict'], session['switch_dict'], \
@@ -218,7 +207,6 @@ def index():
                 session['door_dict'], session['state_dict'],
                 session['creature_dict'], session['switch_dict'],
                 session['descript_updates_dict'])
-        session['start_of_game'] = False
         session.modified = True
         flash(f"WELCOME TO DARK CASTLE - PLEASE ENTER A COMMAND", "info")
 

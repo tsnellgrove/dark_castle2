@@ -57,7 +57,8 @@
 					- DONE: Fix need for double entry post restart
 						- Now I understande why we get the intro screen twice upon restart... we need to show something once restart is pressed - but all variables will be reset on next run of 'main'... maybe need an interstitial flask_output of "PRESS ANY KEY TO RESTART"
 					- DONE: Address restart interstitial
-					- NEXT: Simplify flask code - eliminate start_of_game and double interpreter_text call (see flow notes below)
+					- DONE: Simplify flask code - eliminate start_of_game (see flow notes below)
+					- NEXT: Simplify flask code - eliminate double interpreter_text call (see flow notes below)
 					- Fully understand Flask code and comment all use cases
 					- Clean up redundant flask variable assignments; Address flow notes
 					- update flow model with any changes!! Keep this accurate!!
