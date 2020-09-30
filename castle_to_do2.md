@@ -58,7 +58,9 @@
 						- Now I understande why we get the intro screen twice upon restart... we need to show something once restart is pressed - but all variables will be reset on next run of 'main'... maybe need an interstitial flask_output of "PRESS ANY KEY TO RESTART"
 					- DONE: Address restart interstitial
 					- DONE: Simplify flask code - eliminate start_of_game (see flow notes below)
-					- NEXT: Simplify flask code - eliminate double interpreter_text call (see flow notes below)
+					- DONE: Simplify flask code - eliminate double interpreter_text call (see flow notes below)
+					- NEXT: Clean up code comments
+					- What is the preferred response to an entry after 'Quit' but before 'Restart'? Maybe cache quit output?? Or don't bother?
 					- Fully understand Flask code and comment all use cases
 					- Clean up redundant flask variable assignments; Address flow notes
 					- update flow model with any changes!! Keep this accurate!!

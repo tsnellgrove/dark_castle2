@@ -41,36 +41,36 @@ def index():
                 session['user_input'] = str(request.form['user_input']).lower()
 
             if request.form['submit_button'] == 'Restart':
-                session['state_dict']['move_counter'] = 0
-                session['state_dict']['current_score'] = 0
-                flask_output = "PRESS ANY KEY TO RESTART"
+#                session['state_dict']['move_counter'] = 0
+#                session['state_dict']['current_score'] = 0
+#                flask_output = "PRESS ANY KEY TO RESTART"
                 session.pop('id', None)
 
-            elif not session['end_of_game']:
-                session['end_of_game'], flask_output, \
-                session['room_dict'], session['door_dict'], \
-                    session['switch_dict'], session['creature_dict'], \
-                    session['state_dict'], session['descript_updates_dict'], \
-                    max_score, version \
-                    = interpreter_text(
-                        session['user_input'], session['room_dict'],
-                        session['door_dict'], session['state_dict'],
-                        session['creature_dict'], session['switch_dict'],
-                        session['descript_updates_dict'])
-                session.modified = True
+#            elif not session['end_of_game']:
+#                session['end_of_game'], flask_output, \
+#                session['room_dict'], session['door_dict'], \
+#                    session['switch_dict'], session['creature_dict'], \
+#                    session['state_dict'], session['descript_updates_dict'], \
+#                    max_score, version \
+#                    = interpreter_text(
+#                        session['user_input'], session['room_dict'],
+#                        session['door_dict'], session['state_dict'],
+#                        session['creature_dict'], session['switch_dict'],
+#                        session['descript_updates_dict'])
+#                session.modified = True
 
-            else:  # if session['game_over'] == True
-                flask_output = "GAME OVER"
-                max_score = "NA"
-                version = "NA"
-                flash(f"THANKS FOR PLAYING! YOUR GAME HAS ENDED - PRESS "
-                    + "'RESTART' TO PLAY AGAIN", "info")
+#            else:  # if session['end_of_game'] == True
+#                flask_output = "GAME OVER"
+#                max_score = "NA"
+#                version = "NA"
+#                flash(f"THANKS FOR PLAYING! YOUR GAME HAS ENDED - PRESS "
+#                    + "'RESTART' TO PLAY AGAIN", "info")
 
 
     # Initial falsh variable assignment
     if 'id' not in session:
 
-        # *** Client-Sever Dictionary Variable Assignment ***
+        # *** Session Variable Assignment - Dictionaries ***
 
         session['descript_updates_dict'] = {}
 
@@ -190,14 +190,26 @@ def index():
             }
         }
 
+        # *** Session Variable Assignment - Non-Dictionaries ***
         session['id'] = 'active'
-
-        # *** Client-Sever Control Variable Assignment ***
         session['user_input'] = "start of game"
         session['end_of_game'] = False
-        flask_output = ""
+
         session.permanent = True
 
+        # *** Non-Session Variable Assignment ***
+        flask_output = ""
+
+        flash(f"WELCOME TO DARK CASTLE - PLEASE ENTER A COMMAND", "info")
+
+
+    if session['end_of_game'] == True:
+        flask_output = "GAME OVER"
+        max_score = "NA"
+        version = "NA"
+        flash(f"THANKS FOR PLAYING! YOUR GAME HAS ENDED - PRESS "
+            + "'RESTART' TO PLAY AGAIN", "info")
+    else: # session['end_of_game'] == False
         session['end_of_game'], flask_output, session['room_dict'], \
             session['door_dict'], session['switch_dict'], \
             session['creature_dict'], session['state_dict'], \
@@ -208,7 +220,6 @@ def index():
                 session['creature_dict'], session['switch_dict'],
                 session['descript_updates_dict'])
         session.modified = True
-        flash(f"WELCOME TO DARK CASTLE - PLEASE ENTER A COMMAND", "info")
 
     move_counter = session['state_dict']['move_counter']
     score = session['state_dict']['current_score']
