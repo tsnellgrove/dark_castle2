@@ -37,7 +37,7 @@
 							- Form fields
 						- About:
 							- Black: sidebar (Zork quote?), What is IF?, Git links
-				- Update existing environment
+				- 2.3.x - Update existing environment and polish existing flask code
 					- DONE!!: troubleshoot existing game issues
 						- undefined erro on output when called for index.html render; same error local & on PA
 						- seems to be a global vs. local variables - renamed flask 'output' => 'flask_output'; maybe helped??
@@ -59,12 +59,14 @@
 					- DONE: Address restart interstitial
 					- DONE: Simplify flask code - eliminate start_of_game (see flow notes below)
 					- DONE: Simplify flask code - eliminate double interpreter_text call (see flow notes below)
-					- NEXT: Clean up code comments
+					- DONE: Clean up code comments
+					- DONE: Updte version number to 2.3.0
+					- NEXT: Update pythonanywher code and test / troubleshoot
 					- What is the preferred response to an entry after 'Quit' but before 'Restart'? Maybe cache quit output?? Or don't bother?
 					- Fully understand Flask code and comment all use cases
 					- Clean up redundant flask variable assignments; Address flow notes
 					- update flow model with any changes!! Keep this accurate!!
-
+			- 2.4.x update CSS and jinja
 				- Build CSS-style sheet
 				- CSS: How to set right margins??
 				- CSS: Stone background similar to zork for showcase?		
@@ -76,7 +78,7 @@
 				- Custom google email for feedback?
 				- Someday - provide scrolling log of past moves	
 			- Maybe - update to nice bootstrap template			
-		-2.3.x
+		-2.4.x
 			- Someday - fresh repo with only the needed code
 			- Someday - update doc!
 

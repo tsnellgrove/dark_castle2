@@ -1,4 +1,4 @@
-"""Dark Castle 2.2.2
+"""Dark Castle 2.3.0
 
 This is a simple Zork-like text adventure game.
 I am creating it in order to learn how to program in Python.
@@ -7,7 +7,7 @@ This is the front-end code
 
 Written and programmed by Tom Snellgrove
 
-Last update = Sept 28, 2020
+Last update = Sept 30, 2020
 """
 
 # *** Imports ***
@@ -17,57 +17,29 @@ from dc22_interpreter import interpreter_text
 from flask import Flask, render_template, request, session, url_for, \
     redirect, flash
 from datetime import datetime, timedelta
-# from processing import do_calculation
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "qpueuwrhuqjfn;nWOREJsdf"
 app.permanent_session_lifetime = timedelta(minutes=120)
 
-
 @app.route('/', methods=["GET", "POST"])
 def index():
 
-
-# ****************
-# --- Main Routine
-# ****************
-
+    # *** Non-session variable assignment to guard against undefined state ***
     flask_output = ""
     max_score = ""
     version = ""
+
+    # *** If not start of game get POST info ***
     if 'id' in session:
         if request.method == "POST":
             if request.form['submit_button'] == 'Submit':
                 session['user_input'] = str(request.form['user_input']).lower()
 
             if request.form['submit_button'] == 'Restart':
-#                session['state_dict']['move_counter'] = 0
-#                session['state_dict']['current_score'] = 0
-#                flask_output = "PRESS ANY KEY TO RESTART"
                 session.pop('id', None)
 
-#            elif not session['end_of_game']:
-#                session['end_of_game'], flask_output, \
-#                session['room_dict'], session['door_dict'], \
-#                    session['switch_dict'], session['creature_dict'], \
-#                    session['state_dict'], session['descript_updates_dict'], \
-#                    max_score, version \
-#                    = interpreter_text(
-#                        session['user_input'], session['room_dict'],
-#                        session['door_dict'], session['state_dict'],
-#                        session['creature_dict'], session['switch_dict'],
-#                        session['descript_updates_dict'])
-#                session.modified = True
-
-#            else:  # if session['end_of_game'] == True
-#                flask_output = "GAME OVER"
-#                max_score = "NA"
-#                version = "NA"
-#                flash(f"THANKS FOR PLAYING! YOUR GAME HAS ENDED - PRESS "
-#                    + "'RESTART' TO PLAY AGAIN", "info")
-
-
-    # Initial falsh variable assignment
+    # If start of game assign initial variable values
     if 'id' not in session:
 
         # *** Session Variable Assignment - Dictionaries ***
@@ -197,19 +169,17 @@ def index():
 
         session.permanent = True
 
-        # *** Non-Session Variable Assignment ***
-        flask_output = ""
-
+        # *** Start of Game Flash Message ***
         flash(f"WELCOME TO DARK CASTLE - PLEASE ENTER A COMMAND", "info")
 
-
+    # *** If end_of_game flask_output = "END OF GAME" else run py code ***
     if session['end_of_game'] == True:
         flask_output = "GAME OVER"
         max_score = "NA"
         version = "NA"
         flash(f"THANKS FOR PLAYING! YOUR GAME HAS ENDED - PRESS "
             + "'RESTART' TO PLAY AGAIN", "info")
-    else: # session['end_of_game'] == False
+    else:
         session['end_of_game'], flask_output, session['room_dict'], \
             session['door_dict'], session['switch_dict'], \
             session['creature_dict'], session['state_dict'], \
@@ -221,8 +191,11 @@ def index():
                 session['descript_updates_dict'])
         session.modified = True
 
+    # *** Assign Session Dictionary values to local variables ***
     move_counter = session['state_dict']['move_counter']
     score = session['state_dict']['current_score']
+
+    # *** Return HTML page ***
     return render_template('index.html', flask_output=flask_output,
         moves=move_counter, score=score, max_score=max_score, version=version)
 
