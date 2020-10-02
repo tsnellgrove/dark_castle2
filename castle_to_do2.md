@@ -97,36 +97,57 @@
 			- end_of_game is sort of strange... it is a local session variable in main(); but it is also a key-value pair in state_dict, which is also a session variable, and which I pass to interpreter_text... and in interpreter() is only exists in state_dict... strange
 
 
- *** Flow Analysis ***
+ *** Flask Flow Pseudo-Code Analysis ***
+ 
+ Note: For the sake of clarity many variables (e.g. 'version', 'max_score', dictionaries) are not tracked here
 
-	- RUN1='First Play' [no variables defined]
-		- if id not in session: # first playthrough
-			- stateful dicts defined, [id = 'active', user_input = "", start_of_game = True, end_of_game = False, flask_output = ""]
-		- if not start_of_game: SKIP
-		- if start_of_game:
-			- user_input = "start of game"
-			- interpreter_text() => end_of_game = False, flask_output = <intro text>
-			- start_of_game = False
-			- flash("WELCOME")
-		- return render_template() [id='active', user_input="start of game", start_of_game=False, end_of_game=False, flask_output=<intro text>]
-
-	- RUN2='Play Game' [id = 'active', user_input = "start of game", start_of_game = False, end_of_game = False, flask_output = <undefined>]
-		- if id not in session: # first playthrough => SKIP
-		- if not start_of_game:
+	- RUNX=(<template>) [<variable assignment>]
+		- define local variables => flask_output="" # these values should never be used; guard against undefined errors
+		- if 'id' in session:
 			- if POST:
-				- if 'Submit': user_input = "south"
+				- if 'Submit': => user_input="<value>"
+				- if 'Restart': pop 'id'
+		- if 'id' not in session:
+			- define session dictionary variables
+			- define session non-dictionary variables
+			- flash("WELCOME")
+	- if end_of_game == end_of_game:
+		- set local variables => flask_output="GAME OVER"
+		- flash("PRESS REPLAY")
+	- else call interpreter_text() => flask_output="<value>"
+	- return render_template [<variable assignment>]
+
+	- RUN1=(Start Game) [id=<undefined>, user_input=<undefined>, end_of_game=<undefined>, flask_output=<undefined>]
+		- define local variables => flask_output=""
+		- if 'id' in session: SKIP
+		- if 'id' not in session:
+			- define session dictionary variables
+			- define session non-dictionary variables => id="active", user_input="start of game", end_of_game=False
+			- flash("WELCOME")
+	- if end_of_game == end_of_game: SKIP
+	- else call interpreter_text() => flask_output="<intro text>"
+	- return render_template [id='active', user_input="start of game", end_of_game=False, flask_output="<intro text>"]
+
+	- RUN2=(First Move = "south") [id='active', user_input="start of game", end_of_game=False, flask_output=undefined]
+		- define local variables => flask_output=""
+		- if 'id' in session:
+			- if POST:
+				- if 'Submit': => user_input="south"
 				- if 'Restart': SKIP
-				- elif not end_of_game:
-					- interpreter_text() => end_of_game = False, flask_output = <south text>
-				- else # end_of_game == True: SKIP
-		- if start_of_game: SKIP
-		- return render_template() [id= active', user_input="south", start_of_game=False, end_of_game=False, flask_output=<south text>]
+		- if 'id' not in session: SKIP
+	- if end_of_game == end_of_game: SKIP
+	- else call interpreter_text() => flask_output="<south text>"
+	- return render_template [id='active', user_input="south", end_of_game=False, flask_output="<south text>"]
+
+
+	# *** UPDATE FLOW PSEUDOCODE FROM THIS POINT ON ***
+
 
 	- RUN3='Quit' [id = 'active', user_input = "south", start_of_game = False, end_of_game = False, flask_output = <undefined>]
 		- if id not in session: # first playthrough => SKIP
 		- if not start_of_game:
 			- if POST:
-				- if 'Submit': user_input = "quit"
+				- if 'Submit': user_input="quit"
 				- if 'Restart': SKIP
 				- elif not end_of_game:
 					- interpreter_text() => end_of_game = True, flask_output = <quit text>
