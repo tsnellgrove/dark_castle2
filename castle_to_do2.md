@@ -74,27 +74,26 @@
 					- DONE: improve on 'press any key to restart' interstitial? Maybe move pwd reset to near bottom? (i.e. if 'id' exist: <...> else:)
 					- DONE: moved 'if id is in session' to just above 'if start_of_game == True'... now I'm wondering... do I really need start of game?? Is there ever a case where it's not start of game and fresh variable assignment?? Can I just make the "start of game run" a continuatio of the variable assignment "if"?
 					- DONE: Wondering if I can consolidate the 2 interpreter_text calls just before the 'return rneder_template'... at the end of the day there really only seem to be 2 choices... either game_over == True, in which case we flash "Hit Restart"... or game_over == False... in which case we need to call interpreter_text...
-				- update flow model with any changes!! Keep this accurate!!
+				- DONE: update flow model with any changes!! Keep this accurate!!
 
 			- 2.4.x update CSS and jinja
 				- Build CSS-style sheet
 				- CSS: How to set right margins??
 				- CSS: Stone background similar to zork for showcase?		
 				- CSS: flash text blue (this is harder than I thought - requires some deep CSS)
-				- Flask: fix Small error where you have to enter command twice upon restart
-				- Consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
-				- Someday - tab for readme and github link
+			- Someday - tab for readme and github link
 				- Someday - tab for feedback
 				- Custom google email for feedback?
-				- Someday - provide scrolling log of past moves	
-			- Maybe - update to nice bootstrap template			
+			- Maybe - update to nice bootstrap template??
 		-2.5.x
-			- Someday - fresh repo with only the needed code
+			- Someday - provide scrolling log of past moves	
 			- Someday - update doc!
 			- What is the preferred response to an entry after 'Quit' but before 'Restart'? Maybe cache quit output?? Or don't bother?
 				- Could hid form and 'Submit' in this case?
 				- Or, perhaps better, could pop 'id' upon end_of_game == True
 			- end_of_game is sort of strange... it is a local session variable in main(); but it is also a key-value pair in state_dict, which is also a session variable, and which I pass to interpreter_text... and in interpreter() is only exists in state_dict... strange
+			- Consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
+			- Someday - fresh repo with only the needed code
 
 
  *** Flask Flow Pseudo-Code Analysis ***
@@ -114,7 +113,7 @@
 	- if end_of_game == end_of_game:
 		- set local variables => flask_output="GAME OVER"
 		- flash("PRESS REPLAY")
-	- else call interpreter_text() => flask_output="<value>"
+	- else call interpreter_text(): => flask_output="<value>"
 	- return render_template [<variable assignment>]
 
 	- RUN1=(Start Game) [id=<undefined>, user_input=<undefined>, end_of_game=<undefined>, flask_output=<undefined>]
@@ -125,7 +124,7 @@
 			- define session non-dictionary variables => id="active", user_input="start of game", end_of_game=False
 			- flash("WELCOME")
 	- if end_of_game == end_of_game: SKIP
-	- else call interpreter_text() => flask_output="<intro text>"
+	- else call interpreter_text(): => flask_output="<intro text>"
 	- return render_template [id='active', user_input="start of game", end_of_game=False, flask_output="<intro text>"]
 
 	- RUN2=(First Move = "south") [id='active', user_input="start of game", end_of_game=False, flask_output=undefined]
@@ -136,67 +135,46 @@
 				- if 'Restart': SKIP
 		- if 'id' not in session: SKIP
 	- if end_of_game == end_of_game: SKIP
-	- else call interpreter_text() => flask_output="<south text>"
+	- else call interpreter_text(): => flask_output="<south text>"
 	- return render_template [id='active', user_input="south", end_of_game=False, flask_output="<south text>"]
 
-
-	# *** UPDATE FLOW PSEUDOCODE FROM THIS POINT ON ***
-
-
-	- RUN3='Quit' [id = 'active', user_input = "south", start_of_game = False, end_of_game = False, flask_output = <undefined>]
-		- if id not in session: # first playthrough => SKIP
-		- if not start_of_game:
+	- RUN3=(Quit) [id='active', user_input="south", end_of_game=False, flask_output=<undefined>]
+		- define local variables => flask_output="" # these values should never be used; guard against undefined errors
+		- if 'id' in session:
 			- if POST:
-				- if 'Submit': user_input="quit"
+				- if 'Submit': => user_input="quit"
 				- if 'Restart': SKIP
-				- elif not end_of_game:
-					- interpreter_text() => end_of_game = True, flask_output = <quit text>
-				- else # end_of_game == True: SKIP
-		- if start_of_game: SKIP
-		- return render_template() [id= active', user_input="quite", start_of_game=False, end_of_game=True, flask_output=<quit text>]
+		- if 'id' not in session: SKIP
+	- if end_of_game == end_of_game: SKIP
+	- else call interpreter_text(): => flask_output="<quit text>"
+	- return render_template [id='active', user_input="quit", end_of_game=True, flask_output="<quit text>"]
 
-	- RUN4='Post Quit Pre Restart' [id = 'active', user_input = "quit", start_of_game = False, end_of_game = True, flask_output = <undefined>]
-		- if id not in session: # first playthrough => SKIP
-		- if not start_of_game:
+	- RUN4=(attempt post-quit move) [id='active', user_input="quit", end_of_game=True, flask_output=<undefined>]
+		- define local variables => flask_output="" # these values should never be used; guard against undefined errors
+		- if 'id' in session:
 			- if POST:
-				- if 'Submit': user_input = "north"
+				- if 'Submit': => user_input="north"
 				- if 'Restart': SKIP
-				- elif not end_of_game: SKIP
-				- else: # end_of_game == True
-					- Set local vars: [flask_output="GAME OVER", max_score = "NA", version = "NA"]
-					- flash("RESTART")
-		- if start_of_game: SKIP
-		- return render_template() [id= active', user_input="north", start_of_game=False, end_of_game=True, flask_output="GAME OVER"]
-			
-- RUN5='Restart' [id = 'active', user_input = "north", start_of_game = False, end_of_game = True, flask_output = <undefined>]
-		- if id not in session: # first playthrough => SKIP
-		- if not start_of_game:
+		- if 'id' not in session: SKIP
+	- if end_of_game == end_of_game:
+		- set local variables => flask_output="GAME OVER"
+		- flash("PRESS REPLAY")
+	- else call interpreter_text(): SKIP
+	- return render_template [id='active', user_input="north", end_of_game=True, flask_output="GAME OVER"]
+
+	- RUN5=(Restart) [id='active', user_input="north", end_of_game=True, flask_output=<undefined>]
+		- define local variables => flask_output="" # these values should never be used; guard against undefined errors
+		- if 'id' in session:
 			- if POST:
 				- if 'Submit': SKIP
-				- if 'Restart':
-					- start_of_game = True
-					- pop 'id'
-				- elif not end_of_game: SKIP
-				- else: # end_of_game SKIP
-		- if start_of_game:
-			- user_input = "start of game"
-			- interpreter_text() => end_of_game = False, flask_output = <intro text>
-			- start_of_game = False
+				- if 'Restart': pop 'id'
+		- if 'id' not in session:
+			- define session dictionary variables
+			- define session non-dictionary variables => id="active", user_input="start of game", end_of_game=False
 			- flash("WELCOME")
-		- return render_template() [id=<undefined>, user_input="start of game", start_of_game=False, end_of_game=False, flask_output=<intro text>]
-
-- RUN6='Restarted Play' [id = <undefined>, user_input = "start of game", start_of_game = False, end_of_game = False, flask_output = <undefined>]
-		- if id not in session: # first playthrough
-			- stateful dicts defined, [id = 'active', user_input = "", start_of_game = True, end_of_game = False, flask_output = ""]
-		- if not start_of_game: SKIP
-		- if start_of_game:
-			- user_input = "start of game"
-			- interpreter_text() => end_of_game = False, flask_output = <intro text>
-			- start_of_game = False
-			- flash("WELCOME")
-		- return render_template() [id='active', user_input="start of game", start_of_game=False, end_of_game=False, flask_output=<intro text>]
-
-- RUN7=
+	- if end_of_game == end_of_game: SKIP
+	- else call interpreter_text(): => flask_output="<intro text>"
+	- return render_template [id='active', user_input="start of game", end_of_game=False, flask_output="<intro text>"]
 
 
 *** GIT CONSOLE NOTES ***
