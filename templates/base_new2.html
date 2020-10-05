@@ -1,18 +1,38 @@
 <!DOCTYPE html>
 <html lang=en>	
-  <head> 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="link rel="stylesheet" href="css/style.css" type="text/css">
-    <title>Dark Castle</title>
-    {% block head %}{% endblock %}
-  </head>
-  <body>
-    <div id="navbar">
-      <h2> Dark Castle <a href="index">Game</a></h2>
+<head>
+  <title>Dark Castle</title>
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+  {% block head %}{% endblock %}
+</head>
+<body>
+
+  <header id="main-header">
+    <div class="container">
+      <h1>Dark Castle</h1>
     </div>
-    {% block body %}{% endblock %}
-  </body>
+  </header>
+
+  <nav id="navbar">
+    <div class="container">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="showcase">
+  <div class="container">
+    <h1>Enter the castle. Get the gold. Save the land. DON'T eat the biscuits!
+    </h1>
+  </div>
+  </section>
+
+  {% block body %}{% endblock %}
+</body>
 </html>
 
 
