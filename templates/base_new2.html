@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang=en>	
+
 <head>
   <title>Dark Castle</title>
   <link rel="stylesheet" href="static/css/style.css" type="text/css">
   {% block head %}{% endblock %}
 </head>
+
 <body>
 
   <header id="main-header">
@@ -17,9 +19,7 @@
     <div class="container">
       <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#">Read Me</a></li>
       </ul>
     </div>
   </nav>
@@ -31,7 +31,16 @@
   </div>
   </section>
 
-  {% block body %}{% endblock %}
+	<div class="container">
+		<section id="main">
+  	{% block body %}{% endblock %}
+  	</section>
+	</div>
+
+	<footer id="main-footer">
+		<p>Copyright &copy; 2020 Dark Castle</p>
+	</footer>
+
 </body>
 </html>
 

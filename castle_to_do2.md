@@ -37,144 +37,155 @@
 							- Form fields
 						- About:
 							- Black: sidebar (Zork quote?), What is IF?, Git links
-				- 2.3.x - Update existing environment and polish existing flask code
-					- DONE!!: troubleshoot existing game issues
-						- undefined erro on output when called for index.html render; same error local & on PA
-						- seems to be a global vs. local variables - renamed flask 'output' => 'flask_output'; maybe helped??
-						- Site seems to be working again? 
-					- DONE!!: create base_new.html
-						- initial draft created but can't test due to game error
-						- when I try swapping in base_new.html I get a global undefined error on flask_output... and keep getting it even when I switch base_new => base again?? Even after restarting?!?
-					- DONE: Dig into Flask code and really understand it and get it running right
-						- I'm now convinced that the problem is "time" or "run itteration" based... every morning the program runs fine but then I work on other things and by the time I get back to it I get the same 'flask_output undefined' error
-						- to test this, today I referenced base_new.html in index... we'll see if tomorrow it runs fine
-						- I suspect that what I need to do is formally pass 'output' within interpreter.py but this is a pain because I call printtw() so many times from so many places... perhaps 'output' becomes a value in state_dict[] ? NO!! - that won't work - because then it will blow up my cookie 4 KB space limit :() 
-						- Confirmed: base_new.html worked fine until I got to quit
-						- Tested my suspicions about the problem being 'output' as a global in dc22_interpreter.py... created static_dict['global_dict']['output'] and stored output value here... still got 'flask_output' undefined but possibly this is a temporarily persistent state issue? We'll see if this change fixes the problem tomorrow (I doubt it); If not, time to drill down deeper into the flask code itself... problem seems to happen after quiting - need to walk through what happens to flask_output after user_input = 'quit' 
-						- Confirmed, flask app looses its mind right after 'quit' - need to figure this out
-						- Had an unexpected result of moving 'output' to 'static_dict' => output did not reset! instead it kept building up the output history between user inputs! Did not expect this. Also don't think it will work in multi-user mode. not sure why the variable definition isn't working but need to investigate
-						- Set static_dict 'output' to "" at start of interpreter_text
-						- Need to carefully observe output on quit tomorrow morning; Are flash alerts and end of game score and title printed on 'quit'?
-					- DONE: Fix need for double entry post restart
-						- Now I understande why we get the intro screen twice upon restart... we need to show something once restart is pressed - but all variables will be reset on next run of 'main'... maybe need an interstitial flask_output of "PRESS ANY KEY TO RESTART"
-				- DONE: Address restart interstitial
-				- DONE: Simplify flask code - eliminate start_of_game (see flow notes below)
-				- DONE: Simplify flask code - eliminate double interpreter_text call (see flow notes below)
-				- DONE: Clean up code comments
-				- DONE: Updte version number to 2.3.0
-				- DONE: Clean up redundant flask variable assignments
-				- DONE: Fully understand Flask code and comment all use cases
-				- DONE: Update pythonanywher code and test / troubleshoot
-				- Address flow notes:
-					- DONE: Why not 'else' instead of 'if not start_of_game' ???
-					- DONE: flask_output is not a session variable... does it persist? Presumably not? So flask_output is undefined until interpreter_text assignment; Fixed this; flask_output, max_score, and version now all set to "" at start of code
-					- DONE: found the problem I think!! If quit but not yet Restart then python code never runs and flask output is undefined!!
-					- DONE: Immedite fix is to set flask_output in this case (ditto for max_score and version) and set "" value at start of code
-					- DONE: no longer need flask_output defined in first 'if id exist'; create separate section for local variables in main routine
-					- DONE: improve on 'press any key to restart' interstitial? Maybe move pwd reset to near bottom? (i.e. if 'id' exist: <...> else:)
-					- DONE: moved 'if id is in session' to just above 'if start_of_game == True'... now I'm wondering... do I really need start of game?? Is there ever a case where it's not start of game and fresh variable assignment?? Can I just make the "start of game run" a continuatio of the variable assignment "if"?
-					- DONE: Wondering if I can consolidate the 2 interpreter_text calls just before the 'return rneder_template'... at the end of the day there really only seem to be 2 choices... either game_over == True, in which case we flash "Hit Restart"... or game_over == False... in which case we need to call interpreter_text...
-				- DONE: update flow model with any changes!! Keep this accurate!!
 
-			- 2.4.x update CSS and jinja
-				- Build CSS-style sheet
-				- CSS: How to set right margins??
-				- CSS: Stone background similar to zork for showcase?		
-				- CSS: flash text blue (this is harder than I thought - requires some deep CSS)
-			- Someday - tab for readme and github link
-				- Someday - tab for feedback
-				- Custom google email for feedback?
-			- Maybe - update to nice bootstrap template??
-		-2.5.x
-			- Someday - provide scrolling log of past moves	
-			- Someday - update doc!
-			- What is the preferred response to an entry after 'Quit' but before 'Restart'? Maybe cache quit output?? Or don't bother?
-				- Could hid form and 'Submit' in this case?
-				- Or, perhaps better, could pop 'id' upon end_of_game == True
-			- end_of_game is sort of strange... it is a local session variable in main(); but it is also a key-value pair in state_dict, which is also a session variable, and which I pass to interpreter_text... and in interpreter() is only exists in state_dict... strange
-			- Consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
-			- Someday - fresh repo with only the needed code
+- 2.3.x - Update existing environment and polish existing flask code
+	- DONE!!: troubleshoot existing game issues
+		- undefined erro on output when called for index.html render; same error local & on PA
+		- seems to be a global vs. local variables - renamed flask 'output' => 'flask_output'; maybe helped??
+		- Site seems to be working again? 
+	- DONE!!: create base_new.html
+		- initial draft created but can't test due to game error
+		- when I try swapping in base_new.html I get a global undefined error on flask_output... and keep getting it even when I switch base_new => base again?? Even after restarting?!?
+	- DONE: Dig into Flask code and really understand it and get it running right
+		- I'm now convinced that the problem is "time" or "run itteration" based... every morning the program runs fine but then I work on other things and by the time I get back to it I get the same 'flask_output undefined' error
+		- to test this, today I referenced base_new.html in index... we'll see if tomorrow it runs fine
+		- I suspect that what I need to do is formally pass 'output' within interpreter.py but this is a pain because I call printtw() so many times from so many places... perhaps 'output' becomes a value in state_dict[] ? NO!! - that won't work - because then it will blow up my cookie 4 KB space limit :() 
+		- Confirmed: base_new.html worked fine until I got to quit
+		- Tested my suspicions about the problem being 'output' as a global in dc22_interpreter.py... created static_dict['global_dict']['output'] and stored output value here... still got 'flask_output' undefined but possibly this is a temporarily persistent state issue? We'll see if this change fixes the problem tomorrow (I doubt it); If not, time to drill down deeper into the flask code itself... problem seems to happen after quiting - need to walk through what happens to flask_output after user_input = 'quit' 
+		- Confirmed, flask app looses its mind right after 'quit' - need to figure this out
+		- Had an unexpected result of moving 'output' to 'static_dict' => output did not reset! instead it kept building up the output history between user inputs! Did not expect this. Also don't think it will work in multi-user mode. not sure why the variable definition isn't working but need to investigate
+		- Set static_dict 'output' to "" at start of interpreter_text
+		- Need to carefully observe output on quit tomorrow morning; Are flash alerts and end of game score and title printed on 'quit'?
+	- DONE: Fix need for double entry post restart
+		- Now I understande why we get the intro screen twice upon restart... we need to show something once restart is pressed - but all variables will be reset on next run of 'main'... maybe need an interstitial flask_output of "PRESS ANY KEY TO RESTART"
+	- DONE: Address restart interstitial
+	- DONE: Simplify flask code - eliminate start_of_game (see flow notes below)
+	- DONE: Simplify flask code - eliminate double interpreter_text call (see flow notes below)
+	- DONE: Clean up code comments
+	- DONE: Updte version number to 2.3.0
+	- DONE: Clean up redundant flask variable assignments
+	- DONE: Fully understand Flask code and comment all use cases
+	- DONE: Update pythonanywher code and test / troubleshoot
+	- Address flow notes:
+		- DONE: Why not 'else' instead of 'if not start_of_game' ???
+		- DONE: flask_output is not a session variable... does it persist? Presumably not? So flask_output is undefined until interpreter_text assignment; Fixed this; flask_output, max_score, and version now all set to "" at start of code
+		- DONE: found the problem I think!! If quit but not yet Restart then python code never runs and flask output is undefined!!
+		- DONE: Immedite fix is to set flask_output in this case (ditto for max_score and version) and set "" value at start of code
+		- DONE: no longer need flask_output defined in first 'if id exist'; create separate section for local variables in main routine
+		- DONE: improve on 'press any key to restart' interstitial? Maybe move pwd reset to near bottom? (i.e. if 'id' exist: <...> else:)
+		- DONE: moved 'if id is in session' to just above 'if start_of_game == True'... now I'm wondering... do I really need start of game?? Is there ever a case where it's not start of game and fresh variable assignment?? Can I just make the "start of game run" a continuatio of the variable assignment "if"?
+		- DONE: Wondering if I can consolidate the 2 interpreter_text calls just before the 'return rneder_template'... at the end of the day there really only seem to be 2 choices... either game_over == True, in which case we flash "Hit Restart"... or game_over == False... in which case we need to call interpreter_text...
+- DONE: update flow model with any changes!! Keep this accurate!!
+
+- 2.4.x update CSS and jinja
+	- DONE: Start by applying "my website" CSS to Dark Castle
+		- DONE: Figured out CSS has to live in Static for jinja!!! (had forgotten that the directory structure is fixed)
+		- LESSON LEARNED: NEED TO RESTART PYTHONISTA FOR CSS CHANGES (VS. BASE OR INDEX CHANGES) TO TAKE EFFECT!!!
+	- NEXT:
+		- Reset my_website CSS (rename current to style_old.css and start over with fresh css file)
+		- Next change elements in CSS one by one with Pythonista restarts in-between and tune to my liking
+	- POST-NEXT: 
+		- Struggling to reference image - figure out url_for : https://pythonise.com/series/learning-flask/serving-static-files-with-flask
+		- Customize CSS to match Dark Castle theme
+		- CSS: How to set right margins??
+		- CSS: Stone background similar to zork for showcase?		
+		- CSS: flash text blue (this is harder than I thought - requires some deep CSS)
+- POST-NEXT2:
+	- Create Read Me page for Nav Bar
+	- Consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
+
+-2.5.x
+	- Someday - provide scrolling log of past moves	
+	- Someday - update doc!
+	- What is the preferred response to an entry after 'Quit' but before 'Restart'? Maybe cache quit output?? Or don't bother?
+		- Could hid form and 'Submit' in this case?
+		- Or, perhaps better, could pop 'id' upon end_of_game == True
+	- end_of_game is sort of strange... it is a local session variable in main(); but it is also a key-value pair in state_dict, which is also a session variable, and which I pass to interpreter_text... and in interpreter() is only exists in state_dict... strange
+	- Someday - fresh repo with only the needed code
+	- Someday - tab for feedback
+	- Custom google email for feedback?
+	- Maybe - update to nice bootstrap template??
 
 
- *** Flask Flow Pseudo-Code Analysis ***
+*** Flask Flow Pseudo-Code Analysis ***
  
- Note: For the sake of clarity many variables (e.g. 'version', 'max_score', dictionaries) are not tracked here
+Note: For the sake of clarity many variables (e.g. 'version', 'max_score', dictionaries) are not tracked here
 
-	- RUNX=(<template>) [<variable assignment>]
-		- define local variables => flask_output="" # these values should never be used; guard against undefined errors
-		- if 'id' in session:
-			- if POST:
-				- if 'Submit': => user_input="<value>"
-				- if 'Restart': pop 'id'
-		- if 'id' not in session:
-			- define session dictionary variables
-			- define session non-dictionary variables
-			- flash("WELCOME")
-	- if end_of_game == end_of_game:
-		- set local variables => flask_output="GAME OVER"
-		- flash("PRESS REPLAY")
-	- else call interpreter_text(): => flask_output="<value>"
-	- return render_template [<variable assignment>]
+- RUNX=(<template>) [<variable assignment>]
+	- define local variables => flask_output="" # these values should never be used; guard against undefined errors
+	- if 'id' in session:
+		- if POST:
+			- if 'Submit': => user_input="<value>"
+			- if 'Restart': pop 'id'
+	- if 'id' not in session:
+		- define session dictionary variables
+		- define session non-dictionary variables
+		- flash("WELCOME")
+- if end_of_game == end_of_game:
+	- set local variables => flask_output="GAME OVER"
+	- flash("PRESS REPLAY")
+- else call interpreter_text(): => flask_output="<value>"
+- return render_template [<variable assignment>]
 
-	- RUN1=(Start Game) [id=<undefined>, user_input=<undefined>, end_of_game=<undefined>, flask_output=<undefined>]
-		- define local variables => flask_output=""
-		- if 'id' in session: SKIP
-		- if 'id' not in session:
-			- define session dictionary variables
-			- define session non-dictionary variables => id="active", user_input="start of game", end_of_game=False
-			- flash("WELCOME")
-	- if end_of_game == end_of_game: SKIP
-	- else call interpreter_text(): => flask_output="<intro text>"
-	- return render_template [id='active', user_input="start of game", end_of_game=False, flask_output="<intro text>"]
+- RUN1=(Start Game) [id=<undefined>, user_input=<undefined>, end_of_game=<undefined>, flask_output=<undefined>]
+	- define local variables => flask_output=""
+	- if 'id' in session: SKIP
+	- if 'id' not in session:
+		- define session dictionary variables
+		- define session non-dictionary variables => id="active", user_input="start of game", end_of_game=False
+		- flash("WELCOME")
+- if end_of_game == end_of_game: SKIP
+- else call interpreter_text(): => flask_output="<intro text>"
+- return render_template [id='active', user_input="start of game", end_of_game=False, flask_output="<intro text>"]
 
-	- RUN2=(First Move = "south") [id='active', user_input="start of game", end_of_game=False, flask_output=undefined]
-		- define local variables => flask_output=""
-		- if 'id' in session:
-			- if POST:
-				- if 'Submit': => user_input="south"
-				- if 'Restart': SKIP
-		- if 'id' not in session: SKIP
-	- if end_of_game == end_of_game: SKIP
-	- else call interpreter_text(): => flask_output="<south text>"
-	- return render_template [id='active', user_input="south", end_of_game=False, flask_output="<south text>"]
+- RUN2=(First Move = "south") [id='active', user_input="start of game", end_of_game=False, flask_output=undefined]
+	- define local variables => flask_output=""
+	- if 'id' in session:
+		- if POST:
+			- if 'Submit': => user_input="south"
+			- if 'Restart': SKIP
+	- if 'id' not in session: SKIP
+- if end_of_game == end_of_game: SKIP
+- else call interpreter_text(): => flask_output="<south text>"
+- return render_template [id='active', user_input="south", end_of_game=False, flask_output="<south text>"]
 
-	- RUN3=(Quit) [id='active', user_input="south", end_of_game=False, flask_output=<undefined>]
-		- define local variables => flask_output="" # these values should never be used; guard against undefined errors
-		- if 'id' in session:
-			- if POST:
-				- if 'Submit': => user_input="quit"
-				- if 'Restart': SKIP
-		- if 'id' not in session: SKIP
-	- if end_of_game == end_of_game: SKIP
-	- else call interpreter_text(): => flask_output="<quit text>"
-	- return render_template [id='active', user_input="quit", end_of_game=True, flask_output="<quit text>"]
+- RUN3=(Quit) [id='active', user_input="south", end_of_game=False, flask_output=<undefined>]
+	- define local variables => flask_output="" # these values should never be used; guard against undefined errors
+	- if 'id' in session:
+		- if POST:
+			- if 'Submit': => user_input="quit"
+			- if 'Restart': SKIP
+	- if 'id' not in session: SKIP
+- if end_of_game == end_of_game: SKIP
+- else call interpreter_text(): => flask_output="<quit text>"
+- return render_template [id='active', user_input="quit", end_of_game=True, flask_output="<quit text>"]
 
-	- RUN4=(attempt post-quit move) [id='active', user_input="quit", end_of_game=True, flask_output=<undefined>]
-		- define local variables => flask_output="" # these values should never be used; guard against undefined errors
-		- if 'id' in session:
-			- if POST:
-				- if 'Submit': => user_input="north"
-				- if 'Restart': SKIP
-		- if 'id' not in session: SKIP
-	- if end_of_game == end_of_game:
-		- set local variables => flask_output="GAME OVER"
-		- flash("PRESS REPLAY")
-	- else call interpreter_text(): SKIP
-	- return render_template [id='active', user_input="north", end_of_game=True, flask_output="GAME OVER"]
+- RUN4=(attempt post-quit move) [id='active', user_input="quit", end_of_game=True, flask_output=<undefined>]
+	- define local variables => flask_output="" # these values should never be used; guard against undefined errors
+	- if 'id' in session:
+		- if POST:
+			- if 'Submit': => user_input="north"
+			- if 'Restart': SKIP
+	- if 'id' not in session: SKIP
+- if end_of_game == end_of_game:
+	- set local variables => flask_output="GAME OVER"
+	- flash("PRESS REPLAY")
+- else call interpreter_text(): SKIP
+- return render_template [id='active', user_input="north", end_of_game=True, flask_output="GAME OVER"]
 
-	- RUN5=(Restart) [id='active', user_input="north", end_of_game=True, flask_output=<undefined>]
-		- define local variables => flask_output="" # these values should never be used; guard against undefined errors
-		- if 'id' in session:
-			- if POST:
-				- if 'Submit': SKIP
-				- if 'Restart': pop 'id'
-		- if 'id' not in session:
-			- define session dictionary variables
-			- define session non-dictionary variables => id="active", user_input="start of game", end_of_game=False
-			- flash("WELCOME")
-	- if end_of_game == end_of_game: SKIP
-	- else call interpreter_text(): => flask_output="<intro text>"
-	- return render_template [id='active', user_input="start of game", end_of_game=False, flask_output="<intro text>"]
+- RUN5=(Restart) [id='active', user_input="north", end_of_game=True, flask_output=<undefined>]
+	- define local variables => flask_output="" # these values should never be used; guard against undefined errors
+	- if 'id' in session:
+		- if POST:
+			- if 'Submit': SKIP
+			- if 'Restart': pop 'id'
+	- if 'id' not in session:
+		- define session dictionary variables
+		- define session non-dictionary variables => id="active", user_input="start of game", end_of_game=False
+		- flash("WELCOME")
+- if end_of_game == end_of_game: SKIP
+- else call interpreter_text(): => flask_output="<intro text>"
+- return render_template [id='active', user_input="start of game", end_of_game=False, flask_output="<intro text>"]
 
 
 *** GIT CONSOLE NOTES ***
