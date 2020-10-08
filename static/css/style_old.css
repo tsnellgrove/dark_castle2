@@ -8,14 +8,16 @@ body{
 }
 
 .container{
-	width: 80%;
+	/* width: 80%; */
+	width: 100%;
 	margin: auto;
 	overflow: hidden;
 }
 
 #main-header{
-	background-color: #48494B;
+	background-color: coral;
 	color: #fff;
+	/* font-size: 15px; */
 }
 
 #navbar{
@@ -40,11 +42,12 @@ body{
 }
 
 #showcase{
+	/* background-image: {{ url_for('static', filename='images/showcase.jpg') }}; */
 	/* background-image: url('../images/showcase.jpg'); */
-	background-color: #48494B;
+	background-color: coral;
 	background-position: center right;
-	min-height: 120px;
-	margin-bottom: 30px;
+	min-height: 100px;
+	margin-bottom: 15px;
 	text-align: center;
 }
 
@@ -52,16 +55,18 @@ body{
 	color: #fff;
 	font-size: 30px;
 	line-height: 1.6em;
-	padding-top: 15px;
+	padding-top: 10px;
 }
 
 #main{
 	/* float: left; */
-	width: 100%;
+	/* width: 70%; */
+	width: 80%;
 	padding: 0 30px;
 	box-sizing: border-box;
 }
 
+/*
 #sidebar{
 	float: right;
 	width: 30%;
@@ -70,6 +75,7 @@ body{
 	padding: 10px;
 	box-sizing: border-box;
 }
+*/
 
 #main-footer{
 	background: #333;
@@ -84,11 +90,14 @@ body{
 		width: 100%;
 		float: none;
 	}
+	/*
 	#sidebar{
 		width: 100%;
 		float: none;
 	}
+	*/
 }
+
 
 /* Notes */
 
@@ -102,4 +111,5 @@ Duck is the common name for numerous species in the waterfowl family Anatidae wh
 	/* id is for uniqe elements */
 	/* class is for element to be used repeatedly */
 
-/* for background-image - sometimes it's not clear in the iOS filer whether an image already has a ".jpg"... during rename this can lead to "image.jpg.jpg" and lots of issues linking to the correct image name (which will lead to a blank white background). When in doubt, inspect the file in Working Copy - it will report the true file name. */
+/* for background-image - sometimes it's not clear in the iOS filer whether an image already has a ".jpg"... during rename this can lead to "image.jpg.jpg" and lots of issues linking to the correct image name (which will lead to a blank white background). When in doubt, inspect the file in Working Copy - it will report the true file name.
+*/
