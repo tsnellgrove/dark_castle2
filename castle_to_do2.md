@@ -81,16 +81,16 @@
 	- DONE: Start by applying "my website" CSS to Dark Castle
 		- DONE: Figured out CSS has to live in Static for jinja!!! (had forgotten that the directory structure is fixed)
 		- LESSON LEARNED: NEED TO RESTART PYTHONISTA FOR CSS CHANGES (VS. BASE OR INDEX CHANGES) TO TAKE EFFECT!!!
-	- NEXT:
+	- DONE:
 		- Reset my_website CSS (rename current to style_old.css and start over with fresh css file)
 		- Next change elements in CSS one by one with Pythonista restarts in-between and tune to my liking
-	- POST-NEXT: 
+	- NEXT: 
 		- Struggling to reference image - figure out url_for : https://pythonise.com/series/learning-flask/serving-static-files-with-flask
 		- Customize CSS to match Dark Castle theme
 		- CSS: How to set right margins??
 		- CSS: Stone background similar to zork for showcase?		
 		- CSS: flash text blue (this is harder than I thought - requires some deep CSS)
-- POST-NEXT2:
+- POST-NEXT:
 	- Create Read Me page for Nav Bar
 	- Consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
 
