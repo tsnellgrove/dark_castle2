@@ -41,7 +41,11 @@ body{
 
 #showcase{
 	/* background-image: url('../images/showcase.jpg'); */
-	background-color: #48494B;
+	/* background-image: url("/static/images/showcase.jpg") no-repeat 0px 0px; */
+	/* background-color: #48494B; */
+	/* background-image: url( "../images/showcase.jpg" ); */
+	/* background-image: url( "../showcase.jpg" ); */
+	background-image: url( "../stone.jpg" );
 	background-position: center right;
 	min-height: 120px;
 	margin-bottom: 30px;
@@ -49,7 +53,8 @@ body{
 }
 
 #showcase h1{
-	color: #fff;
+	/* color: #fff; */
+	color: black;
 	font-size: 30px;
 	line-height: 1.6em;
 	padding-top: 15px;

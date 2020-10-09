@@ -81,12 +81,13 @@
 	- DONE: Start by applying "my website" CSS to Dark Castle
 		- DONE: Figured out CSS has to live in Static for jinja!!! (had forgotten that the directory structure is fixed)
 		- LESSON LEARNED: NEED TO RESTART PYTHONISTA FOR CSS CHANGES (VS. BASE OR INDEX CHANGES) TO TAKE EFFECT!!!
-	- DONE:
-		- Reset my_website CSS (rename current to style_old.css and start over with fresh css file)
-		- Next change elements in CSS one by one with Pythonista restarts in-between and tune to my liking
-	- NEXT: 
-		- Struggling to reference image - figure out url_for : https://pythonise.com/series/learning-flask/serving-static-files-with-flask
-		- Customize CSS to match Dark Castle theme
+		- DONE: Customize CSS to match Dark Castle theme
+			- DONE: Reset my_website CSS (rename current to style_old.css and start over with fresh css file)
+			- DONE: Next change elements in CSS one by one with Pythonista restarts in-between and tune to my liking
+	- IN-PROC: 
+		- WRONG: Struggling to reference image - figure out url_for : https://pythonise.com/series/learning-flask/serving-static-files-with-flask
+		- DONE: css is static - so don't use url_for... key is that the image must be in ROOT of STATIC
+		- NEXT: Tune stone.jpg image for showcase
 		- CSS: How to set right margins??
 		- CSS: Stone background similar to zork for showcase?		
 		- CSS: flash text blue (this is harder than I thought - requires some deep CSS)
