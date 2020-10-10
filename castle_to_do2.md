@@ -87,12 +87,13 @@
 	- IN-PROC: 
 		- WRONG: Struggling to reference image - figure out url_for : https://pythonise.com/series/learning-flask/serving-static-files-with-flask
 		- DONE: css is static - so don't use url_for... key is that the image must be in ROOT of STATIC
-		- NEXT: Tune stone.jpg image for showcase
+		- DONE: Tune stone.jpg image for showcase
 		- CSS: How to set right margins??
 		- CSS: Stone background similar to zork for showcase?		
 		- CSS: flash text blue (this is harder than I thought - requires some deep CSS)
 - POST-NEXT:
 	- Create Read Me page for Nav Bar
+	- Create "If you taach a Dad some Python" page
 	- Consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
 
 -2.5.x
@@ -222,7 +223,7 @@ Some Day:
 	- Future deployment options: Cloud web, instance, container, Lambda / serverless, mobile, text, echo
 
 3.x Minor Edits:
-	Joshua idea: give the player an option to be a boy (Burt) or a girl (Rose); or maybe let them choose their own name
+	Joshua idea: give the player an option to be a boy (Burt) or a girl (Rose? Betty?); or maybe let them choose their own name
 	make synthetic score_keys more consistent (e.g. always '-success'; 'gator-crown' => 'croc-crown-success')
 	provide printtw() options for double spacing (add print() to inner for) and also change column width
 	use .strip() on input
