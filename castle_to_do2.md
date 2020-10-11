@@ -88,6 +88,7 @@
 		- WRONG: Struggling to reference image - figure out url_for : https://pythonise.com/series/learning-flask/serving-static-files-with-flask
 		- DONE: css is static - so don't use url_for... key is that the image must be in ROOT of STATIC
 		- DONE: Tune stone.jpg image for showcase
+		- DONE: Used my own photo of a stone wall for showcase
 		- CSS: How to set right margins??
 		- CSS: Stone background similar to zork for showcase?		
 		- CSS: flash text blue (this is harder than I thought - requires some deep CSS)
