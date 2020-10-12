@@ -84,17 +84,20 @@
 		- DONE: Customize CSS to match Dark Castle theme
 			- DONE: Reset my_website CSS (rename current to style_old.css and start over with fresh css file)
 			- DONE: Next change elements in CSS one by one with Pythonista restarts in-between and tune to my liking
-	- IN-PROC: 
+	- DONE: Design of game page
 		- WRONG: Struggling to reference image - figure out url_for : https://pythonise.com/series/learning-flask/serving-static-files-with-flask
 		- DONE: css is static - so don't use url_for... key is that the image must be in ROOT of STATIC
 		- DONE: Tune stone.jpg image for showcase
 		- DONE: Used my own photo of a stone wall for showcase
-		- CSS: How to set right margins??
-		- CSS: Stone background similar to zork for showcase?		
-		- CSS: flash text blue (this is harder than I thought - requires some deep CSS)
-- POST-NEXT:
-	- Create Read Me page for Nav Bar
+		- DONE: How to set right margins??
+		- DONE: Stone background similar to zork for showcase?		
+- IN-PROC: Rest of web site
+	- IN-PROC: Create Read Me page for Nav Bar
+		- DONE: Create initial readme.html
+		- Link readme.html in navbar and flask
+	- Create What is IF page
 	- Create "If you taach a Dad some Python" page
+	- CSS: flash text blue (this is harder than I thought - requires some deep CSS)
 	- Consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
 
 -2.5.x
