@@ -94,7 +94,7 @@
 - IN-PROC: Rest of web site
 	- IN-PROC: Create Read Me page for Nav Bar
 		- DONE: Create initial readme.html
-		- Link readme.html in navbar and flask
+		- DONE: Link readme.html in navbar and flask
 	- Create What is IF page
 	- Create "If you taach a Dad some Python" page
 	- CSS: flash text blue (this is harder than I thought - requires some deep CSS)
