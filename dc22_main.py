@@ -23,6 +23,13 @@ app.config["SECRET_KEY"] = "qpueuwrhuqjfn;nWOREJsdf"
 app.permanent_session_lifetime = timedelta(minutes=120)
 
 
+@app.route('/whatis')
+def whatis():
+
+    # *** Return HTML page ***
+    return render_template('whatis.html')
+
+
 @app.route('/readme')
 def readme():
 
