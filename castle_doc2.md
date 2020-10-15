@@ -368,4 +368,4 @@ Flask &Jinja
 CSS
 Pythonanywhere,Bash shell, vi
 
-
+Finish with: Then he will say he needs to do it all over again in object oriented code and a NoSQL DB
