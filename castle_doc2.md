@@ -316,4 +316,56 @@ Version 2.0 Features
 - switcher
 
 
+*** Coda ***
+
+
+If You Teach Your Pa Some Python (A Cautionary Tale)
+
+If you teach your Pa some python
+He will get excited and want to start "a project"
+He will wander around the house saying "hmmm" 
+(thinking of an idea)
+And before you know it
+He will be writing a "text adventure"
+(Which is a strange old game with only words)
+Then he will get very enthusiastic
+And declare that he needs an IDE
+(Because someone on YouTube had one)
+Then there will be typing
+And more typing
+And more typing
+
+Next he will wander around the house saying "hmmm"
+(thinking about dictionaries of dictionaries)
+Eventually he will want you to try his game
+And will be very proud to have created one door and one key
+But there won't actually be a room behind the door
+So then there will be typing
+And more typing
+And more typing
+
+Then one day there will be some unfortunate language in the house
+And he will declare that he need "version control"
+Which means "Git"
+And he will wander around the house saying "hmmm"
+(thinking about Git clients and respositores)
+Then he will proudly tell you that his code is on "GitHub"
+And he will go back to typing
+And more typing
+And more typing
+
+Eventually the game will be "mostly done"
+And he will want the whole family to play all of it
+And give him "feedback"
+(but only Mommy actually will -
+and she'll help him his spelling too)
+
+
+Then he'll want to show it to all his friends
+And will declare that he is "just going to put it on the web"
+
+Flask &Jinja
+CSS
+Pythonanywhere,Bash shell, vi
+
 
