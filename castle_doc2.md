@@ -345,7 +345,7 @@ And more typing
 And more typing
 
 Then one day there will be some unfortunate language in the house
-And he will declare that he need "version control"
+And he will declare that he needs "version control"
 Which means "Git"
 And he will wander around the house saying "hmmm"
 (thinking about Git clients and respositores)
@@ -355,17 +355,51 @@ And more typing
 And more typing
 
 Eventually the game will be "mostly done"
-And he will want the whole family to play all of it
+And he will want the whole family to play it
 And give him "feedback"
 (but only Mommy actually will -
 and she'll help him his spelling too)
 
-
-Then he'll want to show it to all his friends
+So then he'll want to show it to all his friends
 And will declare that he is "just going to put it on the web"
+Which will mean learning Flask and Jinja2
+And I'm sorry to say
+There will thne be more unfortunate language in the house
+Because client-side programming is "strange and unnatural"
+But eventually
+After quite a bit of typing
+(And delting)
+And some wandering around the house saying "hmm" 
+And more typing
+(And more deleting)
+And a last bit of typing
 
-Flask &Jinja
-CSS
-Pythonanywhere,Bash shell, vi
+There will be "much rejoicing"
+And the game will be running on the local web server
+He will say "now I just need to spruce it up a bit"
+Which will mean "CSS"
+And more YouTube classes
+"Exercising aesthetic judgement"
+And a bit more wandering about the house saying "hmm"
+Then it will be time again for typing
+And more typing
+And a bit of photo editing
 
-Finish with: Then he will say he needs to do it all over again in object oriented code and a NoSQL DB
+Finally it will be time to put the game on the "real" web
+Which wil mean a "Pythonanywhere"
+And it will all be good at firt
+Until it becomes clear that this means using
+Bash shell and vi
+Then there will be more unforutunate language in the house
+And also long stories
+About the last time he used vi
+30 years ago
+But after a bit more typing
+and a few more "hmm"s
+
+The game will be up on the "real" web
+And he will send everyone he knows a link to it
+Then just when the "project" is finally finished
+he will declare that he needs to do it all over again
+In object oriented code with a NoSQL DB
+(this is why this a cautionary tale)
