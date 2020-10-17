@@ -318,88 +318,113 @@ Version 2.0 Features
 
 *** Coda ***
 
-
 If You Teach Your Pa Some Python (A Cautionary Tale)
 
 If you teach your Pa some python
-He will get excited and want to start "a project"
-He will wander around the house saying "hmmm" 
+He will get excited
+And want to start "a project"
+He will wander around the house
+Saying "hmmm" 
 (thinking of an idea)
 And before you know it
 He will be writing a "text adventure"
 (Which is a strange old game with only words)
 Then he will get very enthusiastic
 And declare that he needs an IDE
-(Because someone on YouTube had one)
+(Because someone on YouTube has one)
 Then there will be typing
 And more typing
 And more typing
 
-Next he will wander around the house saying "hmmm"
+Next it will get a bit tricky
+And he will wander around the house
+Saying "hmmm"
 (thinking about dictionaries of dictionaries)
 Eventually he will want you to try his game
-And will be very proud to have created one door and one key
-But there won't actually be a room behind the door
+And will be very proud to have created
+One door and one key
+But there won't actually be a room
+Behind the door
+Which won't be very interesting
 So then there will be typing
 And more typing
 And more typing
 
-Then one day there will be some unfortunate language in the house
+Then one day
+There will be some unfortunate language in the house
 And he will declare that he needs "version control"
-Which means "Git"
-And he will wander around the house saying "hmmm"
+(Which means "Git")
+And he will wander around the house
+Saying "hmmm"
 (thinking about Git clients and respositores)
-Then he will proudly tell you that his code is on "GitHub"
+Then he will proudly tell you
+That his code is on "GitHub"
 And he will go back to typing
 And more typing
 And more typing
 
-Eventually the game will be "mostly done"
-And he will want the whole family to play it
-And give him "feedback"
-(but only Mommy actually will -
-and she'll help him his spelling too)
+Eventually
+After more "hmmm"s 
+And much more typing
+the game will be "mostly done"
+He will be very proud of it
+And want the whole family to play it
+To give him "feedback"
+(but only Mommy
+will actually play the whole thing..
+and she'll help him with his spelling too)
 
-So then he'll want to show it to all his friends
-And will declare that he is "just going to put it on the web"
-Which will mean learning Flask and Jinja2
+So then
+He'll want to show it to all his friends
+He will declare that he is "just going to put it on the web"
+Which will mean
+Learning Flask and Jinja2
 And I'm sorry to say
 There will thne be more unfortunate language in the house
 Because client-side programming is "strange and unnatural"
 But eventually
 After quite a bit of typing
 (And delting)
-And some wandering around the house saying "hmm" 
+And some wandering around the house
+Saying "hmmm"
 And more typing
 (And more deleting)
 And a last bit of typing
 
 There will be "much rejoicing"
-And the game will be running on the local web server
-He will say "now I just need to spruce it up a bit"
+And the game will be running
+On the local web server
+He will declare "now I just need to spruce it up a bit"
 Which will mean "CSS"
 And more YouTube classes
-"Exercising aesthetic judgement"
-And a bit more wandering about the house saying "hmm"
+And also "Exercising aesthetic judgment"
+Then there will be
+More wandering about the house
+Saying "hmmm"
 Then it will be time again for typing
 And more typing
 And a bit of photo editing
 
-Finally it will be time to put the game on the "real" web
+Finally
+He will be ready to put the game on the "real" web
 Which wil mean a "Pythonanywhere"
-And it will all be good at firt
-Until it becomes clear that this means using
+Which will seem great at first
+Until it becomes clear that this means
+Using
 Bash shell and vi
 Then there will be more unforutunate language in the house
 And also long stories
 About the last time he used vi
 30 years ago
 But after a bit more typing
-and a few more "hmm"s
+and a few more "hmmm"s
 
+At last
 The game will be up on the "real" web
-And he will send everyone he knows a link to it
-Then just when the "project" is finally finished
-he will declare that he needs to do it all over again
-In object oriented code with a NoSQL DB
-(this is why this a cautionary tale)
+He will send everyone he knows a link to it
+Then just when the "project"
+Is finally finished
+he will declare that he needs to do it all over again "right"
+Which will mean "object oriented code with a NoSQL DB"
+(This is why this a cautionary tale)
+
