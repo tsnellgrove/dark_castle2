@@ -7,7 +7,7 @@ This is the front-end code
 
 Written and programmed by Tom Snellgrove
 
-Last update = Sept 30, 2020
+Last update = Oct 18, 2020
 """
 
 # *** Imports ***
@@ -22,6 +22,12 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = "qpueuwrhuqjfn;nWOREJsdf"
 app.permanent_session_lifetime = timedelta(minutes=120)
 
+
+@app.route('/ifyou')
+def ifyou():
+
+    # *** Return HTML page ***
+    return render_template('ifyou.html')
 
 @app.route('/whatis')
 def whatis():
