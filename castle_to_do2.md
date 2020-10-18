@@ -65,7 +65,7 @@
 	- DONE: Updte version number to 2.3.0
 	- DONE: Clean up redundant flask variable assignments
 	- DONE: Fully understand Flask code and comment all use cases
-	- DONE: Update pythonanywher code and test / troubleshoot
+	- DONE: Update pythonanywhere code and test / troubleshoot
 	- Address flow notes:
 		- DONE: Why not 'else' instead of 'if not start_of_game' ???
 		- DONE: flask_output is not a session variable... does it persist? Presumably not? So flask_output is undefined until interpreter_text assignment; Fixed this; flask_output, max_score, and version now all set to "" at start of code
@@ -96,9 +96,13 @@
 		- DONE: Create initial readme.html
 		- DONE: Link readme.html in navbar and flask
 	- DONE: Create What is IF page
-	- Create "If you taach a Dad some Python" page
+	- IN-PROC: Create "If you taach a Dad some Python" page
 	- CSS: flash text blue (this is harder than I thought - requires some deep CSS)
 	- Consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
+	- Clean-up game page
+	- move doc to /doc
+	- fresh repo with only the needed code
+	 
 
 -2.5.x
 	- Someday - provide scrolling log of past moves	
