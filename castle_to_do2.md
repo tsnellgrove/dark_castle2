@@ -96,7 +96,7 @@
 		- DONE: Create initial readme.html
 		- DONE: Link readme.html in navbar and flask
 	- DONE: Create What is IF page
-	- IN-PROC: Create "If you taach a Dad some Python" page
+	- DONE: Create "If you taach a Dad some Python" page
 	- CSS: flash text blue (this is harder than I thought - requires some deep CSS)
 	- Consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
 	- Clean-up game page
