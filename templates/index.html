@@ -15,14 +15,15 @@
             Score = {{ score }} / {{ max_score }} </b>
         </span>
     </p>
-    {% with messages = get_flashed_messages() %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
-            {% for msg in messages %}
-                <p>{{ msg }}</p>
+            {% for category, msg in messages %}
+                <p><div class="{{ category }}">{{ msg }}</div></p>
             {% endfor %}
         {% endif %}
     {% endwith %}
-    <br>
+
     <p><b>Adventure Text:</b></p>
     {% autoescape false %}
     <p>{{ flask_output }}</p>
