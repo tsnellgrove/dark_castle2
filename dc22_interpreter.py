@@ -7,7 +7,7 @@ This is the back-end code
 
 Written and programmed by Tom Snellgrove
 
-Last update = Sept 30, 2020
+Last update = Oct 22, 2020
 """
 
 # *** Imports ***
@@ -362,25 +362,39 @@ def timer(
 
 def printtw(txt_str):
 
+# *** Global call removed when troulbeshooting flask ***
 #    global output
 
     output = static_dict['global_dict']['output']
 
+# *** Word wrap commented out; Was used for console; Now wrap in CSS ***
+#    txt_lst = []
+#    txt_lst = txt_str.split("\n")
+
+#    for paragraph in txt_lst:
+#        wrapper = textwrap.TextWrapper(width=80, break_long_words=False)
+#        word_list = wrapper.wrap(text=paragraph)
+
+#        with io.StringIO() as buffer, redirect_stdout(buffer):
+#            print("<p>")
+#            for element in word_list:
+#                print(element + "<br>")
+#            print("</p>")
+#            output = output + buffer.getvalue()
+#
+#            static_dict['global_dict']['output'] = output
+
     txt_lst = []
     txt_lst = txt_str.split("\n")
 
-    for paragraph in txt_lst:
-        wrapper = textwrap.TextWrapper(width=80, break_long_words=False)
-        word_list = wrapper.wrap(text=paragraph)
+    with io.StringIO() as buffer, redirect_stdout(buffer):
+        print("<p>")
+        for element in txt_lst:
+            print("<p>" + element + "</p>")
+        print("</p>")
+        output = output + buffer.getvalue()
 
-        with io.StringIO() as buffer, redirect_stdout(buffer):
-            print("<p>")
-            for element in word_list:
-                print(element + "<br>")
-            print("</p>")
-            output = output + buffer.getvalue()
-
-            static_dict['global_dict']['output'] = output
+    static_dict['global_dict']['output'] = output
 
     return
 

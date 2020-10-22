@@ -98,10 +98,14 @@
 	- DONE: Create What is IF page
 	- DONE: Create "If you taach a Dad some Python" page
 	- DONE: Make flash text blue (this is harder than I thought - requires some flask + CSS)
-	- Consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
+	- DONE: Consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
 	- Clean-up game page
 	- move doc to /doc
+	- Full "new player" test play
+	- Spell check doc
 	- fresh repo with only the needed code
+	- Update version codes
+	- "publish" to friends via email!!
 	 
 
 -2.5.x
