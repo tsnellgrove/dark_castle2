@@ -99,26 +99,20 @@
 	- DONE: Create "If you taach a Dad some Python" page
 	- DONE: Make flash text blue (this is harder than I thought - requires some flask + CSS)
 	- DONE: Consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
-	- Clean-up game page
-	- move doc to /doc
+	- IN-PROC: Clean-up game page
+		- DONE: Game text box
+		- NEXT: Align text box and buttons (just remove </p> ?)
+	- Update version code (in code and in static_dict)
 	- Full "new player" test play
-	- Spell check doc
-	- fresh repo with only the needed code
-	- Update version codes
-	- "publish" to friends via email!!
-	 
 
 -2.5.x
-	- Someday - provide scrolling log of past moves	
+	- move doc to /doc
 	- Someday - update doc!
-	- What is the preferred response to an entry after 'Quit' but before 'Restart'? Maybe cache quit output?? Or don't bother?
-		- Could hid form and 'Submit' in this case?
-		- Or, perhaps better, could pop 'id' upon end_of_game == True
-	- end_of_game is sort of strange... it is a local session variable in main(); but it is also a key-value pair in state_dict, which is also a session variable, and which I pass to interpreter_text... and in interpreter() is only exists in state_dict... strange
-	- Someday - fresh repo with only the needed code
-	- Someday - tab for feedback
-	- Custom google email for feedback?
-	- Maybe - update to nice bootstrap template??
+	- Spell check doc
+	- fresh repo with only the needed code
+	- Update version code (in code and in static_dict)
+	- "publish" to friends via email!!
+	 
 
 
 *** Flask Flow Pseudo-Code Analysis ***
@@ -234,7 +228,19 @@ Some Day:
 	- Investigate AWS implemenations
 	- Future deployment options: Cloud web, instance, container, Lambda / serverless, mobile, text, echo
 
-3.x Minor Edits:
+-3.0.x Web / Flask / Python Minor Updates: 
+	- Someday - provide scrolling log of past moves	
+	- What is the preferred response to an entry after 'Quit' but before 'Restart'? Maybe cache quit output?? Or don't bother?
+		- Could hid form and 'Submit' in this case?
+		- Or, perhaps better, could pop 'id' upon end_of_game == True
+	- end_of_game is sort of strange... it is a local session variable in main(); but it is also a key-value pair in state_dict, which is also a session variable, and which I pass to interpreter_text... and in interpreter() is only exists in state_dict... strange
+	- Return to use of output as global?
+	- Someday - tab for feedback
+	- Custom google email for feedback?
+	- Maybe - update to nice bootstrap template??
+
+
+3.1.x Minor Python Edits:
 	Joshua idea: give the player an option to be a boy (Burt) or a girl (Rose? Betty?); or maybe let them choose their own name
 	make synthetic score_keys more consistent (e.g. always '-success'; 'gator-crown' => 'croc-crown-success')
 	provide printtw() options for double spacing (add print() to inner for) and also change column width

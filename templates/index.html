@@ -25,9 +25,11 @@
     {% endwith %}
 
     <p><b>Adventure Text:</b></p>
-    {% autoescape false %}
-    <p>{{ flask_output }}</p>
-    {% endautoescape %}
+    <section id="adventure_txt">
+      {% autoescape false %}
+      <p>{{ flask_output }}</p>
+      {% endautoescape %}
+    </section>
     <p><b>Enter your command:</b></p>
     <form method="POST" action="">
         <p><input type = "text" name="user_input" /></p>

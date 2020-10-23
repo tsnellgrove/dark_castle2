@@ -71,6 +71,13 @@ body{
 	box-sizing: border-box;
 }
 
+#adventure_txt{
+	background: #808080;
+	color: #fff;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
 #sidebar{
 	float: right;
 	width: 30%;
