@@ -99,17 +99,19 @@
 	- DONE: Create "If you taach a Dad some Python" page
 	- DONE: Make flash text blue (this is harder than I thought - requires some flask + CSS)
 	- DONE: Consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
-	- IN-PROC: Clean-up game page
+	- DONE: Clean-up game page
 		- DONE: Game text box
-		- NEXT: Align text box and buttons (just remove </p> ?)
-	- Update version code (in code and in static_dict)
-	- Full "new player" test play
+		- DONE: Align text box and buttons on same line (just remove </p> ?)
+		- DONE: Align "version" on same line as buttons
+	- DONE: Update version code (in code and in static_dict)
+	- NEXT: Full "new player" test play
 
 -2.5.x
-	- move doc to /doc
+	- Change index.html inline styling to syle.css based
 	- Someday - update doc!
-	- Spell check doc
 	- fresh repo with only the needed code
+	- move doc to /doc
+	- Spell check doc
 	- Update version code (in code and in static_dict)
 	- "publish" to friends via email!!
 	 

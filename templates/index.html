@@ -32,13 +32,14 @@
     </section>
     <p><b>Enter your command:</b></p>
     <form method="POST" action="">
-        <p><input type = "text" name="user_input" /></p>
-        <p><input type="submit" name="submit_button" value="Submit" /></p>
-        <p><input type="submit" name="submit_button" value="Restart" /></p>
+        <p style="text-align:left;"><input type = "text" name="user_input" />
+        <input type="submit" name="submit_button" value="Submit" />
+        <input type="submit" name="submit_button" value="Restart" />
+        <span style="float:right;">
+            <b>Version {{ version }}</b></p>
+        </span>
     </form>
-    <p style="text-align:right;">
-        <b>Version {{ version }}</b>
-    </p>
+
 </div>
 {% endblock %}
 

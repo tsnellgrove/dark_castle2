@@ -1,4 +1,4 @@
-"""Dark Castle 2.3.0
+"""Dark Castle 2.4.0
 
 This is a simple Zork-like text adventure game.
 I am creating it in order to learn how to program in Python.
@@ -7,7 +7,7 @@ This is the front-end code
 
 Written and programmed by Tom Snellgrove
 
-Last update = Oct 20, 2020
+Last update = Oct 24, 2020
 """
 
 # *** Imports ***
@@ -198,8 +198,7 @@ def index():
         flask_output = "GAME OVER"
         max_score = "NA"
         version = "NA"
-        flash(f"THANKS FOR PLAYING! YOUR GAME HAS ENDED - PRESS "
-            + "'RESTART' TO PLAY AGAIN", "info")
+        flash(f"YOUR GAME HAS ENDED - PRESS RESTART' TO PLAY AGAIN", "info")
     else:
         session['end_of_game'], flask_output, session['room_dict'], \
             session['door_dict'], session['switch_dict'], \

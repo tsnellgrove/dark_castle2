@@ -78,6 +78,10 @@ body{
 	box-sizing: border-box;
 }
 
+#version_txt{
+	text-align: right;
+}
+
 #sidebar{
 	float: right;
 	width: 30%;
