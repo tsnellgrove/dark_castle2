@@ -104,7 +104,7 @@
 		- DONE: Align text box and buttons on same line (just remove </p> ?)
 		- DONE: Align "version" on same line as buttons
 	- DONE: Update version code (in code and in static_dict)
-	- NEXT: Full "new player" test play
+	- DONE: Full "new player" test play
 
 -2.5.x
 	- Change index.html inline styling to syle.css based
