@@ -699,4 +699,110 @@ Updates for v 2.0.x
 				- instead, runs in memory for the specific user
 				- this avoids issues with the 4 KB client-side cookie limitation when rendering the hedgehog broach text
 				- problem solved by JoyEllen!
-				- tested on pythonanywhere.com where we both hit server with simultaneous submits at least a dozen times
+				- tested on pythonanywhere.com where we both hit server with simultaneous submits at least a dozen times		
+
+- 2.2.x
+		- 2.2.2
+			- DONE: Write up git for pythonanwhere steps
+			- DONE: Someday - moves, score, and version presented continuously in corners of index.htm.		
+			- DONE: remove old score / move table
+			- DONE: How to get static_dict values to dc22_main ??
+			- DONE: Unify version doc
+			- DONE: Move completed updates to castle_done
+			- DONE: Commit and tag as 2.2.2 Complete
+			- DONE: Reset moves and score to zero in flask restart code
+		-2.2.3
+			- Learn how CSS and HTML relate to jinja and flask
+				- DONE: Started watching "CSS Crash Course for Absolute Beginners" on YouTube
+				- DONE: Watch Jinja tutorial: https://youtu.be/7M1MaAPWnYg
+				- DONE: Better understand web server role vs. flask
+				- DONE: Update overview diagram
+				- DONE: Vital next step - Sept 19, 2020 - Download and play some Infocome games ;-D 
+				- DONE: Plan out web site - What tabs and content to include
+					- tabs:
+						- Adventure
+						- About
+					- page layout:
+						- Header: dark gray
+						- NavBar: black
+						- Showcase:
+							- Art: https://www.canstockphoto.com/twelve-angle-stone-43317519.html
+							- Text: Have Fun Storming the Castle
+							- Matches Zork font: https://en.wikipedia.org/wiki/Zork#/media/File:Zork_I_box_art.jpg
+						- Content: light gray
+						- Footer: black
+					- Content
+						- Adventure:
+							- Alerts
+							- Response
+							- Form fields
+						- About:
+							- Black: sidebar (Zork quote?), What is IF?, Git links
+
+- 2.3.x - Update existing environment and polish existing flask code
+	- DONE!!: troubleshoot existing game issues
+		- undefined erro on output when called for index.html render; same error local & on PA
+		- seems to be a global vs. local variables - renamed flask 'output' => 'flask_output'; maybe helped??
+		- Site seems to be working again? 
+	- DONE!!: create base_new.html
+		- initial draft created but can't test due to game error
+		- when I try swapping in base_new.html I get a global undefined error on flask_output... and keep getting it even when I switch base_new => base again?? Even after restarting?!?
+	- DONE: Dig into Flask code and really understand it and get it running right
+		- I'm now convinced that the problem is "time" or "run itteration" based... every morning the program runs fine but then I work on other things and by the time I get back to it I get the same 'flask_output undefined' error
+		- to test this, today I referenced base_new.html in index... we'll see if tomorrow it runs fine
+		- I suspect that what I need to do is formally pass 'output' within interpreter.py but this is a pain because I call printtw() so many times from so many places... perhaps 'output' becomes a value in state_dict[] ? NO!! - that won't work - because then it will blow up my cookie 4 KB space limit :() 
+		- Confirmed: base_new.html worked fine until I got to quit
+		- Tested my suspicions about the problem being 'output' as a global in dc22_interpreter.py... created static_dict['global_dict']['output'] and stored output value here... still got 'flask_output' undefined but possibly this is a temporarily persistent state issue? We'll see if this change fixes the problem tomorrow (I doubt it); If not, time to drill down deeper into the flask code itself... problem seems to happen after quiting - need to walk through what happens to flask_output after user_input = 'quit' 
+		- Confirmed, flask app looses its mind right after 'quit' - need to figure this out
+		- Had an unexpected result of moving 'output' to 'static_dict' => output did not reset! instead it kept building up the output history between user inputs! Did not expect this. Also don't think it will work in multi-user mode. not sure why the variable definition isn't working but need to investigate
+		- Set static_dict 'output' to "" at start of interpreter_text
+		- Need to carefully observe output on quit tomorrow morning; Are flash alerts and end of game score and title printed on 'quit'?
+	- DONE: Fix need for double entry post restart
+		- Now I understande why we get the intro screen twice upon restart... we need to show something once restart is pressed - but all variables will be reset on next run of 'main'... maybe need an interstitial flask_output of "PRESS ANY KEY TO RESTART"
+	- DONE: Address restart interstitial
+	- DONE: Simplify flask code - eliminate start_of_game (see flow notes below)
+	- DONE: Simplify flask code - eliminate double interpreter_text call (see flow notes below)
+	- DONE: Clean up code comments
+	- DONE: Updte version number to 2.3.0
+	- DONE: Clean up redundant flask variable assignments
+	- DONE: Fully understand Flask code and comment all use cases
+	- DONE: Update pythonanywhere code and test / troubleshoot
+	- Address flow notes:
+		- DONE: Why not 'else' instead of 'if not start_of_game' ???
+		- DONE: flask_output is not a session variable... does it persist? Presumably not? So flask_output is undefined until interpreter_text assignment; Fixed this; flask_output, max_score, and version now all set to "" at start of code
+		- DONE: found the problem I think!! If quit but not yet Restart then python code never runs and flask output is undefined!!
+		- DONE: Immedite fix is to set flask_output in this case (ditto for max_score and version) and set "" value at start of code
+		- DONE: no longer need flask_output defined in first 'if id exist'; create separate section for local variables in main routine
+		- DONE: improve on 'press any key to restart' interstitial? Maybe move pwd reset to near bottom? (i.e. if 'id' exist: <...> else:)
+		- DONE: moved 'if id is in session' to just above 'if start_of_game == True'... now I'm wondering... do I really need start of game?? Is there ever a case where it's not start of game and fresh variable assignment?? Can I just make the "start of game run" a continuatio of the variable assignment "if"?
+		- DONE: Wondering if I can consolidate the 2 interpreter_text calls just before the 'return rneder_template'... at the end of the day there really only seem to be 2 choices... either game_over == True, in which case we flash "Hit Restart"... or game_over == False... in which case we need to call interpreter_text...
+- DONE: update flow model with any changes!! Keep this accurate!!
+
+- 2.4.x update CSS and jinja
+	- DONE: Start by applying "my website" CSS to Dark Castle
+		- DONE: Figured out CSS has to live in Static for jinja!!! (had forgotten that the directory structure is fixed)
+		- LESSON LEARNED: NEED TO RESTART PYTHONISTA FOR CSS CHANGES (VS. BASE OR INDEX CHANGES) TO TAKE EFFECT!!!
+		- DONE: Customize CSS to match Dark Castle theme
+			- DONE: Reset my_website CSS (rename current to style_old.css and start over with fresh css file)
+			- DONE: Next change elements in CSS one by one with Pythonista restarts in-between and tune to my liking
+	- DONE: Design of game page
+		- WRONG: Struggling to reference image - figure out url_for : https://pythonise.com/series/learning-flask/serving-static-files-with-flask
+		- DONE: css is static - so don't use url_for... key is that the image must be in ROOT of STATIC
+		- DONE: Tune stone.jpg image for showcase
+		- DONE: Used my own photo of a stone wall for showcase
+		- DONE: How to set right margins??
+		- DONE: Stone background similar to zork for showcase?		
+- IN-PROC: Rest of web site
+	- IN-PROC: Create Read Me page for Nav Bar
+		- DONE: Create initial readme.html
+		- DONE: Link readme.html in navbar and flask
+	- DONE: Create What is IF page
+	- DONE: Create "If you taach a Dad some Python" page
+	- DONE: Make flash text blue (this is harder than I thought - requires some flask + CSS)
+	- DONE: Consider implementing word wrap in jinja template wordwrap() rather than hard coded in dc22_interpreter printtw()
+	- DONE: Clean-up game page
+		- DONE: Game text box
+		- DONE: Align text box and buttons on same line (just remove </p> ?)
+		- DONE: Align "version" on same line as buttons
+	- DONE: Update version code (in code and in static_dict)
+	- DONE: Full "new player" test play
