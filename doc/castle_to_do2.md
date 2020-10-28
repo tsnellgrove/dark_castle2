@@ -30,8 +30,9 @@ Git for pythonanywhere.com
 		- DONE: Move "dones" from castle_to_do2.md to castle_done2
 		- DONE: Move pseudo-code flow from castle_to_do2.md to castle_flow25
 		- DONE: Move doc files to /doc
-	- IN-PROC: Clean up repo with only the needed code
+	- DONE: Clean up repo with only the needed code
 		- DONE: Move old code to /legacy
+		- DONE: Delete unused css and image files
 	- Write doc updates for Flask
 	- Spell check doc
 	- Update version code (in code and in static_dict)
