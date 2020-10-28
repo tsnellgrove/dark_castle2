@@ -26,12 +26,13 @@ Git for pythonanywhere.com
 +++ To Dos +++
 
 -2.5.x
-	- IN-PROC: Update doc!
+	- DONE: Doc organize
 		- DONE: Move "dones" from castle_to_do2.md to castle_done2
 		- DONE: Move pseudo-code flow from castle_to_do2.md to castle_flow25
 		- DONE: Move doc files to /doc
-		- Write doc updates for Flask
-	- Clean up repo with only the needed code
+	- IN-PROC: Clean up repo with only the needed code
+		- DONE: Move old code to /legacy
+	- Write doc updates for Flask
 	- Spell check doc
 	- Update version code (in code and in static_dict)
 	- "publish" to friends via email!!
