@@ -20,8 +20,28 @@
 		- Here's a link to IFDB - one of the most widest and most active repositories of IF content: https://ifdb.tads.org
 		- Lastly, if you're an Apple iOS user, I recommend the "Frotz" app. It's an older compiler but it still has a rich collection of works for free.
 
+*** Web Updates ***
 
-*** Game Overview ***
+This is a documentation addendum that covers the updates made to web-enab dark_castle
+
+"Just Put it on the Web"
+
+- I had expected that sharing the app on the web to be pretty simple... because the web is ubiquitous and I assumed anything common would be easy. In the event, this turned out to be one of the hardest parts of writing the app.
+- The challenge was that I was fundamentally ignorant of how web apps worked - I really didn't know what I didn't know. I learned PASCAL in highschool on an Apple IIc and that formed the basis for my mental model of how an application runs. It was a single-threaded, single-user, stateful environment. When you were running your program on the IIc that was *all* the IIc was doing. The program owned standard input / output and the user was either interacting with the programming or exiting out of it. And there was only one user. So the program could keep everything in memory in a simple stateful fashion. Also, the program was a bit like a novel... it had a beginning, a middle, and an end. The program did some work and then it finished.. it didn't just hang about waiting for another user interaction all the time. This experience from highschool shaped my mental model of applications for the next 35 years - right up through writing dark_castle.
+- By contrast, as I came to learn, a web app is innately stateless, multi-user, and available. Since the program itself is stateless, you need to store the data somewhere (typically a DB but in my very simple case a client-side session cookie). Since any number of users could be using the app simultaneously you need to embrace the concept of session variables... i.e. a separate set of variables for each user. And lastly, the web never just stops. It's always out there. And users interact with it very asynchronously... maybe they use your web app for 5 minutes and then get and email, reply to that, and then come back to your app's browser tab in 5 minutes. Or 5 hours. Or 5 days. So if your program is on the web you always need to be ready for the user to stop using it at any time and come back to it at any time. 
+- To a web programmer these decarlations must seem blazingly obvious but to me this was all brand new. YouTube videos were great at teaching me specific tools and frameworks but getting these concepts into my head took a lot of trial and error. On the plus side, I've been supporting web servers at the OS level for 25 years and now finally I have some idea what they're actually doing - so maybe old dogs can learn new tricks ;-D
+
+
+Functionalizing
+
+Flask and Jinja
+
+CSS
+
+
+
+
+*** Game Overview - Console Version ***
 
 - Program Summary:
 	- A simple Zork-like Text Adventure / Interactive Fiction.
