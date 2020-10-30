@@ -33,10 +33,19 @@ Git for pythonanywhere.com
 	- DONE: Clean up repo with only the needed code
 		- DONE: Move old code to /legacy
 		- DONE: Delete unused css and image files
-	- Write doc updates for Flask
-	- Spell check doc
+	- IN-PROC: Write doc updates for Flask
+		- DONE: "Just put it on the web"
+		- Functionalizing
+		- Flask and Jinja
+		- CSS
+		- Overview Diagram
+	- Spell check docs
 	- Update version code (in code and in static_dict)
 	- "publish" to friends via email!!
+		- List of usual suspects
+		- Final decision on BCC: vs. CC: vs. FB
+		- Write email
+		- Send
 
 
 *** Future Versions and Features ***
