@@ -35,8 +35,9 @@ Git for pythonanywhere.com
 		- DONE: Delete unused css and image files
 	- IN-PROC: Write doc updates for Flask
 		- DONE: "Just put it on the web"
-		- Functionalizing
+		- DONE: Functionalizing
 		- Flask and Jinja
+		- Storing the Data
 		- CSS
 		- Overview Diagram
 	- Spell check docs

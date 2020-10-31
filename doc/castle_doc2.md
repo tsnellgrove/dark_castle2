@@ -25,7 +25,6 @@
 This is a documentation addendum that covers the updates made to web-enab dark_castle
 
 "Just Put it on the Web"
-
 - I had expected that sharing the app on the web to be pretty simple... because the web is ubiquitous and I assumed anything common would be easy. In the event, this turned out to be one of the hardest parts of writing the app.
 - The challenge was that I was fundamentally ignorant of how web apps worked - I really didn't know what I didn't know. I learned PASCAL in highschool on an Apple IIc and that formed the basis for my mental model of how an application runs. It was a single-threaded, single-user, stateful environment. When you were running your program on the IIc that was *all* the IIc was doing. The program owned standard input / output and the user was either interacting with the programming or exiting out of it. And there was only one user. So the program could keep everything in memory in a simple stateful fashion. Also, the program was a bit like a novel... it had a beginning, a middle, and an end. The program did some work and then it finished.. it didn't just hang about waiting for another user interaction all the time. This experience from highschool shaped my mental model of applications for the next 35 years - right up through writing dark_castle.
 - By contrast, as I came to learn, a web app is innately stateless, multi-user, and available. Since the program itself is stateless, you need to store the data somewhere (typically a DB but in my very simple case a client-side session cookie). Since any number of users could be using the app simultaneously you need to embrace the concept of session variables... i.e. a separate set of variables for each user. And lastly, the web never just stops. It's always out there. And users interact with it very asynchronously... maybe they use your web app for 5 minutes and then get and email, reply to that, and then come back to your app's browser tab in 5 minutes. Or 5 hours. Or 5 days. So if your program is on the web you always need to be ready for the user to stop using it at any time and come back to it at any time. 
@@ -33,8 +32,13 @@ This is a documentation addendum that covers the updates made to web-enab dark_c
 
 
 Functionalizing
+- I found a good tutorial about making "console" python code "web ready" on pythonanywhere.com. Their reccomended approach was to "functionalize" your code first - so that it could be called from a small presentation script as a function - so that became my first goal. I had started out with a relatively compact "Main Function" so this didn't seem too daunting. 
+- I ended up with Interpreter and Main. I had to push the "first run" and "timer" code into the Intpreter function but this wasn't too challenging. The harder part was printing. A given response to a player command might be composed of five different print statements spanning three different subroutines. Now I needed to pass a single string back to Main with a fully composed and formatted text. Fortunately, I'd already created my own custom print routine, "printtw", in order to wrap text at 80 characters (I would later end up removing that functionality and word-wrapping in CSS) so I simply extended that routine. I redirected stdout to a string and stored it as "output". Initially "output" was a global variable but during some Flask troubleshooting (which turned out to have nothing to do with "output") I ended up embeding it in static_dict. Global variables are just innately suspect.
+- The final decision point was deciding where to keep each dictionary. Fortunately, I'd been tracking the dictionaries as static or stateful all along so this wasn't too bad. The static dictionaries (and the import of the descriptions dictionary) were moved to Interpreter. Stateful dictionaries were all declared in Main and passed to the Interpreter function. And voila, my code was "functionalized". It was still running at the console but the Interpreter code was now stateless. It was time to learn about this "Flask" business..
 
 Flask and Jinja
+
+Storing the data
 
 CSS
 
