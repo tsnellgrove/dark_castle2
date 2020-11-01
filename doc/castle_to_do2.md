@@ -36,7 +36,7 @@ Git for pythonanywhere.com
 	- IN-PROC: Write doc updates for Flask
 		- DONE: "Just put it on the web"
 		- DONE: Functionalizing
-		- Flask and Jinja
+		- DONE: Flask and Jinja
 		- Storing the Data
 		- CSS
 		- Overview Diagram
