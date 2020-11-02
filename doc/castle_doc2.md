@@ -43,7 +43,10 @@ Flask and Jinja:
 - Flask also has a nifty little feature call Jinja which allows you to create a "base" html template. This is useful for storing elements like navigation bars that will be re-used by every html page in your site. Jinja also has some very primative scripting capabilities - though I really didn't use them myself. Jinja was one of the few parts of web app programming that I found to be simple and intuitive. For some reason YouTubers spend quite a bit of time being excited about it. Presumably this capability (or at least its ease of use) are fairly unique to Flask.
 - One gotcha that hit me repeatedly with Flask - you need to abide by its pre-defined directory hierarchy. Unlike Django (apparently) you can't redefine these to match your own mental model. html content *must* go in /templates. CSS and images *must* go in static. You have been warned!
 
-Storing the data
+Storing the data:
+- I've supported web servers at the OS level since there was a world wide web but I've never really understood why every web server had a database. Now I get it. Since the web app itself is stateless you need a persistent place to keep session data. For for version 1.0 I'm keeping things simple and just storing the stateful data in a client-side cookie using the Flask session variable.
+- Even the simplest approach can have its challenges. I learned the hard way that there's a 4 KB limit to what you can store in a cookie (the exposistion-heavy "examine hedgehog_broach" response of course). This led me to optimize what I was storing in session variables. It brought home to me that I only need to store in session, data that will persist beyond the existing template. Which meant that the text response to each command, which would be immediately displayed in the html template being returned, did *not* need to be saved in a session variable.
+- This approach appears to work reasonably well but in the future I'd like to try storing data in SQLAlchemy or a NoSQL. 
 
 CSS (mention need to restart between changes)
 
