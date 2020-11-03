@@ -38,7 +38,7 @@ Git for pythonanywhere.com
 		- DONE: Functionalizing
 		- DONE: Flask and Jinja
 		- DONE: Storing the Data
-		- CSS
+		- DONE: CSS
 		- Overview Diagram
 	- Spell check docs
 	- Update version code (in code and in static_dict)

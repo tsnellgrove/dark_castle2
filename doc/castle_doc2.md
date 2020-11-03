@@ -48,9 +48,9 @@ Storing the data:
 - Even the simplest approach can have its challenges. I learned the hard way that there's a 4 KB limit to what you can store in a cookie (the exposistion-heavy "examine hedgehog_broach" response of course). This led me to optimize what I was storing in session variables. It brought home to me that I only need to store in session, data that will persist beyond the existing template. Which meant that the text response to each command, which would be immediately displayed in the html template being returned, did *not* need to be saved in a session variable.
 - This approach appears to work reasonably well but in the future I'd like to try storing data in SQLAlchemy or a NoSQL. 
 
-CSS (mention need to restart between changes)
-
-
+CSS:
+- After several itterations I eventually got my web code working it was time to turn my attention to the appearance of the html. After struggling mightily to understand Flask it was fun to tackle something easy and discrete like CSS. I found a great "CSS for Complete Beginners" YouTube video, worked the examples, and enjoyed every minute of it. The sample web site created in the YouTube video became the basis for my own site but I tuned the color scheme and shot my own "stone wall" photo (an homage to the Zork packaging and art work).
+- In general, CSS was simple, but there were a couple minor gotchas: 1) at least in Pythonista, it appears to be necessary to restart the IDE in order to re-load CSS changes (this is counter-intuitive because actual html changes are instantaneous), 2) tweaking the color of Flask Flash script remains arcane even with CSS knowledge - I blame Flask (again).
 
 
 *** Game Overview - Console Version ***
