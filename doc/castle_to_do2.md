@@ -39,7 +39,11 @@ Git for pythonanywhere.com
 		- DONE: Flask and Jinja
 		- DONE: Storing the Data
 		- DONE: CSS
-		- Overview Diagram
+		- IN-PROC: Overview Diagram
+			- Good Links:
+				- https://docs.python-guide.org/scenarios/web/
+				- nginx gunicorn jinja2 flask python
+				- jinja2 flask architecture diagram
 	- Spell check docs
 	- Update version code (in code and in static_dict)
 	- "publish" to friends via email!!
