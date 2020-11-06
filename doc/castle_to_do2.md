@@ -44,6 +44,7 @@ Git for pythonanywhere.com
 				- https://docs.python-guide.org/scenarios/web/
 				- nginx gunicorn jinja2 flask python
 				- jinja2 flask architecture diagram
+				- https://machinesaredigging.com/2013/10/29/how-does-a-web-session-work/
 	- Spell check docs
 	- Update version code (in code and in static_dict)
 	- "publish" to friends via email!!
