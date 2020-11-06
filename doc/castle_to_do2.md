@@ -40,11 +40,13 @@ Git for pythonanywhere.com
 		- DONE: Storing the Data
 		- DONE: CSS
 		- IN-PROC: Overview Diagram
-			- Good Links:
+			- DONE: Study Good Links:
 				- https://docs.python-guide.org/scenarios/web/
 				- nginx gunicorn jinja2 flask python
 				- jinja2 flask architecture diagram
 				- https://machinesaredigging.com/2013/10/29/how-does-a-web-session-work/
+			- NEXT: Create new 3-tier diagram
+				- Elements: browser, web server, uWSGI, Flask, Jinja2, static content, Python, seesion cookie, dev workstation, Git
 	- Spell check docs
 	- Update version code (in code and in static_dict)
 	- "publish" to friends via email!!
