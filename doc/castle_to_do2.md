@@ -46,7 +46,12 @@ Git for pythonanywhere.com
 				- jinja2 flask architecture diagram
 				- https://machinesaredigging.com/2013/10/29/how-does-a-web-session-work/
 			- NEXT: Create new 3-tier diagram
-				- Elements: browser, web server, uWSGI, Flask, Jinja2, static content, Python, seesion cookie, dev workstation, Git
+				- DONE: Define Elements: browser, web server, WSGI, Flask, Jinja2, static content, Python, seesion cookie, dev workstation, Git
+				- DONE: Hand draw framework
+				- NEXT: Narrative of dev flow
+				- Narrative of browser flow
+				- Label what is passed between each element
+				- Move to draw.io
 	- Spell check docs
 	- Update version code (in code and in static_dict)
 	- "publish" to friends via email!!
