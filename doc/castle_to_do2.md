@@ -53,7 +53,19 @@ Git for pythonanywhere.com
 					- 2. Pythonista IDE and Textastic text editor update documents in Working Copy
 					- 3. Working Copy updates are committed locally and push to GitHub origin
 					- 4. Pull GitHub update from pythonanywhere.com Bash console
-				- Narrative of browser flow
+				- IN-PROC: Narrative of browser flow
+					- A. The Client Browser hits the Web Server hosted on pythonanywhere.com
+					- B. Web Server communicates with WSGI (Web Server Gateway Interface)
+					- C. WSGI interfaces with Flask Micro-Framework
+					- D. Flask pulls sessision variables from client side cookies; Usually just User ID but in my code all persistent variables
+					- E. Flask Micro-Framework calls Python Function
+					- F. Typically the Python Function would pull data from a Database (e.g. SQLAlchemy) but in my code it's all in cookies
+					- G. Flask passes the data returned by thge Python Function to the Jinja2 Template Engine
+					- H. Jinja2 mergest the Python Function data with the HTML Templates to produce the Custom HTML Web Page
+					- I. The Custom HTML Web Page is returned by Flask via the WSGI to the Web Server
+					- J. The Web Server applies static content (e.g. CSS styling and images) to the Custom HTML Web Page
+					- K. The Web Server returns the Fully Formatted Web Page to the Client Browser
+				- Detailed review / validation of Browser Flow Narrative
 				- Label what is passed between each element
 				- Move to draw.io
 	- Spell check docs
