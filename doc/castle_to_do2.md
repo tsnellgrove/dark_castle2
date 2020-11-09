@@ -48,7 +48,11 @@ Git for pythonanywhere.com
 			- NEXT: Create new 3-tier diagram
 				- DONE: Define Elements: browser, web server, WSGI, Flask, Jinja2, static content, Python, seesion cookie, dev workstation, Git
 				- DONE: Hand draw framework
-				- NEXT: Narrative of dev flow
+				- DONE: Narrative of dev flow
+					- 1. Files live in Working Copy iPad Git client
+					- 2. Pythonista IDE and Textastic text editor update documents in Working Copy
+					- 3. Working Copy updates are committed locally and push to GitHub origin
+					- 4. Pull GitHub update from pythonanywhere.com Bash console
 				- Narrative of browser flow
 				- Label what is passed between each element
 				- Move to draw.io
