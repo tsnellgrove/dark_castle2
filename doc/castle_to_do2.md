@@ -46,6 +46,7 @@ Git for pythonanywhere.com
 				- jinja2 flask architecture diagram
 				- https://machinesaredigging.com/2013/10/29/how-does-a-web-session-work/
 				- https://programmer.help/blogs/getting-started-with-flask.html#一、架构简介
+				- https://sidsbits.com/Serving-Flask/
 			- NEXT: Create new 3-tier diagram
 				- DONE: Define Elements: browser, web server, WSGI, Flask, Jinja2, static content, Python, seesion cookie, dev workstation, Git
 				- DONE: Hand draw framework
@@ -67,7 +68,9 @@ Git for pythonanywhere.com
 					- J. The Web Server applies static content (e.g. CSS styling and images) to the Custom HTML Web Page
 					- K. The Web Server returns the Fully Formatted Web Page to the Client Browser
 				- DONE: Review / validate Browser Flow Narrative
-				- Label what is passed between each element
+				- IN-PROC: Label what is passed between each element
+					- DONE: Left half of diagram
+					- NEXT: Right half of diagram
 				- Move to draw.io
 	- Spell check docs
 	- Update version code (in code and in static_dict)
