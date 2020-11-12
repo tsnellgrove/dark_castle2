@@ -47,7 +47,8 @@ Git for pythonanywhere.com
 				- https://machinesaredigging.com/2013/10/29/how-does-a-web-session-work/
 				- https://programmer.help/blogs/getting-started-with-flask.html#一、架构简介
 				- https://sidsbits.com/Serving-Flask/
-			- NEXT: Create new 3-tier diagram
+				- https://atlasbioinfo.github.io/生物信息/2019/06/12/Flask搭建生物学数据库全流程/
+			- DONE: Create new 3-tier diagram
 				- DONE: Define Elements: browser, web server, WSGI, Flask, Jinja2, static content, Python, seesion cookie, dev workstation, Git
 				- DONE: Hand draw framework
 				- DONE: Narrative of dev flow
@@ -55,7 +56,7 @@ Git for pythonanywhere.com
 					- 2. Pythonista IDE and Textastic text editor update documents in Working Copy
 					- 3. Working Copy updates are committed locally and push to GitHub origin
 					- 4. Pull GitHub update from pythonanywhere.com Bash console
-				- IN-PROC: Narrative of browser flow
+				- DONE: Narrative of browser flow
 					- A. The Client Browser hits the Web Server hosted on pythonanywhere.com
 					- B. Web Server communicates with WSGI (Web Server Gateway Interface)
 					- C. WSGI interfaces with Flask Micro-Framework
@@ -68,10 +69,10 @@ Git for pythonanywhere.com
 					- J. The Web Server applies static content (e.g. CSS styling and images) to the Custom HTML Web Page
 					- K. The Web Server returns the Fully Formatted Web Page to the Client Browser
 				- DONE: Review / validate Browser Flow Narrative
-				- IN-PROC: Label what is passed between each element
+				- DONE: Label what is passed between each element
 					- DONE: Left half of diagram
-					- NEXT: Right half of diagram
-				- Move to draw.io
+					- DONE: Right half of diagram
+				- NEXT: Move to draw.io
 	- Spell check docs
 	- Update version code (in code and in static_dict)
 	- "publish" to friends via email!!
