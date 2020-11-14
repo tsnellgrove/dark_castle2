@@ -72,7 +72,10 @@ Git for pythonanywhere.com
 				- DONE: Label what is passed between each element
 					- DONE: Left half of diagram
 					- DONE: Right half of diagram
-				- NEXT: Move to draw.io
+				- IN-PROC: Move to draw.io
+					- DONE: Client Side
+					- DONE: Web
+					- NEXT: App
 	- Spell check docs
 	- Update version code (in code and in static_dict)
 	- "publish" to friends via email!!
