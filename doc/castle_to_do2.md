@@ -75,7 +75,8 @@ Git for pythonanywhere.com
 				- IN-PROC: Move to draw.io
 					- DONE: Client Side
 					- DONE: Web
-					- NEXT: App
+					- DONE: App & DB
+					- NEXT: Dev Connectors
 	- Spell check docs
 	- Update version code (in code and in static_dict)
 	- "publish" to friends via email!!
