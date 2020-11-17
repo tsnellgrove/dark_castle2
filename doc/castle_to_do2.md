@@ -76,6 +76,7 @@ Git for pythonanywhere.com
 					- DONE: Client Side
 					- DONE: Web
 					- DONE: App & DB
+					- DONE: Web Connectors
 					- NEXT: Dev Connectors
 	- Spell check docs
 	- Update version code (in code and in static_dict)
