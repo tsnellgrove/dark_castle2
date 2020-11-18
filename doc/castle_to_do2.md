@@ -54,8 +54,9 @@ Git for pythonanywhere.com
 				- DONE: Narrative of dev flow
 					- 1. Files live in Working Copy iPad Git client
 					- 2. Pythonista IDE and Textastic text editor update documents in Working Copy
-					- 3. Working Copy updates are committed locally and push to GitHub origin
-					- 4. Pull GitHub update from pythonanywhere.com Bash console
+					- 3. Working Copy updates are committed locally 
+					- 4. Working Copy updates are pushed to GitHub origin
+					- 5. Pull GitHub updates to pythonanywhere.com via Bash console
 				- DONE: Narrative of browser flow
 					- A. The Client Browser hits the Web Server hosted on pythonanywhere.com
 					- B. Web Server communicates with WSGI (Web Server Gateway Interface)
@@ -77,7 +78,8 @@ Git for pythonanywhere.com
 					- DONE: Web
 					- DONE: App & DB
 					- DONE: Web Connectors
-					- NEXT: Dev Connectors
+					- DONE: Dev Connectors & Labels
+					- NEXT: Web Labels
 	- Spell check docs
 	- Update version code (in code and in static_dict)
 	- "publish" to friends via email!!
