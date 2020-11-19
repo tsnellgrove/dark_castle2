@@ -52,23 +52,27 @@ Git for pythonanywhere.com
 				- DONE: Define Elements: browser, web server, WSGI, Flask, Jinja2, static content, Python, seesion cookie, dev workstation, Git
 				- DONE: Hand draw framework
 				- DONE: Narrative of dev flow
-					- 1. Files live in Working Copy iPad Git client
-					- 2. Pythonista IDE and Textastic text editor update documents in Working Copy
-					- 3. Working Copy updates are committed locally 
-					- 4. Working Copy updates are pushed to GitHub origin
-					- 5. Pull GitHub updates to pythonanywhere.com via Bash console
+					- A. Files live in Working Copy iPad Git client
+					- B. Pythonista IDE and Textastic text editor update documents in Working Copy
+					- C. Working Copy updates are committed locally 
+					- C. Working Copy updates are pushed to GitHub origin
+					- E. Pull GitHub updates to pythonanywhere.com via Bash console
 				- DONE: Narrative of browser flow
-					- A. The Client Browser hits the Web Server hosted on pythonanywhere.com
-					- B. Web Server communicates with WSGI (Web Server Gateway Interface)
-					- C. WSGI interfaces with Flask Micro-Framework
-					- D. Flask pulls sessision variables from client side cookies; Usually just User ID but in my code all persistent variables
-					- E. Flask Micro-Framework calls Python Function
-					- F. Typically the Python Function would pull data from a Database (e.g. SQLAlchemy) but in my code it's all in cookies
-					- G. Flask passes the data returned by thge Python Function to the Jinja2 Template Engine
-					- H. Jinja2 mergest the Python Function data with the HTML Templates to produce the Custom HTML Web Page
-					- I. The Custom HTML Web Page is returned by Flask via the WSGI to the Web Server
-					- J. The Web Server applies static content (e.g. CSS styling and images) to the Custom HTML Web Page
-					- K. The Web Server returns the Fully Formatted Web Page to the Client Browser
+					- 1. The Client Browser hits the Web Server hosted on pythonanywhere.com
+					- 2. Web Server communicates with WSGI (Web Server Gateway Interface)
+					- 3. WSGI interfaces with Flask Micro-Framework
+					- 4. Flask pulls sessision variables from client side cookies; Usually just User ID but in my code all persistent variables
+					- 5. Flask Micro-Framework calls Python Function
+					- 6. Typically the Python Function would use the session variables to read & write session-specific data from a Database (e.g. SQLAlchemy) but in my code it's all in cookies
+					- 7. The Python function returns varables to Flask
+					- 8. Flask updates session variables stored in browser cookie 
+					- 9. Flask passes the data returned by thge Python Function to the Jinja2 Template Engine
+					- 10. Jinja2 merges the Python Function data with the HTML Templates to produce the Custom HTML Web Page
+					- 11. Jinja2 returns the Custom HTML Web Page to Flask
+					- 12. The Custom HTML Web Page is sent by Flask to the WSGI 
+					- 13. The WSGI passes the Custom HTML Web Page to the Web Server
+					- 14. The Web Server applies static content (e.g. CSS styling and images) to the Custom HTML Web Page
+					- 15. The Web Server returns the Fully Formatted Web Page to the Client Browser
 				- DONE: Review / validate Browser Flow Narrative
 				- DONE: Label what is passed between each element
 					- DONE: Left half of diagram
@@ -79,7 +83,8 @@ Git for pythonanywhere.com
 					- DONE: App & DB
 					- DONE: Web Connectors
 					- DONE: Dev Connectors & Labels
-					- NEXT: Web Labels
+					- DONE: Review and update Web Flow label text
+					- NEXT: Update cookie in diagram and add Web Labels
 	- Spell check docs
 	- Update version code (in code and in static_dict)
 	- "publish" to friends via email!!
