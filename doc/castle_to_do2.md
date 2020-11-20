@@ -84,7 +84,7 @@ Git for pythonanywhere.com
 					- DONE: Web Connectors
 					- DONE: Dev Connectors & Labels
 					- DONE: Review and update Web Flow label text
-					- NEXT: Update cookie in diagram and add Web Labels
+					- IN-PROC: Update cookie in diagram and add Web Labels
 	- Spell check docs
 	- Update version code (in code and in static_dict)
 	- "publish" to friends via email!!
