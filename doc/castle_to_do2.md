@@ -77,14 +77,15 @@ Git for pythonanywhere.com
 				- DONE: Label what is passed between each element
 					- DONE: Left half of diagram
 					- DONE: Right half of diagram
-				- IN-PROC: Move to draw.io
+				- DONE: Move to draw.io
 					- DONE: Client Side
 					- DONE: Web
 					- DONE: App & DB
 					- DONE: Web Connectors
 					- DONE: Dev Connectors & Labels
 					- DONE: Review and update Web Flow label text
-					- IN-PROC: Update cookie in diagram and add Web Labels
+					- DONE: Update cookie in diagram and add Web Labels
+				- Create a "How (I think) It Works" tab containing diagram and  (w/ github link) and description; req feedback
 	- Spell check docs
 	- Update version code (in code and in static_dict)
 	- "publish" to friends via email!!
