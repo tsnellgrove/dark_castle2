@@ -55,23 +55,23 @@ Git for pythonanywhere.com
 					- A. Files live in Working Copy iPad Git client
 					- B. Pythonista IDE and Textastic text editor update documents in Working Copy
 					- C. Working Copy updates are committed locally 
-					- C. Working Copy updates are pushed to GitHub origin
-					- E. Pull GitHub updates to pythonanywhere.com via Bash console
+					- C. Working Copy updates are pushed to GitHub origin via Git protocol (port 9418; similar to ssh but no auth)
+					- E. From bash console, pull GitHub updates to pythonanywhere.com via Git protocol 
 				- DONE: Narrative of browser flow
-					- 1. The Client Browser hits the Web Server hosted on pythonanywhere.com
-					- 2. Web Server communicates with WSGI (Web Server Gateway Interface)
+					- 1. Based on the URL entered, the Client Browser hits the Web Server hosted on pythonanywhere.com. At present, NGiNX is the most popular dedicated Web Server but I have no knowledge of what Web Server pythonanywhere.com uses.
+					- 2. Web Server communicates with WSGI (Web Server Gateway Interface). The WSGI is middleware that allows any WSGI-compliant Web Server to interface with any WSGI-compliant app framework. gUnicorn (Green Unicorn) is presently the most popluar dedicated WSGI but I have no knowledge of what WSGI pythonanaywhere uses.
 					- 3. WSGI interfaces with Flask Micro-Framework
-					- 4. Flask pulls sessision variables from client side cookies; Usually just User ID but in my code all persistent variables
-					- 5. Flask Micro-Framework calls Python Function
-					- 6. Typically the Python Function would use the session variables to read & write session-specific data from a Database (e.g. SQLAlchemy) but in my code it's all in cookies
+					- 4. Flask pulls (or creates) sessision variables stored in client side cookies; Usually just User ID but in my code all persistent variables. Also, based on the url address requested, Flask routes to the correct html generation sequence.
+					- 5. Flask Micro-Framework calls Python Function. Each instance of the Python Function runs in its own memory space.
+					- 6. Typically the Python Function would use a DB key stored in session variables to read & write session-specific data from a Database (e.g. SQLAlchemy) but in my code it's all in cookies
 					- 7. The Python function returns varables to Flask
-					- 8. Flask updates session variables stored in browser cookie 
+					- 8. Flask updates persistent session variables and stores them in the browser cookie 
 					- 9. Flask passes the data returned by thge Python Function to the Jinja2 Template Engine
-					- 10. Jinja2 merges the Python Function data with the HTML Templates to produce the Custom HTML Web Page
+					- 10. Jinja2 merges the Python Function data with the HTML Templates in /templates (e.g. base.html, index.html) to produce the Custom HTML Web Page (Note: the /templates location is defined by Flask which is tightly integrated with Jinja2)
 					- 11. Jinja2 returns the Custom HTML Web Page to Flask
 					- 12. The Custom HTML Web Page is sent by Flask to the WSGI 
 					- 13. The WSGI passes the Custom HTML Web Page to the Web Server
-					- 14. The Web Server applies static content (e.g. CSS styling and images) to the Custom HTML Web Page
+					- 14. The Web Server applies static content (e.g. CSS styling and images) to the Custom HTML Web Page (Note: the /static location is defined by Flask but I believe it is applied to the Custome HTML Page by the Web Server)
 					- 15. The Web Server returns the Fully Formatted Web Page to the Client Browser
 				- DONE: Review / validate Browser Flow Narrative
 				- DONE: Label what is passed between each element
@@ -85,6 +85,7 @@ Git for pythonanywhere.com
 					- DONE: Dev Connectors & Labels
 					- DONE: Review and update Web Flow label text
 					- DONE: Update cookie in diagram and add Web Labels
+				- DONE: Final review of diagram and Flow text
 				- Create a "How (I think) It Works" tab containing diagram and  (w/ github link) and description; req feedback
 	- Spell check docs
 	- Update version code (in code and in static_dict)
