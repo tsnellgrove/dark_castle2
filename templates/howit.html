@@ -1,0 +1,34 @@
+{% extends 'base_new2.html' %}
+
+
+{% block head %}
+<title>Read me</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <h1>How (I Think) It Works</h1>
+  
+   <p>I wrote the Dark Castle text game in order to learn some Python. I assumed it would be trivial to host my app on the web. I was wrong. </p>
+
+   <p>As it turns out, I've now spent nearly as much time learning about hosting a web app as I did about Python itself. One of the challenges is simply to understand how all the moving pieces work together. This changes over time so what I show here may not be true in a few years. And honestly, parts of it may be wrong right now - I'm learning as I go - so please let me know if you spot errors. With those caveats, here's how I think it works:</p>
+
+   <p>
+   <h3>Dev Flow</h3>
+   <ul>
+      <li>A. Files live in Working Copy iPad Git client</li>
+      <li>B. Pythonista IDE and Textastic text editor update documents in Working Copy</li>
+      <li>C. Working Copy updates are committed locally</li>
+      <li>D. Working Copy updates are pushed to GitHub origin via Git protocol (port 9418; similar to ssh but no auth)</li>
+      <li>E. From bash console, pull GitHub updates to pythonanywhere.com via Git protocol</li>
+   </ul>
+   </p>
+
+   <p>Diagram can be found here: </p>
+
+   <p>- Tom</p>
+
+</div>
+{% endblock %}
+
+
