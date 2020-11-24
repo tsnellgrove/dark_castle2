@@ -87,6 +87,10 @@ Git for pythonanywhere.com
 					- DONE: Update cookie in diagram and add Web Labels
 				- DONE: Final review of diagram and Flow text
 				- IN-PROC: Create "How (I think) It Works" (howit.html) html page containing diagram (w/ github link) and description; req feedback
+					- DONE: raw page created
+					- DONE: Intro and deve text
+					- DONE: Image
+					- NEXT: Web flow text
 	- Spell check docs
 	- Update version code (in code and in static_dict)
 	- "publish" to friends via email!!
