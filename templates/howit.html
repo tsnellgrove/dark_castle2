@@ -2,18 +2,18 @@
 
 
 {% block head %}
-<title>Read me</title>
+<title>How It Works</title>
 {% endblock %}
 
 {% block body %}
 <div class="container">
-  <h1>How (I Think) It Works</h1>
+  <h1>How It Works (I Think)</h1>
   
    <p>I wrote the Dark Castle text game in order to learn some Python. I assumed it would be trivial to host my app on the web. I was wrong. </p>
 
    <p>As it turns out, I've now spent nearly as much time learning about hosting a web app as I did about Python itself. One of the challenges is simply to understand how all the moving pieces work together. This changes over time so what I show here may not be true in a few years. And honestly, parts of it may be wrong right now - I'm learning as I go - so please let me know if you spot errors. With those caveats, here's how I think it works:</p>
 
-   <img src="webflow.jpg">
+   <img src="/static/webflow.jpg">
    
    <p>
    <h3>Dev Flow</h3>
@@ -25,6 +25,26 @@
       <li>E. From bash console, pull GitHub updates to pythonanywhere.com via Git protocol</li>
    </ul>
    </p>
+
+   <p>
+   <h3>Web Flow</h3>
+   <ul>
+      <li>1. Based on the URL entered, the Client Browser hits the Web Server hosted on pythonanywhere.com. At present, NGiNX is the most popular dedicated Web Server but I have no knowledge of what Web Server pythonanywhere.com uses.</li>
+      <li>2. Web Server communicates with WSGI (Web Server Gateway Interface). The WSGI is middleware that allows any WSGI-compliant Web Server to interface with any WSGI-compliant app framework. gUnicorn (Green Unicorn) is presently the most popluar dedicated WSGI but I have no knowledge of what WSGI pythonanaywhere uses.</li>
+      <li>3. WSGI interfaces with Flask Micro-Framework</li>
+      <li>4. Flask pulls (or creates) sessision variables stored in client side cookies; Usually just User ID but in my code all persistent variables. Also, based on the url address requested, Flask routes to the correct html generation sequence.</li>
+      <li>5. Flask Micro-Framework calls Python Function. Each instance of the Python Function runs in its own memory space.</li>
+      <li>6. Typically the Python Function would use a DB key stored in session variables to read & write session-specific data from a Database (e.g. SQLAlchemy) but in my code it's all in cookies</li>
+      <li>7. The Python function returns varables to Flask</li>
+      <li>8. Flask updates persistent session variables and stores them in the browser cookie</li>
+      <li>9. Flask passes the data returned by thge Python Function to the Jinja2 Template Engine</li>
+      <li>10. Jinja2 merges the Python Function data with the HTML Templates in /templates (e.g. base.html, index.html) to produce the Custom HTML Web Page (Note: the /templates location is defined by Flask which is tightly integrated with Jinja2)</li>
+      <li>11. Jinja2 returns the Custom HTML Web Page to Flask</li>
+      <li>12. The Custom HTML Web Page is sent by Flask to the WSGI</li> 
+      <li>13. The WSGI passes the Custom HTML Web Page to the Web Server</li>
+      <li>14. The Web Server applies static content (e.g. CSS styling and images) to the Custom HTML Web Page (Note: the /static location is defined by Flask but I believe it is applied to the Custome HTML Page by the Web Server)</li>
+      <li>15. The Web Server returns the Fully Formatted Web Page to the Client Browser</li>
+   </ul>
 
    <p>Diagram can be found here: </p>
 

@@ -90,7 +90,10 @@ Git for pythonanywhere.com
 					- DONE: raw page created
 					- DONE: Intro and deve text
 					- DONE: Image
-					- NEXT: Web flow text
+					- DONE: Web flow text
+					- DONE: Update Flask code
+					- DONE: Update base.html with new nav bar link
+					- NEXT: Scale image
 	- Spell check docs
 	- Update version code (in code and in static_dict)
 	- "publish" to friends via email!!

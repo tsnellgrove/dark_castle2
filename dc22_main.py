@@ -22,6 +22,11 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = "qpueuwrhuqjfn;nWOREJsdf"
 app.permanent_session_lifetime = timedelta(minutes=120)
 
+@app.route('/howit')
+def howit():
+
+    # *** Return HTML page ***
+    return render_template('howit.html')
 
 @app.route('/ifyou')
 def ifyou():
