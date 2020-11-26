@@ -1,4 +1,4 @@
-"""Dark Castle 2.4.0
+"""Dark Castle 2.5.0
 
 This is a simple Zork-like text adventure game.
 I am creating it in order to learn how to program in Python.
@@ -7,7 +7,7 @@ This is the front-end code
 
 Written and programmed by Tom Snellgrove
 
-Last update = Oct 28, 2020
+Last update = Nov 26, 2020
 """
 
 # *** Imports ***

@@ -1,4 +1,4 @@
-"""Dark Castle 2.4.0
+"""Dark Castle 2.5.0
 
 This is a simple Zork-like text adventure game.
 I am creating it in order to learn how to program in Python.
@@ -7,7 +7,7 @@ This is the back-end code
 
 Written and programmed by Tom Snellgrove
 
-Last update = Oct 24, 2020
+Last update = Nov 26, 2020
 """
 
 # *** Imports ***
@@ -75,7 +75,7 @@ path_dict = {
 static_dict = {
     'global_dict': {
         'max_score': 75,
-        'version': "2.4.0",
+        'version': "2.5.0",
         'output': ""
     },
     'invalid_path_lst': [

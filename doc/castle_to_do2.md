@@ -39,7 +39,7 @@ Git for pythonanywhere.com
 		- DONE: Flask and Jinja
 		- DONE: Storing the Data
 		- DONE: CSS
-		- IN-PROC: Overview Diagram
+		- DONE: Overview Diagram
 			- DONE: Study Good Links:
 				- https://docs.python-guide.org/scenarios/web/
 				- nginx gunicorn jinja2 flask python
@@ -93,9 +93,10 @@ Git for pythonanywhere.com
 					- DONE: Web flow text
 					- DONE: Update Flask code
 					- DONE: Update base.html with new nav bar link
-					- NEXT: Scale image
+					- DONE: Scale image
+					- DONE: Convert uls to links
+	- DONE: Update version code (in code and in static_dict)
 	- Spell check docs
-	- Update version code (in code and in static_dict)
 	- "publish" to friends via email!!
 		- List of usual suspects
 		- Final decision on BCC: vs. CC: vs. FB
@@ -136,6 +137,7 @@ Some Day:
 	Consider making state_dict['active_timers'] a list to allow for multiple simultaneous active timers
 
 3.x General
+  enable shorthand item references (e.g. "gate" instead of "front_gate" when in Entrance)
 	add 'close' 
 	add 'lock'
 	consider adding 'put' for containers

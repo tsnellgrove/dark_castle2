@@ -17,6 +17,16 @@ body{
 	overflow: hidden;
 }
 
+.image { 
+    width:auto; 
+    text-align:center; 
+    padding:20px; 
+     } 
+     img { 
+        max-width:100%; 
+        height:auto; 
+} 
+
 #main-header{
 	background-color: #48494B;
 	color: #fff;
