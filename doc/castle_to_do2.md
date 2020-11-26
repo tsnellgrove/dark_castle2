@@ -96,6 +96,7 @@ Git for pythonanywhere.com
 					- DONE: Scale image
 					- DONE: Convert uls to links
 	- DONE: Update version code (in code and in static_dict)
+  - Dedicated feedback email (and add to pages)
 	- Spell check docs
 	- "publish" to friends via email!!
 		- List of usual suspects
