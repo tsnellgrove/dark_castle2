@@ -98,7 +98,8 @@ Git for pythonanywhere.com
 	- DONE: Update version code (in code and in static_dict)
   - IN-PROC: Create Dedicated feedback email
   	- DONE: Create new email and link to personal email
-  	- NEXT: Create email image and add to web pages 
+  	- DONE: Create email image and add to web pages - version 1
+  	- NEXT: version 2 of email email image
 	- Spell check docs
 	- "publish" to friends via email!!
 		- List of usual suspects
