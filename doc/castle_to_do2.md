@@ -99,7 +99,9 @@ Git for pythonanywhere.com
   - IN-PROC: Create Dedicated feedback email
   	- DONE: Create new email and link to personal email
   	- DONE: Create email image and add to web pages - version 1
-  	- NEXT: version 2 of email email image
+  	- DONE: version 2 of email email image (email11 looks good on iPad in IDE browser)
+  	- NEXT: Push to pythonanywhere and then test on different screens
+  	- Clean up old email images and put final image at bottom of all pages
 	- Spell check docs
 	- "publish" to friends via email!!
 		- List of usual suspects
