@@ -17,6 +17,12 @@ body{
 	overflow: hidden;
 }
 
+.email-image{
+	width: 80%;
+	margin: auto;
+	overflow: hidden;
+}
+
 .image { 
     width:auto; 
     text-align:center; 
