@@ -100,8 +100,8 @@ Git for pythonanywhere.com
   	- DONE: Create new email and link to personal email
   	- DONE: Create email image and add to web pages - version 1
   	- DONE: version 2 of email email image (email11 looks good on iPad in IDE browser)
-  	- NEXT: Push to pythonanywhere and then test on different screens
-  	- Clean up old email images and put final image at bottom of all pages
+  	- DONE: Push to pythonanywhere and then test on different screens
+  	- DONE: Clean up old email images and put final image at bottom of readme page
 	- Spell check docs
 	- "publish" to friends via email!!
 		- List of usual suspects
