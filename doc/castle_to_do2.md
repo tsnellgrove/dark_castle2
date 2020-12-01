@@ -96,19 +96,25 @@ Git for pythonanywhere.com
 					- DONE: Scale image
 					- DONE: Convert uls to links
 	- DONE: Update version code (in code and in static_dict)
-  - IN-PROC: Create Dedicated feedback email
+  - DONE: Create Dedicated feedback email
   	- DONE: Create new email and link to personal email
   	- DONE: Create email image and add to web pages - version 1
   	- DONE: version 2 of email email image (email11 looks good on iPad in IDE browser)
   	- DONE: Push to pythonanywhere and then test on different screens
   	- DONE: Clean up old email images and put final image at bottom of readme page
-	- Spell check docs
-	- "publish" to friends via email!!
-		- List of usual suspects
+	- IN_PROC: "publish" to friends via email!!
+		- DONE: List of usual suspects:
+			- Fam: Matt, Andy, Pa
+			- DHS: Tara S, Geoff T, Chris LB, Ben, Tania R
+			- UMASS: Erik N, Jon S, Jenn E
+			- MA: Mike C, Barry B 
+			- NYC: Franco B, Adrian K
+			- MA: Ken, Karl D, Mickey S
 		- Final decision on BCC: vs. CC: vs. FB
 		- Write email
 		- Send
-
+	- Spell check docs
+	
 
 *** Future Versions and Features ***
 
