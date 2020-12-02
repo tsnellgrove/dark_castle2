@@ -104,16 +104,15 @@ Git for pythonanywhere.com
   	- DONE: Clean up old email images and put final image at bottom of readme page
 	- IN_PROC: "publish" to friends via email!!
 		- DONE: List of usual suspects:
-			- Fam: Matt, Andy, Pa
-			- DHS: Tara S, Geoff T, Chris LB, Ben, Tania R
-			- UMASS: Erik N, Jon S, Jenn E
+		- DONE: Final decision on BCC: vs. CC: vs. FB (neither - small groups)
+		- IN-PROC: Send!
+			- DONE: Gaming: Tara S, Ben F
+			- Fam (post Xmas email): Matt, Andy, Pa
+			- DHS: Geoff T, Chris LB, Tania R
+			- UMASS: Erik N, Jon S, Karl S, Jenn E
 			- MA: Mike C, Barry B 
 			- NYC: Franco B, Adrian K
 			- MA: Ken, Karl D, Mickey S
-		- Final decision on BCC: vs. CC: vs. FB
-		- Write email
-		- Send
-	- Spell check docs
 	
 
 *** Future Versions and Features ***
