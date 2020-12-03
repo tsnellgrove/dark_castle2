@@ -102,17 +102,19 @@ Git for pythonanywhere.com
   	- DONE: version 2 of email email image (email11 looks good on iPad in IDE browser)
   	- DONE: Push to pythonanywhere and then test on different screens
   	- DONE: Clean up old email images and put final image at bottom of readme page
-	- IN_PROC: "publish" to friends via email!!
+	- IN_PROC: "publish" to friends and ask for feedback
 		- DONE: List of usual suspects:
 		- DONE: Final decision on BCC: vs. CC: vs. FB (neither - small groups)
 		- IN-PROC: Send!
 			- DONE: Gaming: Tara S, Ben F
+			- DONE: Franco B
 			- Fam (post Xmas email): Matt, Andy, Pa
 			- DHS: Geoff T, Chris LB, Tania R
 			- UMASS: Erik N, Jon S, Karl S, Jenn E
 			- MA: Mike C, Barry B 
-			- NYC: Franco B, Adrian K
+			- NYC: Adrian K
 			- MA: Ken, Karl D, Mickey S
+			- FB: Post to FB
 	
 
 *** Future Versions and Features ***
