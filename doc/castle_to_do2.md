@@ -108,12 +108,14 @@ Git for pythonanywhere.com
 		- IN-PROC: Send!
 			- DONE: Gaming: Tara S, Ben F
 			- DONE: Franco B
+			- DONE: Geoff T
+			- DONE: Mickey & Bonie S
 			- Fam (post Xmas email): Matt, Andy, Pa
-			- DHS: Geoff T, Chris LB, Tania R
+			- DHS: Chris LB, Tania R
 			- UMASS: Erik N, Jon S, Karl S, Jenn E
 			- MA: Mike C, Barry B 
 			- NYC: Adrian K
-			- MA: Ken, Karl D, Mickey S
+			- MA: Ken, Karl D
 			- FB: Post to FB
 	
 
