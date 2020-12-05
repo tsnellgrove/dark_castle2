@@ -106,17 +106,11 @@ Git for pythonanywhere.com
 		- DONE: List of usual suspects:
 		- DONE: Final decision on BCC: vs. CC: vs. FB (neither - small groups)
 		- IN-PROC: Send!
-			- DONE: Gaming: Tara S, Ben F
-			- DONE: Franco B
-			- DONE: Geoff T
-			- DONE: Mickey & Bonie S
+			- DONE: Gaming: Tara S, Ben F, Franco B, Geoff T, Mickey & Bonie S, Jon S
 			- Fam (post Xmas email): Matt, Andy, Pa
-			- DHS: Chris LB, Tania R
-			- UMASS: Erik N, Jon S, Karl S, Jenn E
-			- MA: Mike C, Barry B 
-			- NYC: Adrian K
-			- MA: Ken, Karl D
-			- FB: Post to FB
+			- Yes: Erik N, Mike C, Barry B, Ken, Karl D, 
+			- Maybe: Chris LB, Tania R, Karl S, Jenn E, Adrian K
+			- Last: Post to FB (& LinkedIn ?)
 	
 
 *** Future Versions and Features ***
