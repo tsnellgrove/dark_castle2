@@ -24,7 +24,25 @@ Git for pythonanywhere.com
 
 
 +++ To Dos +++
+- IN-PROC: Read https://inventwithpython.com/blog/2014/12/11/making-a-text-adventure-game-with-the-cmd-and textwrap-python-modules/
 
+List of Next Version Requirements:
+- Functional
+	- Player name as variable
+	- Short version of noun names (i.e. gate vs. front_gate; "n" for "north")
+	- Support articles (e.g. a, an, the)
+	- Support adjectives (i.e. "shiny sword" vs "shiny_shword")
+	- Support propositions (e.g. in, on, under, to, from)
+	- Support direct objects (e.g. "put the hedgehog broach into the crystal box")
+	- Support game saves and restores
+	- cmd line ability to "arrow up" to past commands
+	- Add shrink into mouse hole room
+	- Add time travel room
+	- Auto testing routine (?)
+	- Introduce a puzzle where waiting is key
+- Non-Functional
+	- Object-Oriented code
+	- DB back end (SQLAlchemy ?)
 	
 
 *** Future Versions and Features ***
