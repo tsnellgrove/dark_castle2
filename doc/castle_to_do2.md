@@ -23,6 +23,16 @@ Git for pythonanywhere.com
 	G. working Copy repo Commits will now push to both local and origin git repos
 
 
++++ Playtest Feedback +++
+
+"Great idea.
+My 2 cents on this is....
+The command box should gain focus so the user doesn't have to click into it to type a command.
+Maybe not in scope but how about 2 drop down lists populated with only the possible actions and items for those actions once selected. (The game for me was constantly typing 'help' and going back and forth to remember the item names.)
+Maybe have a side <table> populated with the 'in hand', backpack contents, and wearing info.
+-Andy""
+
+
 +++ To Dos +++
 - IN-PROC: Read https://inventwithpython.com/blog/2014/12/11/making-a-text-adventure-game-with-the-cmd-and textwrap-python-modules/
 
@@ -35,7 +45,9 @@ List of Next Version Requirements:
 	- Support propositions (e.g. in, on, under, to, from)
 	- Support direct objects (e.g. "put the hedgehog broach into the crystal box")
 	- Support game saves and restores
+	- Give command box focus on web page startup
 	- cmd line ability to "arrow up" to past commands
+	- Either implement scrolling interaction or provide side table of inventory and room contents
 	- Add shrink into mouse hole room
 	- Add time travel room
 	- Auto testing routine (?)
