@@ -16,6 +16,7 @@ v 1.5: Migrate files to Working Copy git client
 v 1.6 - 1.8: Tune Git workflow, consolidate dictionaries, code review
 v 1.9: Consolidate text => description.csv and import file to dict, Document application
 v 2.0: Final tweaks, updates, and documentation 
+v 2.5: Published version
 
 
 *** Program Change Log / Relese Notes ***
