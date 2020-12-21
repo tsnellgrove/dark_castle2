@@ -36,11 +36,14 @@ Maybe have a side <table> populated with the 'in hand', backpack contents, and w
 +++ To Dos +++
 - READ: https://inventwithpython.com/blog/2014/12/02/why-is-object-oriented-programming-useful-with-a-role-playing-game-example/
 - IN-PROC: Make a plan to learn object oriented programming (YouTube?)
-	- IN-PROC: Python OOP - Tech w Tim - 5:47
+	- DONE: Tech w Tim - Python OOP
+	- IN-PROC: Tech w Tim - Software Design
 
 
 - Read https://inventwithpython.com/blog/2014/12/11/making-a-text-adventure-game-with-the-cmd-and textwrap-python-modules/
 - Post "OOP for Dark Castle", learn to use Python to get work done: https://nostarch.com/automatestuff2
+- Watch advanced Text Adventure with Python: https://youtu.be/8CDePunJlck
+
 
 List of Next Version Requirements:
 - Functional
