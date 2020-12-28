@@ -37,7 +37,12 @@ Maybe have a side <table> populated with the 'in hand', backpack contents, and w
 - READ: https://inventwithpython.com/blog/2014/12/02/why-is-object-oriented-programming-useful-with-a-role-playing-game-example/
 - IN-PROC: Make a plan to learn object oriented programming (YouTube?)
 	- DONE: Tech w Tim - Python OOP
-	- IN-PROC: Tech w Tim - Software Design
+	- DONE: Tech w Tim - Software Design
+	- IN-PROC: Tech w Tim - Classes & Objects
+	- TBD: Plan out creating Nouns (items, doors, containers, switches) in OOP
+	- TBD: Plan out createing Game World (rooms, inventory, movement, switches) in OOP
+	- TBD: Plan out creating Game Mechanics (triggers, timers, description_updates) in OOP
+	- TBD: Plan out creating interpreter in OOP
 
 
 - Read https://inventwithpython.com/blog/2014/12/11/making-a-text-adventure-game-with-the-cmd-and textwrap-python-modules/
