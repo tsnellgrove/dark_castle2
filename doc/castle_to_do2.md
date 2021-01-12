@@ -32,6 +32,12 @@ Maybe not in scope but how about 2 drop down lists populated with only the possi
 Maybe have a side <table> populated with the 'in hand', backpack contents, and wearing info.
 -Andy""
 
+Feedback requests:
+- From Andy, Ken, and Karl D: Add focus to the input form [IN-PROC]
+	- Try adding autofocus="autofocus" to input line in index.html [DONE]
+	- Seems to half work in Pythonista browser so trying on public [DONE]
+	- Yes! It appears to work in both iPad Safari and Chrome! I will ask Karl D to test [NEXT]
+
 
 +++ To Dos +++
 - READ: https://inventwithpython.com/blog/2014/12/02/why-is-object-oriented-programming-useful-with-a-role-playing-game-example/
